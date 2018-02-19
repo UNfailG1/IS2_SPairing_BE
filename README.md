@@ -5,6 +5,8 @@ Smart Pairing's Backend. Smart Pairing is a Web 2.0 platform that can perform a 
 ## Built With
 
 * [Node.js](https://github.com/nodejs) - JavaScript run time
+* [Ruby on Rails](https://github.com/rails/rails) - Backend
+* [React](https://github.com/facebook/react) - Frontend
 
 ## Authors
 
