@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  com_com: MyString
+  Thread: one
+  SubForum: one
+  Game: one
+  PlayerProfile: 
+
+two:
+  com_com: MyString
+  Thread: two
+  SubForum: two
+  Game: two
+  PlayerProfile: 

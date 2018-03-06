@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pla_pro_real_name: MyString
+  pla_pro_user_name_string: MyString
+  pla_pro_password: MyString
+  pla_pro_email: MyString
+  pla_sparing_elo: 1.5
+  Location: one
+
+two:
+  pla_pro_real_name: MyString
+  pla_pro_user_name_string: MyString
+  pla_pro_password: MyString
+  pla_pro_email: MyString
+  pla_sparing_elo: 1.5
+  Location: two

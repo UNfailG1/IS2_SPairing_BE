@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gam_name: MyString
+  gam_description: MyString
+  gam_link: MyString
+  Pegi: one
+
+two:
+  gam_name: MyString
+  gam_description: MyString
+  gam_link: MyString
+  Pegi: two

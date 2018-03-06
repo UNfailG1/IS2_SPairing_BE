@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plat_name: MyString
+  plat_link: MyString
+
+two:
+  plat_name: MyString
+  plat_link: MyString

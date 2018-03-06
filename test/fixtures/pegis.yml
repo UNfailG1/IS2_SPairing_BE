@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  peg_name: MyString
+  peg_age: 1
+  peg_image: MyString
+
+two:
+  peg_name: MyString
+  peg_age: 1
+  peg_image: MyString

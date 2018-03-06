@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sub_for_name: MyString
+  sub_for_description: MyString
+  Game: one
+
+two:
+  sub_for_name: MyString
+  sub_for_description: MyString
+  Game: two

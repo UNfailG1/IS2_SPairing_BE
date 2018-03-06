@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  att_name: MyString
+  att_size: 9.99
+  att_location_path: MyString
+  Comment: one
+
+two:
+  att_name: MyString
+  att_size: 9.99
+  att_location_path: MyString
+  Comment: two

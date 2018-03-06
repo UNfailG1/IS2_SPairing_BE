@@ -1,0 +1,2 @@
+class Pegi < ApplicationRecord
+end

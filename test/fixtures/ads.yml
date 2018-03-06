@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ad_description: MyString
+  ad_link: MyString
+  ad_image_path: MyString
+  Sponsor: one
+
+two:
+  ad_description: MyString
+  ad_link: MyString
+  ad_image_path: MyString
+  Sponsor: two
