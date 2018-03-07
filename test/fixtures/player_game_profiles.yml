@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  player_reputation: 9.99
+  player_nickname: MyString
+  player_game_rate: 9.99
+  PlayerProfile: one
+  Game: one
+
+two:
+  player_reputation: 9.99
+  player_nickname: MyString
+  player_game_rate: 9.99
+  PlayerProfile: two
+  Game: two

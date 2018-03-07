@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305133819) do
+ActiveRecord::Schema.define(version: 20180307201838) do
 
   create_table "ads", force: :cascade do |t|
     t.string "ad_description"
@@ -44,15 +44,6 @@ ActiveRecord::Schema.define(version: 20180305133819) do
     t.index ["PlayerProfile_id"], name: "index_comments_on_PlayerProfile_id"
     t.index ["SubForum_id"], name: "index_comments_on_SubForum_id"
     t.index ["Thread_id"], name: "index_comments_on_Thread_id"
-  end
-
-  create_table "game_genres", force: :cascade do |t|
-    t.integer "Game_id"
-    t.integer "Genre_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["Game_id"], name: "index_game_genres_on_Game_id"
-    t.index ["Genre_id"], name: "index_game_genres_on_Genre_id"
   end
 
   create_table "game_platforms", force: :cascade do |t|
@@ -120,6 +111,18 @@ ActiveRecord::Schema.define(version: 20180305133819) do
     t.datetime "updated_at", null: false
     t.index ["pla_bla_list_p1_id"], name: "index_player_black_lists_on_pla_bla_list_p1_id"
     t.index ["pla_bla_list_p2_id"], name: "index_player_black_lists_on_pla_bla_list_p2_id"
+  end
+
+  create_table "player_game_profiles", force: :cascade do |t|
+    t.decimal "player_reputation"
+    t.string "player_nickname"
+    t.decimal "player_game_rate"
+    t.integer "PlayerProfile_id"
+    t.integer "Game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["Game_id"], name: "index_player_game_profiles_on_Game_id"
+    t.index ["PlayerProfile_id"], name: "index_player_game_profiles_on_PlayerProfile_id"
   end
 
   create_table "player_profiles", force: :cascade do |t|
