@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  pla_bla_list_p1: one
-  pla_bla_list_p2: one
+  blocker: one
+  blocked: one
 
 two:
-  pla_bla_list_p1: two
-  pla_bla_list_p2: two
+  blocker: two
+  blocked: two
