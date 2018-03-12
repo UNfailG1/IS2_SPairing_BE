@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307201838) do
+ActiveRecord::Schema.define(version: 20180312200516) do
 
   create_table "ads", force: :cascade do |t|
     t.string "ad_description"
@@ -105,12 +105,12 @@ ActiveRecord::Schema.define(version: 20180307201838) do
   end
 
   create_table "player_black_lists", force: :cascade do |t|
-    t.integer "pla_bla_list_p1_id"
-    t.integer "pla_bla_list_p2_id"
+    t.integer "blocker_id"
+    t.integer "blocked_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pla_bla_list_p1_id"], name: "index_player_black_lists_on_pla_bla_list_p1_id"
-    t.index ["pla_bla_list_p2_id"], name: "index_player_black_lists_on_pla_bla_list_p2_id"
+    t.index ["blocked_id"], name: "index_player_black_lists_on_blocked_id"
+    t.index ["blocker_id"], name: "index_player_black_lists_on_blocker_id"
   end
 
   create_table "player_game_profiles", force: :cascade do |t|
