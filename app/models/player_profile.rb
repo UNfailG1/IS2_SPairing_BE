@@ -12,8 +12,10 @@ class PlayerProfile < ApplicationRecord
 
   has_one :Location
   has_many :player_game_profiles
-  has_many :mailboxes
-  has_many :ratings
+  has_many :mail_sent, :class_name => 'Mailbox', :foreign_key => 'mail_sender_id'
+  has_many :mail_recived, :class_name => 'Mailbox', :foreign_key => 'mail_recever_id'
+  has_many :rate_rated, :class_name => 'Rating', :foreign_key => 'rat_rater_id'
+  has_many :rate_receved, :class_name => 'Rating', :foreign_key => 'rat_recever_id'
   has_many :player_white_lists
 
   validates :pla_pro_real_name, presence: true

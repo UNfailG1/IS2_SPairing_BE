@@ -11,7 +11,7 @@ require 'faker'
 
 #Defining functions to seed DB
 
-def seedSponsorsAndAdds()
+def seedSponsorsAndAds()
   print("================= SeedingDB:  Creating Sponsors and Ads =======================\n")          #Information about what will be performed
   start = Time.now                                                                                    #Recording start time
   for i in 1..20 do
@@ -48,6 +48,36 @@ def seedPlayerProfiles()
   print("\n")
 end
 
+def seedMailBoxes()
+  print("================= SeedingDB - Creating Mailboxs ===============================\n")
+  start = Time.now
+  for i in 1..50 do
+    sender = Faker::Number.between(1, 15)
+    recever = Faker::Number.between(1, 15)
+    msg = Faker::Hipster.sentence(10)
+    Mailbox.create(mail_sender_id: sender, mail_recever_id: recever, mail_message: msg)
+  end
+  print("-- Added 50 fake Mails\n")
+  print("   -> " + (Time.now - start).to_s + "s\n")
+  print("================= SeedingDB - Created Mailboxs )===============================\n")
+  print("\n")
+end
+
+def seedRatings()
+  print("================= SeedingDB - Creating Ratings ================================\n")
+  start = Time.now
+  for i in 1..50 do
+    sender = Faker::Number.between(1, 15)
+    recever = Faker::Number.between(1, 15)
+    rat = Faker::Number.between(1,5)
+    Rating.create(rat_rater_id: sender, rat_recever_id: recever, rat_rate: rat)
+  end
+  print("-- Added 50 fake Mails\n")
+  print("   -> " + (Time.now - start).to_s + "s\n")
+  print("================= SeedingDB - Created Ratings =================================\n")
+  print("\n")
+end
+
 def seedLocations()
   print("================= SeedingDB - Creating Locations ==============================\n")
   start = Time.now
@@ -62,6 +92,8 @@ end
 
 
 
-seedSponsorsAndAdds
+seedSponsorsAndAds
 seedPlayerProfiles
 seedLocations
+seedMailBoxes
+seedRatings
