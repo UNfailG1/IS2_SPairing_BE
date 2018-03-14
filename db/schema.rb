@@ -46,15 +46,6 @@ ActiveRecord::Schema.define(version: 20180314025526) do
     t.index ["thread_id"], name: "index_comments_on_thread_id"
   end
 
-  create_table "game_platforms", force: :cascade do |t|
-    t.integer "platform_id"
-    t.integer "game_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_game_platforms_on_game_id"
-    t.index ["platform_id"], name: "index_game_platforms_on_platform_id"
-  end
-
   create_table "games", force: :cascade do |t|
     t.string "gam_name"
     t.string "gam_description"
@@ -63,6 +54,20 @@ ActiveRecord::Schema.define(version: 20180314025526) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pegi_id"], name: "index_games_on_pegi_id"
+  end
+
+  create_table "games_genres", id: false, force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "game_id"
+    t.index ["game_id"], name: "index_games_genres_on_game_id"
+    t.index ["genre_id"], name: "index_games_genres_on_genre_id"
+  end
+
+  create_table "games_platforms", force: :cascade do |t|
+    t.integer "platform_id"
+    t.integer "game_id"
+    t.index ["game_id"], name: "index_games_platforms_on_game_id"
+    t.index ["platform_id"], name: "index_games_platforms_on_platform_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -138,12 +143,12 @@ ActiveRecord::Schema.define(version: 20180314025526) do
   end
 
   create_table "player_white_lists", force: :cascade do |t|
-    t.integer "pla_whie_list_p1_id"
-    t.integer "pla_whie_list_p2_id"
+    t.integer "player_friend_sender_id"
+    t.integer "player_friend_recever_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pla_whie_list_p1_id"], name: "index_player_white_lists_on_pla_whie_list_p1_id"
-    t.index ["pla_whie_list_p2_id"], name: "index_player_white_lists_on_pla_whie_list_p2_id"
+    t.index ["player_friend_recever_id"], name: "index_player_white_lists_on_player_friend_recever_id"
+    t.index ["player_friend_sender_id"], name: "index_player_white_lists_on_player_friend_sender_id"
   end
 
   create_table "ratings", force: :cascade do |t|

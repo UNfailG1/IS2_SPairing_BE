@@ -16,7 +16,10 @@ class PlayerProfile < ApplicationRecord
   has_many :mail_recived, :class_name => 'Mailbox', :foreign_key => 'mail_recever_id'
   has_many :rate_rated, :class_name => 'Rating', :foreign_key => 'rat_rater_id'
   has_many :rate_receved, :class_name => 'Rating', :foreign_key => 'rat_recever_id'
-  has_many :player_white_lists
+  has_many :friends_sent, :class_name => 'PlayerWhiteList', :foreign_key => 'player_friend_sender_id'
+  has_many :friends_recived, :class_name => 'PlayerWhiteList', :foreign_key => 'player_friend_sender_id'
+  has_many :bad_friends_blocker, :class_name => 'PlayerBlackList', :foreign_key => 'blocker_id'
+  has_many :bad_friends_blocked, :class_name => 'PlayerBlackList', :foreign_key => 'blocked_id'
 
   validates :pla_pro_real_name, presence: true
   validates :pla_pro_user_name, presence: true
