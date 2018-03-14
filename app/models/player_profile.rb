@@ -11,13 +11,13 @@ class PlayerProfile < ApplicationRecord
   include ActiveModel::Validations
 
   has_one :Location
-  has_many :PlayerGameProfile
-  has_many :Mailbox
-  has_many :Rating
-  has_many :PlayerWhiteList
+  has_many :player_game_profiles
+  has_many :mailboxes
+  has_many :ratings
+  has_many :player_white_lists
 
   validates :pla_pro_real_name, presence: true
-  validates :pla_pro_user_name_string, presence: true
+  validates :pla_pro_user_name, presence: true
   validates :pla_pro_password, presence: true
   validates :pla_pro_password, length: {minimum: 8}
   validates :pla_pro_password, length: {maximum: 20}

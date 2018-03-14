@@ -6,8 +6,7 @@ class CreatePlayerProfiles < ActiveRecord::Migration[5.1]
       t.string :pla_pro_password
       t.string :pla_pro_email
       t.float :pla_sparing_elo
-      t.references :Location, foreign_key: true
-
+      
       t.timestamps
     end
   end

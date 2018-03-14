@@ -1,4 +1,4 @@
 class GamePlatform < ApplicationRecord
-  belongs_to :Platform
-  belongs_to :Game
+  belongs_to :platforms
+  belongs_to :games
 end

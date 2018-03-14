@@ -1,4 +1,4 @@
 class Attachment < ApplicationRecord
-  belongs_to :Comment
-  
+  belongs_to :attachable, polymorphic: true
+
 end

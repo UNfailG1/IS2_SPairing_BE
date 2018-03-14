@@ -1,7 +1,7 @@
 class ThreadForum < ApplicationRecord
-  belongs_to :SubForum
-  belongs_to :Game
-  has_many :Comment
+  belongs_to :sub_forums
+  belongs_to :games
+  has_many :comments
 
   validates :thr_name, presence: true
   validates :thr_views, presence: true
