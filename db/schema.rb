@@ -26,20 +26,18 @@ ActiveRecord::Schema.define(version: 20180314025526) do
     t.string "att_name"
     t.decimal "att_size"
     t.string "att_location_path"
-    t.integer "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_attachments_on_comment_id"
   end
 
   create_table "comments", force: :cascade do |t|
     t.string "com_com"
-    t.integer "thread_id"
+    t.integer "thread_forum_id"
     t.integer "player_profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_profile_id"], name: "index_comments_on_player_profile_id"
-    t.index ["thread_id"], name: "index_comments_on_thread_id"
+    t.index ["thread_forum_id"], name: "index_comments_on_thread_forum_id"
   end
 
   create_table "games", force: :cascade do |t|
