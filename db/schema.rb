@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314025526) do
+ActiveRecord::Schema.define(version: 20180315024254) do
 
   create_table "ads", force: :cascade do |t|
     t.string "ad_description"
@@ -22,22 +22,29 @@ ActiveRecord::Schema.define(version: 20180314025526) do
     t.index ["sponsor_id"], name: "index_ads_on_sponsor_id"
   end
 
-  create_table "attachments", force: :cascade do |t|
-    t.string "att_name"
-    t.decimal "att_size"
-    t.string "att_location_path"
+  create_table "application_records", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "attachments", force: :cascade do |t|
+    t.string "att_name"
+    t.decimal "att_size"
+    t.string "att_location_path"
+    t.integer "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_attachments_on_comment_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.string "com_com"
-    t.integer "thread_forum_id"
+    t.integer "thread_id"
     t.integer "player_profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_profile_id"], name: "index_comments_on_player_profile_id"
-    t.index ["thread_forum_id"], name: "index_comments_on_thread_forum_id"
+    t.index ["thread_id"], name: "index_comments_on_thread_id"
   end
 
   create_table "games", force: :cascade do |t|
