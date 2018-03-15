@@ -35,14 +35,10 @@ ActiveRecord::Schema.define(version: 20180314025526) do
   create_table "comments", force: :cascade do |t|
     t.string "com_com"
     t.integer "thread_id"
-    t.integer "sub_forum_id"
-    t.integer "game_id"
     t.integer "player_profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_comments_on_game_id"
     t.index ["player_profile_id"], name: "index_comments_on_player_profile_id"
-    t.index ["sub_forum_id"], name: "index_comments_on_sub_forum_id"
     t.index ["thread_id"], name: "index_comments_on_thread_id"
   end
 
@@ -125,10 +121,10 @@ ActiveRecord::Schema.define(version: 20180314025526) do
     t.string "player_nickname"
     t.decimal "player_game_rate"
     t.integer "player_profile_id"
-    t.integer "dame_id"
+    t.integer "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["dame_id"], name: "index_player_game_profiles_on_dame_id"
+    t.index ["game_id"], name: "index_player_game_profiles_on_game_id"
     t.index ["player_profile_id"], name: "index_player_game_profiles_on_player_profile_id"
   end
 
@@ -181,10 +177,8 @@ ActiveRecord::Schema.define(version: 20180314025526) do
     t.integer "thr_views"
     t.integer "thr_number_comments"
     t.integer "sub_forum_id"
-    t.integer "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_thread_forums_on_game_id"
     t.index ["sub_forum_id"], name: "index_thread_forums_on_sub_forum_id"
   end
 

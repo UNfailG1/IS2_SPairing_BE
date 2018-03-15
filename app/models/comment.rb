@@ -1,7 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :thread
-  belongs_to :sub_forum
-  belongs_to :game
+  belongs_to :player_profile
   has_many :attachments, as :attachable
 
   validates :com_com, presence: true

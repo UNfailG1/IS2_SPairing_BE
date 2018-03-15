@@ -4,8 +4,8 @@ class CreatePlayerGameProfiles < ActiveRecord::Migration[5.1]
       t.decimal :player_reputation
       t.string :player_nickname
       t.decimal :player_game_rate
-      t.references :player_profile, foreign_key: true
-      t.references :dame, foreign_key: true
+      t.belongs_to :player_profile, index: true
+      t.belongs_to :game, index: true
 
       t.timestamps
     end

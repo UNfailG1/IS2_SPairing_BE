@@ -29,7 +29,7 @@ def seedSponsorsAndAds
   print("\n")
 end
 
-def seedPlayerProfiles
+def seedPlayerProfilesAndPlayerGameProfiles
   print("================= SeedingDB - Creating Player Profiles ========================\n")
   start = Time.now
   for i in 1..15 do
@@ -39,6 +39,12 @@ def seedPlayerProfiles
     email = Faker::Internet.free_email(real_name)
     PlayerProfile.create(pla_pro_real_name: real_name, pla_pro_user_name: user_name,
                          pla_pro_password: password, pla_pro_email: email, pla_sparing_elo: 0)
+    reputation = Faker::Number.between(1, 5)
+    player_nickname = Faker::Internet.user_name
+    p_game_rate = Faker::Number.between(1, 5)
+    player = i
+    game = Faker::Number.between(1, 15)
+    PlayerGameProfile.create(player_reputation: reputation, player_nickname: player_nickname, player_game_rate: p_game_rate, player_profile_id: player, game_id: game)
   end
   print("-- Added 15 fake Player Profiles\n")
   print('   -> ' + (Time.now - start).to_s + "s\n")
@@ -227,11 +233,11 @@ end
 def seedPegi
   print("================= SeedingDB - Creating Platforms ==============================\n")
   start = Time.now
-    Pegi.create(peg_name: "3 or older", peg_age: 3, peg_image: "https://upload.wikimedia.org/wikipedia/commons/2/2c/PEGI_3.svg")
-    Pegi.create(peg_name: "7 or older", peg_age: 7, peg_image: "https://upload.wikimedia.org/wikipedia/commons/2/29/PEGI_7.svg")
-    Pegi.create(peg_name: "12 or older", peg_age: 12, peg_image: "https://upload.wikimedia.org/wikipedia/commons/4/44/PEGI_12.svg")
-    Pegi.create(peg_name: "16 or older", peg_age: 16, peg_image: "https://upload.wikimedia.org/wikipedia/commons/8/8a/PEGI_16.svg")
-    Pegi.create(peg_name: "18 or older", peg_age: 18, peg_image: "https://upload.wikimedia.org/wikipedia/commons/7/75/PEGI_18.svg")
+  Pegi.create(peg_name: '3 or older', peg_age: 3, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/PEGI_3.svg')
+  Pegi.create(peg_name: '7 or older', peg_age: 7, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/2/29/PEGI_7.svg')
+  Pegi.create(peg_name: '12 or older', peg_age: 12, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/4/44/PEGI_12.svg')
+  Pegi.create(peg_name: '16 or older', peg_age: 16, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/8/8a/PEGI_16.svg')
+  Pegi.create(peg_name: '18 or older', peg_age: 18, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/7/75/PEGI_18.svg')
   print("-- Added 5 Pegi\n")
   print('   -> ' + (Time.now - start).to_s + "s\n")
   print("================= SeedingDB - Created Platforms ===============================\n")
@@ -261,14 +267,36 @@ def seedGames
   print("\n")
 end
 
-#seedSponsorsAndAds
+def seedSubForum
+  15.times do
+    game = Game.find(Faker::Number.between(1, 15))
+    SubForum.create(sub_for_name: Faker::Zelda, sub_for_description: Faker::LeagueOfLegends.quote, game: game)
+  end
+end
+
+def seedThreadForum
+  #To do seeding of thread forums of sub forums
+end
+
+def seedComments
+  #To do seeding of comments of thread forums of sub forums
+end
+
+def seedAttachments
+  #To do seeding of seedAttachments of comments of thread forums of sub forums
+end
+
+seedSponsorsAndAds
 seedPegi
 seedGenres
 seedPlatforms
 seedGames
-seedPlayerProfiles
+seedPlayerProfilesAndPlayerGameProfiles
 seedLocations
-#sedMailBoxes
-#seedRatings
-#seedPlayerWhiteList
-#seedPlayerBlackList
+seedMailBoxes
+seedRatings
+seedPlayerWhiteList
+seedPlayerBlackList
+seedSubForum
+seedThreadForum
+seedComments

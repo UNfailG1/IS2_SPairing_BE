@@ -1,5 +1,5 @@
 class SubForum < ApplicationRecord
-  belongs_to :games
+  belongs_to :game
   has_many :threads_forums
 
   validates :sub_for_name, presence: true
