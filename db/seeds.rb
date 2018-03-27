@@ -317,6 +317,8 @@ def seedAttachments
   print("\n")
 end
 
+# Seeding with functions
+
 seedSponsorsAndAds
 seedPegi
 seedGenres
