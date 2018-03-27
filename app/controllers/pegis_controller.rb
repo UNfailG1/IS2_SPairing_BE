@@ -1,0 +1,51 @@
+class PegisController < ApplicationController
+  before_action :set_pegi, only: [:show, :update, :destroy]
+
+  # GET /pegis
+  def index
+    @pegis = Pegi.all
+
+    render json: @pegis
+  end
+
+  # GET /pegis/1
+  def show
+    render json: @pegi
+  end
+
+  # POST /pegis
+  def create
+    @pegi = Pegi.new(pegi_params)
+
+    if @pegi.save
+      render json: @pegi, status: :created, location: @pegi
+    else
+      render json: @pegi.errors, status: :unprocessable_entity
+    end
+  end
+
+  # PATCH/PUT /pegis/1
+  def update
+    if @pegi.update(pegi_params)
+      render json: @pegi
+    else
+      render json: @pegi.errors, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /pegis/1
+  def destroy
+    @pegi.destroy
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_pegi
+      @pegi = Pegi.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def pegi_params
+      params.fetch(:pegi, {})
+    end
+end

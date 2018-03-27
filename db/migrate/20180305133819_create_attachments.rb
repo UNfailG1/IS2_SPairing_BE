@@ -4,7 +4,8 @@ class CreateAttachments < ActiveRecord::Migration[5.1]
       t.string :att_name
       t.decimal :att_size
       t.string :att_location_path
-      
+      t.references :comment, foreign_key: true
+
       t.timestamps
     end
   end

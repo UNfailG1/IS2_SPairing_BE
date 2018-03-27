@@ -1,5 +1,5 @@
 class ThreadForum < ApplicationRecord
-  belongs_to :sub_forum
+  belongs_to :sub_forums
   has_many :comments
 
   validates :thr_name, presence: true
