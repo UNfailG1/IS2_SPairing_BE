@@ -27,6 +27,11 @@ ActiveRecord::Schema.define(version: 20180315024254) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "application_records", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "attachments", force: :cascade do |t|
     t.string "att_name"
     t.decimal "att_size"

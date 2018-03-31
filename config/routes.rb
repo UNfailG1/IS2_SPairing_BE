@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :mailboxes
   resources :locations
   resources :genres
+  resources :game_platforms
   resources :games
   resources :comments
   resources :attachments
