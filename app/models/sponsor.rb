@@ -27,7 +27,7 @@ class Sponsor < ApplicationRecord
 
   # Search about a sponsor who have as name, name
   # If two sponsors have the same name, returns the first found
-  def self.getFirtsByName(_name)
-    Sponsor.getByName[0]
+  def self.getFirtsByName(name)
+    Sponsor.getByName(name)[0]
   end
 end

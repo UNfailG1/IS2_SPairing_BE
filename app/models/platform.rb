@@ -3,4 +3,8 @@ class Platform < ApplicationRecord
 
   validates :plat_name, presence: true
   validates :plat_link, presence: true
+
+  #Queries
+
+  
 end

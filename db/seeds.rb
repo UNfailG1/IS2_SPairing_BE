@@ -214,7 +214,7 @@ end
 def seedSubForum
   15.times do
     game = Game.find(Faker::Number.between(1, 15))
-    SubForum.create(sf_name: Faker::Zelda, sf_description: Faker::LeagueOfLegends.quote, game: game)
+    SubForum.create(sf_name: Faker::Zelda.location + " " + Faker::Zelda.character, sf_description: Faker::LeagueOfLegends.quote, game: game)
   end
 end
 
