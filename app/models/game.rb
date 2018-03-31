@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: games
+#
+#  id              :integer          not null, primary key
+#  gam_name        :string
+#  gam_description :text
+#  gam_link        :string
+#  pegi_id         :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+# Indexes
+#
+#  index_games_on_pegi_id  (pegi_id)
+#
+
 class Game < ApplicationRecord
   belongs_to :pegi
   has_many :sub_forums, dependent: :destroy

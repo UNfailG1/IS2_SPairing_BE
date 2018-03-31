@@ -11,6 +11,11 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
+# Indexes
+#
+#  index_player_game_profiles_on_game_id            (game_id)
+#  index_player_game_profiles_on_player_profile_id  (player_profile_id)
+#
 
 require 'test_helper'
 

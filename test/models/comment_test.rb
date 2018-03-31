@@ -9,6 +9,11 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
+# Indexes
+#
+#  index_comments_on_player_profile_id  (player_profile_id)
+#  index_comments_on_thread_forum_id    (thread_forum_id)
+#
 
 require 'test_helper'
 

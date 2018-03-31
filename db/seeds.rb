@@ -17,15 +17,15 @@ def seedSponsorsAndAds
     Sponsor.create(spo_name: Faker::Company.name)                                                     # Creating Sponsors
     10.times do
       product = Faker::Company.bs
-      product_link = Faker::Internet.url(product.split(" ")[0] + '.com')
+      product_link = Faker::Internet.url(product.split(' ')[0] + '.com')
       path = 'ads/' + i.to_s + '/' + product.split(' ')[0] + '/main.jpg'
-      Ad.create(ad_description: product, ad_link: product_link, ad_image: path, sponsor_id: i)   # Creating ads for Sponsors
+      Ad.create(ad_description: product, ad_link: product_link, ad_image: path, sponsor_id: i) # Creating ads for Sponsors
     end
   end
   print("-- Added 20 fake Sponsors\n")
   print("-- Added 10 fake Ads per Sponsor\n")
   print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB:  Created Sponsors and Ads ========================\n")          # Informing about what was done
+  print("================= SeedingDB:  Created Sponsors and Ads ========================\n") # Informing about what was done
   print("\n")
 end
 
@@ -194,9 +194,8 @@ def seedPlayerProfilesAndPlayerGameProfiles
     username = Faker::Internet.user_name(real_name)
     password = Faker::Internet.password(8, 20)
     email = Faker::Internet.free_email(real_name)
-    location = Faker::Number.between(1,15)
-    PlayerProfile.create(pp_username: username, password_confirmation: password, password: password, location_id: location,
-      email: email, pp_spairing_elo: 0)
+    location = Faker::Number.between(1, 15)
+    PlayerProfile.create(pp_username: username, password_digest: password, location_id: location, email: email, pp_spairing_elo: 0)
     reputation = Faker::Number.between(1, 5)
     player_nickname = Faker::Internet.user_name
     p_game_rate = Faker::Number.between(1, 5)
@@ -265,8 +264,7 @@ def seedPlayerBlokedList
 end
 
 def seedRatings
-
-  #To do seeding
+  # To do seeding
 
   # print("================= SeedingDB - Creating Ratings ================================\n")
   # start = Time.now
@@ -283,15 +281,31 @@ def seedRatings
 end
 
 def seedThreadForum
-  #To do seeding of thread forums of sub forums
+  print("================= SeedingDB - Creating Thread Forums ==========================\n")
+  start = Time.now
+  15.times do
+    ThreadForum.create(thr_name: Faker::Zelda.item, thr_views: 0, thr_number_comments: 0, sub_forum: SubForum.find(Faker::Number.between(1, 15)))
+  end
+  print("-- Added 15 fake Thread Forums\n")
+  print('   -> ' + (Time.now - start).to_s + "s\n")
+  print("================= SeedingDB - Created Thread Forums ===========================\n")
+  print("\n")
 end
 
 def seedComments
-  #To do seeding of comments of thread forums of sub forums
+  print("================= SeedingDB - Creating Comments ===============================\n")
+  start = Time.now
+  15.times do
+    Comment.create(com_com: Faker::MostInterestingManInTheWorld.quote, thread_forum: ThreadForum.find(Faker::Number.between(1, 15)), player_profile: PlayerProfile.find(Faker::Number.between(1, 15)))
+  end
+  print("-- Added 15 fake Comments\n")
+  print('   -> ' + (Time.now - start).to_s + "s\n")
+  print("================= SeedingDB - Created Comments ================================\n")
+  print("\n")
 end
 
 def seedAttachments
-  #To do seeding of seedAttachments of comments of thread forums of sub forums
+  # To do seeding of seedAttachments of comments of thread forums of sub forums
 end
 
 # Seeding with functions
@@ -307,6 +321,6 @@ seedSubForum
 seedMailBoxes
 seedPlayerFriends
 seedPlayerBlokedList
-#seedRatings
-#seedThreadForum
-#seedComments
+# seedRatings
+# seedThreadForum
+# seedComments
