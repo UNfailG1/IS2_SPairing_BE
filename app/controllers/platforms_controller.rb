@@ -3,7 +3,7 @@ class PlatformsController < ApplicationController
 
   # GET /platforms
   def index
-    @platforms = Platform.all
+    @platforms = Platform.paginate(page: params['page'], per_page: 15)
 
     render json: @platforms
   end

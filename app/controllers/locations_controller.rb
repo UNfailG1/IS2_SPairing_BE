@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
 
   # GET /locations
   def index
-    @locations = Location.all
+    @locations = Location.paginate(page: params['page'], per_page: 15)
 
     render json: @locations
   end

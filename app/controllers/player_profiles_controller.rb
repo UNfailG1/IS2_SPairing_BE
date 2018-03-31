@@ -3,7 +3,7 @@ class PlayerProfilesController < ApplicationController
 
   # GET /player_profiles
   def index
-    @player_profiles = PlayerProfile.all
+    @player_profiles = PlayerProfile.paginate(page: params['page'], per_page: 15)
 
     render json: @player_profiles
   end

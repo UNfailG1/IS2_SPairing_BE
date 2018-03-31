@@ -3,7 +3,7 @@ class PegisController < ApplicationController
 
   # GET /pegis
   def index
-    @pegis = Pegi.all
+    @pegis = Pegi.paginate(page: params['page'], per_page: 15)
 
     render json: @pegis
   end

@@ -3,7 +3,7 @@ class ThreadForumsController < ApplicationController
 
   # GET /thread_forums
   def index
-    @thread_forums = ThreadForum.all
+    @thread_forums = ThreadForum.paginate(page: params['page'], per_page: 15)
 
     render json: @thread_forums
   end
