@@ -1,18 +1,5 @@
 class PlayerProfile < ApplicationRecord
-  # == Schema Information
-  #
-  # Table name: player_profiles
-  #
-  #  id              :integer          not null, primary key
-  #  pp_username     :string
-  #  password     :string
-  #  email        :string
-  #  pp_spairing_elo :float
-  #  location_id     :integer
-  #  created_at      :datetime         not null
-  #  updated_at      :datetime         not null
-  #
-
+  
   belongs_to :location
 
   has_many :player_game_profiles, dependent: :destroy
