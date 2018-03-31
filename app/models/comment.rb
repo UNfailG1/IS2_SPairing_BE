@@ -5,4 +5,5 @@ class Comment < ApplicationRecord
   validates :com_comment, presence: true
   validates :com_comment, length: {minimum: 1}
 
+  
 end
