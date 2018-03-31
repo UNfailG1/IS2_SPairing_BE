@@ -20,7 +20,7 @@ class PlayerProfile < ApplicationRecord
 
   class EmailValidator < ActiveModel::Validator
     def validate(record)
-      unless record.pp_email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+      unless record.email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
         record.errors[:email] << 'Not an email'
       end
     end
