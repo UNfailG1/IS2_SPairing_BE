@@ -1,4 +1,5 @@
 class PlayerProfilesController < ApplicationController
+  has_secure_password
   before_action :set_player_profile, only: [:show, :update, :destroy]
 
   # GET /player_profiles
