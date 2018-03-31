@@ -15,7 +15,7 @@ class PlayerProfilesController < ApplicationController
 
   # POST /player_profiles
   def create
-    @player_profile = PlayerProfile.new(player_profile_params)
+    @player_profile = PlayerProfile.new(player_profile_params.merge({pp_spairing_elo: 0.0}))
 
     if @player_profile.save
       # Call the UserMailer to send a welcome email after save
