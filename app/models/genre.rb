@@ -1,5 +1,5 @@
 class Genre < ApplicationRecord
-    has_and_belongs_to_many :games
+  has_and_belongs_to_many :games, dependent: :nullify
 
-    validates :gen_name, presence: true
+  validates :gen_name, presence: true
 end

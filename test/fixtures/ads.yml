@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: ads
+#
+#  id             :integer          not null, primary key
+#  ad_description :text
+#  ad_link        :string
+#  ad_image       :string
+#  sponsor_id     :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:

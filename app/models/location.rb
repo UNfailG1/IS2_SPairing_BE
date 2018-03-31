@@ -1,7 +1,7 @@
 class Location < ApplicationRecord
-  belongs_to :player_profile
+  has_many :player_profiles, dependent: :nullify
 
   validates :loc_lat, presence: true
-  validates :loc_lon, presence: true
+  validates :loc_long, presence: true
   validates :loc_name, presence: true
 end

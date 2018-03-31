@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: pegis
+#
+#  id         :integer          not null, primary key
+#  peg_name   :string
+#  peg_age    :integer
+#  peg_image  :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:

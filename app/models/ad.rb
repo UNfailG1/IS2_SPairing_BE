@@ -3,5 +3,7 @@ class Ad < ApplicationRecord
 
   validates :ad_description, presence: true
   validates :ad_link, presence: true
-  validates :ad_image_path, presence: true
+  validates :ad_image, presence: true
+  validates :sponsor, presence: true
+
 end

@@ -1,7 +1,6 @@
 class Mailbox < ApplicationRecord
-  has_one :mail_sender, class_name: 'PlayerProfile', foreign_key: 'id'
-  has_one :mail_recever, class_name: 'PlayerProfile', foreign_key: 'id'
-  has_many :attachments, as: :attachable
+  belongs_to :sender , class_name: "PlayerProfile"
+  belongs_to :receiver, class_name: "PlayerProfile"
 
   validates :mail_message, presence: true
 end

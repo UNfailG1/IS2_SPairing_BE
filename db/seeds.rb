@@ -17,9 +17,9 @@ def seedSponsorsAndAds
     Sponsor.create(spo_name: Faker::Company.name)                                                     # Creating Sponsors
     10.times do
       product = Faker::Company.bs
-      product_link = Faker::Internet.url('product.split(" ")[0]' + '.com')
+      product_link = Faker::Internet.url(product.split(" ")[0] + '.com')
       path = 'ads/' + i.to_s + '/' + product.split(' ')[0] + '/main.jpg'
-      Ad.create(ad_description: product, ad_link: product_link, ad_image_path: path, sponsor_id: i)   # Creating ads for Sponsors
+      Ad.create(ad_description: product, ad_link: product_link, ad_image: path, sponsor_id: i)   # Creating ads for Sponsors
     end
   end
   print("-- Added 20 fake Sponsors\n")
@@ -29,96 +29,29 @@ def seedSponsorsAndAds
   print("\n")
 end
 
-def seedPlayerProfilesAndPlayerGameProfiles
-  print("================= SeedingDB - Creating Player Profiles ========================\n")
-  start = Time.now
-  for i in 1..15 do
-    real_name = Faker::Name.name
-    user_name = Faker::Internet.user_name(real_name)
-    password = Faker::Internet.password(8, 20)
-    email = Faker::Internet.free_email(real_name)
-    PlayerProfile.create(pla_pro_real_name: real_name, pla_pro_user_name: user_name,
-                         pla_pro_password: password, pla_pro_email: email, pla_sparing_elo: 0)
-    reputation = Faker::Number.between(1, 5)
-    player_nickname = Faker::Internet.user_name
-    p_game_rate = Faker::Number.between(1, 5)
-    player = i
-    game = Faker::Number.between(1, 15)
-    PlayerGameProfile.create(player_reputation: reputation, player_nickname: player_nickname, player_game_rate: p_game_rate, player_profile_id: player, game_id: game)
-  end
-  print("-- Added 15 fake Player Profiles\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created Player Profiles =========================\n")
-  print("\n")
-end
-
-def seedMailBoxes
-  print("================= SeedingDB - Creating Mailboxs ===============================\n")
-  start = Time.now
-  for i in 1..50 do
-    sender = Faker::Number.between(1, 15)
-    recever = Faker::Number.between(1, 15)
-    msg = Faker::Hipster.sentence(10)
-    Mailbox.create(mail_sender_id: sender, mail_recever_id: recever, mail_message: msg)
-  end
-  print("-- Added 50 fake Mails\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created Mailboxs )===============================\n")
-  print("\n")
-end
-
-def seedRatings
-  print("================= SeedingDB - Creating Ratings ================================\n")
-  start = Time.now
-  for i in 1..50 do
-    sender = Faker::Number.between(1, 15)
-    recever = Faker::Number.between(1, 15)
-    rat = Faker::Number.between(1, 5)
-    Rating.create(rat_rater_id: sender, rat_recever_id: recever, rat_rate: rat)
-  end
-  print("-- Added 50 fake Ratings\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created Ratings =================================\n")
-  print("\n")
-end
-
-def seedPlayerWhiteList
-  print("================= SeedingDB - Creating PlayerWhiteLists =======================\n")
-  start = Time.now
-  for i in 1..50 do
-    sender = Faker::Number.between(1, 15)
-    recever = Faker::Number.between(1, 15)
-    PlayerWhiteList.create(player_friend_sender_id: sender, player_friend_recever_id: recever)
-  end
-  print("-- Added 50 fake friend :'c\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created PlayerWhiteLists ========================\n")
-  print("\n")
-end
-
-def seedPlayerBlackList
-  print("================= SeedingDB - Creating PlayerBlackLists =======================\n")
-  start = Time.now
-  for i in 1..50 do
-    sender = Faker::Number.between(1, 15)
-    recever = Faker::Number.between(1, 15)
-    PlayerBlackList.create(blocker_id: sender, blocked_id: recever)
-  end
-  print("-- Added 50 fake bad friend :'c\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created PlayerBlackLists ========================\n")
-  print("\n")
-end
-
 def seedLocations
   print("================= SeedingDB - Creating Locations ==============================\n")
   start = Time.now
   for i in 1..15 do
-    Location.create(loc_lat: Faker::Address.latitude, loc_lon: Faker::Address.longitude, loc_name: Faker::Address.community, player_profile_id: i)
+    Location.create(loc_lat: Faker::Address.latitude, loc_long: Faker::Address.longitude, loc_name: Faker::Address.community)
   end
   print("-- Added 15 fake Locations\n")
   print('   -> ' + (Time.now - start).to_s + "s\n")
   print("================= SeedingDB - Created Locations ===============================\n")
+  print("\n")
+end
+
+def seedPegi
+  print("================= SeedingDB - Creating Platforms ==============================\n")
+  start = Time.now
+  Pegi.create(peg_name: '3 or older', peg_age: 3, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/PEGI_3.svg')
+  Pegi.create(peg_name: '7 or older', peg_age: 7, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/2/29/PEGI_7.svg')
+  Pegi.create(peg_name: '12 or older', peg_age: 12, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/4/44/PEGI_12.svg')
+  Pegi.create(peg_name: '16 or older', peg_age: 16, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/8/8a/PEGI_16.svg')
+  Pegi.create(peg_name: '18 or older', peg_age: 18, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/7/75/PEGI_18.svg')
+  print("-- Added 5 Pegi\n")
+  print('   -> ' + (Time.now - start).to_s + "s\n")
+  print("================= SeedingDB - Created Platforms ===============================\n")
   print("\n")
 end
 
@@ -230,20 +163,6 @@ def seedPlatforms
   print("\n")
 end
 
-def seedPegi
-  print("================= SeedingDB - Creating Platforms ==============================\n")
-  start = Time.now
-  Pegi.create(peg_name: '3 or older', peg_age: 3, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/PEGI_3.svg')
-  Pegi.create(peg_name: '7 or older', peg_age: 7, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/2/29/PEGI_7.svg')
-  Pegi.create(peg_name: '12 or older', peg_age: 12, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/4/44/PEGI_12.svg')
-  Pegi.create(peg_name: '16 or older', peg_age: 16, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/8/8a/PEGI_16.svg')
-  Pegi.create(peg_name: '18 or older', peg_age: 18, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/7/75/PEGI_18.svg')
-  print("-- Added 5 Pegi\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created Platforms ===============================\n")
-  print("\n")
-end
-
 def seedGames
   print("================= SeedingDB - Creating Games ==================================\n")
   start = Time.now
@@ -267,11 +186,100 @@ def seedGames
   print("\n")
 end
 
+def seedPlayerProfilesAndPlayerGameProfiles
+  print("================= SeedingDB - Creating Player Profiles ========================\n")
+  start = Time.now
+  for i in 1..15 do
+    real_name = Faker::Name.name
+    username = Faker::Internet.user_name(real_name)
+    password = Faker::Internet.password(8, 20)
+    email = Faker::Internet.free_email(real_name)
+    location = Faker::Number.between(1,15)
+    PlayerProfile.create(pp_username: username, password_confirmation: password, password: password, location_id: location,
+      email: email, pp_spairing_elo: 0)
+    reputation = Faker::Number.between(1, 5)
+    player_nickname = Faker::Internet.user_name
+    p_game_rate = Faker::Number.between(1, 5)
+    player = i
+    game = Faker::Number.between(1, 15)
+    PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game_id: game)
+    print('   -> email: ' + email + ' password: ' + password + "\n")
+  end
+  print("-- Added 15 fake Player Profiles\n")
+  print('   -> ' + (Time.now - start).to_s + "s\n")
+  print("================= SeedingDB - Created Player Profiles =========================\n")
+  print("\n")
+end
+
 def seedSubForum
   15.times do
     game = Game.find(Faker::Number.between(1, 15))
-    SubForum.create(sub_for_name: Faker::Zelda, sub_for_description: Faker::LeagueOfLegends.quote, game: game)
+    SubForum.create(sf_name: Faker::Zelda, sf_description: Faker::LeagueOfLegends.quote, game: game)
   end
+end
+
+def seedMailBoxes
+  print("================= SeedingDB - Creating Mailboxs ===============================\n")
+  start = Time.now
+  for i in 1..50 do
+    sender = Faker::Number.between(1, 15)
+    recever = Faker::Number.between(1, 15)
+    msg = Faker::Hipster.sentence(10)
+    Mailbox.create(sender_id: sender, receiver_id: recever, mail_message: msg)
+  end
+  print("-- Added 50 fake Mails\n")
+  print('   -> ' + (Time.now - start).to_s + "s\n")
+  print("================= SeedingDB - Created Mailboxs ================================\n")
+  print("\n")
+end
+
+def seedPlayerFriends
+  print("================= SeedingDB - Creating PlayerWhiteLists =======================\n")
+  start = Time.now
+  for i in 1..50 do
+    player_id = Faker::Number.between(1, 15)
+    player = PlayerProfile.find(player_id)
+    friend_id = Faker::Number.between(1, 15)
+    friend = PlayerProfile.find(friend_id)
+    player.friends.push(friend)
+    friend.friends.push(player)
+  end
+  print("-- Added 50 fake friend :'c\n")
+  print('   -> ' + (Time.now - start).to_s + "s\n")
+  print("================= SeedingDB - Created PlayerWhiteLists ========================\n")
+  print("\n")
+end
+
+def seedPlayerBlokedList
+  print("================= SeedingDB - Creating PlayerBlackLists =======================\n")
+  start = Time.now
+  for i in 1..50 do
+    player = PlayerProfile.find(Faker::Number.between(1, 15))
+    blocked = PlayerProfile.find(Faker::Number.between(1, 15))
+    player.blocked_players.push(blocked)
+  end
+  print("-- Added 50 fake bad friend :'c\n")
+  print('   -> ' + (Time.now - start).to_s + "s\n")
+  print("================= SeedingDB - Created PlayerBlackLists ========================\n")
+  print("\n")
+end
+
+def seedRatings
+
+  #To do seeding
+
+  # print("================= SeedingDB - Creating Ratings ================================\n")
+  # start = Time.now
+  # for i in 1..50 do
+  #   sender = Faker::Number.between(1, 15)
+  #   recever = Faker::Number.between(1, 15)
+  #   rat = Faker::Number.between(1, 5)
+  #   Rating.create(rat_rater_id: sender, rat_recever_id: recever, rat_rate: rat)
+  # end
+  # print("-- Added 50 fake Ratings\n")
+  # print('   -> ' + (Time.now - start).to_s + "s\n")
+  # print("================= SeedingDB - Created Ratings =================================\n")
+  # print("\n")
 end
 
 def seedThreadForum
@@ -289,16 +297,16 @@ end
 # Seeding with functions
 
 seedSponsorsAndAds
+seedLocations
 seedPegi
 seedGenres
 seedPlatforms
 seedGames
 seedPlayerProfilesAndPlayerGameProfiles
-seedLocations
-seedMailBoxes
-seedRatings
-seedPlayerWhiteList
-seedPlayerBlackList
 seedSubForum
-seedThreadForum
-seedComments
+seedMailBoxes
+seedPlayerFriends
+seedPlayerBlokedList
+#seedRatings
+#seedThreadForum
+#seedComments
