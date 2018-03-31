@@ -1,5 +1,6 @@
 class PlayerProfile < ApplicationRecord
-  
+
+  has_secure_password
   belongs_to :location
 
   has_many :player_game_profiles, dependent: :destroy

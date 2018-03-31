@@ -1,4 +1,5 @@
 class SponsorsController < ApplicationController
+
   before_action :set_sponsor, only: [:show, :update, :destroy]
 
   # GET /sponsors

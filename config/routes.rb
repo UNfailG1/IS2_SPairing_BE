@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'player_profile_token' => 'player_profile_token#create'
   resources :ads
   resources :comments
   resources :games
