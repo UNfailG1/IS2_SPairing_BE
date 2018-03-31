@@ -1,0 +1,2 @@
+class PlayerProfileMailer < ApplicationMailer
+end
