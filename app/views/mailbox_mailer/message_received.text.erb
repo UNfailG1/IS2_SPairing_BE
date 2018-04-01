@@ -1,0 +1,7 @@
+Hi <%= @receiver.pp_username%>!
+You have a new mail from <%= @sender.pp_username %>
+
+<%= @sender.pp_username %>:
+<%= truncate @message, length: 50%>
+
+To read the complete message, go to your mailbox on <%= link_to "SPairing", @url %>
