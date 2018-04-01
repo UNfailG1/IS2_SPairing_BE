@@ -33,8 +33,9 @@ class Game < ApplicationRecord
   #Search for games with words of an array on its ad_description
   #param words may be a string array
   def self.getByWordsOnDescription(words)
-    whereStatment = 'gam_description like "%' + words[0] + '%"'  # To correct: words[0] may apprears twice
-    words.each{|word| whereStatment += ' OR gam_description like "%' + word + '%"'}
+    list = []
+    words.each{|word| list << 'gam_description like "%' + word + '%"'}
+    whereStatment = list.join(' OR ')
     Game.where(whereStatment)
   end
 

@@ -112,8 +112,9 @@ class PlayerProfile < ApplicationRecord
   #his/her comments
   #param words may be an array of strings
   def self.getByWordsOnComments(words)
-    whereStatment = 'com_comment like "%' + words[0] + '%"'  # To correct: words[0] may apprears twice
-    words.each{|word| whereStatment += ' OR com_comment like "%' + word + '%"'}
+    list = []
+    words.each {|word| list << 'com_comment like "%' + word + '%"'}
+    whereStatment = list.join(' OR ')
     PlayerProfile.joins(:comments).where(whereStatment)
   end
 

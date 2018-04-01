@@ -11,7 +11,8 @@ class Location < ApplicationRecord
   #of more or less, rad kilometers
   #params lat, long and rad may be floats
   def self.getLocationsNearTo(lat, long, rad)
-    #Location.where('POW((POW(loc_lat - ?, 2) + POW(loc_long - ?, 2)), 1.0/2.0) < ?', lat, long, rad)
+    #Only works on Postgresql
+    Location.where('|/( (loc_lat - ?)^2 + (loc_long - ?)^2 ) < ?', lat, long, rad)
   end
 
 end
