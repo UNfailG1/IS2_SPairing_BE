@@ -195,8 +195,8 @@ def seedPlayerProfilesAndPlayerGameProfiles
     password = Faker::Internet.password(8, 20)
     email = Faker::Internet.free_email(real_name)
     location = Faker::Number.between(1,15)
-    PlayerProfile.create(pp_username: username, password_confirmation: password, password: password, location_id: location,
-      email: email, pp_spairing_elo: 0)
+    PlayerProfile.create(pp_username: username, location_id: location,
+      email: email, pp_spairing_elo: Faker::Number.between(0, 5))
     reputation = Faker::Number.between(1, 5)
     player_nickname = Faker::Internet.user_name
     p_game_rate = Faker::Number.between(1, 5)
@@ -214,7 +214,7 @@ end
 def seedSubForum
   15.times do
     game = Game.find(Faker::Number.between(1, 15))
-    SubForum.create(sf_name: Faker::Zelda, sf_description: Faker::LeagueOfLegends.quote, game: game)
+    SubForum.create(sf_name: Faker::Zelda.location + " " + Faker::Zelda.character, sf_description: Faker::LeagueOfLegends.quote, game: game)
   end
 end
 
@@ -283,11 +283,27 @@ def seedRatings
 end
 
 def seedThreadForum
-  #To do seeding of thread forums of sub forums
+  print("================= SeedingDB - Creating Thread Forums ==========================\n")
+  start = Time.now
+  15.times do
+    ThreadForum.create(thr_name: Faker::Zelda.item, thr_views: 0, thr_comments: 0, sub_forum: SubForum.find(Faker::Number.between(1, 15)))
+  end
+  print("-- Added 15 fake Thread Forums\n")
+  print('   -> ' + (Time.now - start).to_s + "s\n")
+  print("================= SeedingDB - Created Thread Forums ===========================\n")
+  print("\n")
 end
 
 def seedComments
-  #To do seeding of comments of thread forums of sub forums
+  print("================= SeedingDB - Creating Comments ===============================\n")
+  start = Time.now
+  15.times do
+    Comment.create(com_comment: Faker::MostInterestingManInTheWorld.quote, thread_forum: ThreadForum.find(Faker::Number.between(1, 15)), player_profile: PlayerProfile.find(Faker::Number.between(1, 15)))
+  end
+  print("-- Added 15 fake Comments\n")
+  print('   -> ' + (Time.now - start).to_s + "s\n")
+  print("================= SeedingDB - Created Comments ================================\n")
+  print("\n")
 end
 
 def seedAttachments
@@ -308,5 +324,5 @@ seedMailBoxes
 seedPlayerFriends
 seedPlayerBlokedList
 #seedRatings
-#seedThreadForum
-#seedComments
+seedThreadForum
+seedComments
