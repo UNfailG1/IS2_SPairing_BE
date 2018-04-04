@@ -1,3 +1,5 @@
 class SponsorSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :spo_name
+
+  has_many :ads
 end

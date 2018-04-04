@@ -1,3 +1,6 @@
 class SubForumSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :sf_name, :sf_description
+
+  belongs_to :game
+  has_many :thread_forums
 end

@@ -1,3 +1,5 @@
 class GenreSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :gen_name
+
+  has_and_belongs_to_many :games
 end

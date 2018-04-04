@@ -1,3 +1,3 @@
 class PlatformSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :plat_name, :plat_link
 end
