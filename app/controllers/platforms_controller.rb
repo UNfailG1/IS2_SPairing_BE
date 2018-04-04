@@ -5,12 +5,12 @@ class PlatformsController < ApplicationController
   def index
     @platforms = Platform.all
 
-    render json: @platforms
+    render json: @platforms, each_serializer: PlatformSerializer
   end
 
   # GET /platforms/1
   def show
-    render json: @platform
+    render json: @platform, serializer: PlatformSerializer
   end
 
   # POST /platforms

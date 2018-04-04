@@ -5,12 +5,12 @@ class ThreadForumsController < ApplicationController
   def index
     @thread_forums = ThreadForum.all
 
-    render json: @thread_forums
+    render json: @thread_forums, each_serializer: ThreadForumSerializer
   end
 
   # GET /thread_forums/1
   def show
-    render json: @thread_forum
+    render json: @thread_forum, serializer: ThreadForumSerializer
   end
 
   # POST /thread_forums

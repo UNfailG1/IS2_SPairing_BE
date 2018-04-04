@@ -5,12 +5,12 @@ class SponsorsController < ApplicationController
   def index
     @sponsors = Sponsor.all
 
-    render json: @sponsors
+    render json: @sponsors, each_serializer: SponsorSerializer
   end
 
   # GET /sponsors/1
   def show
-    render json: @sponsor
+    render json: @sponsor, serializer: SponsorSerializer
   end
 
   # POST /sponsors

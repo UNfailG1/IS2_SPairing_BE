@@ -5,5 +5,4 @@ class PlayerGameProfile < ApplicationRecord
   validates :pgp_reputation, presence: true
   validates :pgp_nickname, presence: true
   validates :pgp_rate, presence: true
-
 end

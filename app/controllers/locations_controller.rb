@@ -5,12 +5,12 @@ class LocationsController < ApplicationController
   def index
     @locations = Location.all
 
-    render json: @locations
+    render json: @locations, each_serializer: LocationSerializer
   end
 
   # GET /locations/1
   def show
-    render json: @location
+    render json: @location, serializer: LocationSerializer
   end
 
   # POST /locations

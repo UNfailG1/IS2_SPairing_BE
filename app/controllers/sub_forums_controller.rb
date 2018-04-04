@@ -5,12 +5,12 @@ class SubForumsController < ApplicationController
   def index
     @sub_forums = SubForum.all
 
-    render json: @sub_forums
+    render json: @sub_forums, each_serializer: SubForumSerializer
   end
 
   # GET /sub_forums/1
   def show
-    render json: @sub_forum
+    render json: @sub_forum, serializer: SubForumSerializer
   end
 
   # POST /sub_forums

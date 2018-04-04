@@ -5,12 +5,12 @@ class MailboxesController < ApplicationController
   def index
     @mailboxes = Mailbox.all
 
-    render json: @mailboxes
+    render json: @mailboxes, each_serializer: MailboxSerializer
   end
 
   # GET /mailboxes/1
   def show
-    render json: @mailbox
+    render json: @mailbox, serializer: MailboxSerializer
   end
 
   # POST /mailboxes

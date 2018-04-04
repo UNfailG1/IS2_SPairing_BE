@@ -14,6 +14,8 @@ gem 'sqlite3'
 gem 'puma', '~> 3.7'
 #Use faker as db poblator
 gem 'faker'
+#Use active_model_serializers to do serializers
+gem 'active_model_serializers'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production

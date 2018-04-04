@@ -4,6 +4,7 @@ class PlayerProfile < ApplicationRecord
 
   has_many :player_game_profiles, dependent: :destroy
   has_many :games, through: :player_game_profiles
+  has_many :comments, dependent: :destroy
 
   has_and_belongs_to_many :friends,
                           class_name: 'PlayerProfile',
@@ -27,9 +28,9 @@ class PlayerProfile < ApplicationRecord
   end
 
   validates :pp_username, presence: true
-#  validates :password, presence: true
-#  validates :password, length: {minimum: 8}
-#  validates :password, length: {maximum: 20}
+  #validates :password, presence: true
+  #validates :password, length: {minimum: 8}
+  #validates :password, length: {maximum: 20}
   validates :email, presence: true
   validates_with EmailValidator
   validates :pp_spairing_elo, presence: true

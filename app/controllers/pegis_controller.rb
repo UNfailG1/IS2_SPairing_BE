@@ -5,12 +5,12 @@ class PegisController < ApplicationController
   def index
     @pegis = Pegi.all
 
-    render json: @pegis
+    render json: @pegis, each_serializer: PegiSerializer
   end
 
   # GET /pegis/1
   def show
-    render json: @pegi
+    render json: @pegi, serializer: PegiSerializer
   end
 
   # POST /pegis

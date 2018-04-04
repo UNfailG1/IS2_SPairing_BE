@@ -5,12 +5,12 @@ class AdsController < ApplicationController
   def index
     @ads = Ad.all
 
-    render json: @ads
+    render json: @ads, each_serializer: AdSerializer
   end
 
   # GET /ads/1
   def show
-    render json: @ad
+    render json: @ad, serializer: AdSerializer
   end
 
   # POST /ads
