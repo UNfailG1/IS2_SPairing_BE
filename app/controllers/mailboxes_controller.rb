@@ -18,7 +18,8 @@ class MailboxesController < ApplicationController
     @mailbox = Mailbox.new(mailbox_params)
 
     if @mailbox.save
-      render json: @mailbox, status: :created, location: @mailbox
+      MailboxMailer.message_received(@mailbox).deliver_later
+      render json: @mailbox, status: :created
     else
       render json: @mailbox.errors, status: :unprocessable_entity
     end
@@ -46,6 +47,6 @@ class MailboxesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def mailbox_params
-      params.fetch(:mailbox, {})
+      params.require(:mailbox).permit(:sender_id, :receiver_id, :mail_message)
     end
 end

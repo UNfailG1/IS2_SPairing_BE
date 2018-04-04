@@ -15,9 +15,11 @@ class PlayerProfilesController < ApplicationController
 
   # POST /player_profiles
   def create
-    @player_profile = PlayerProfile.new(player_profile_params)
+    @player_profile = PlayerProfile.new(player_profile_params.merge({pp_spairing_elo: 0.0}))
 
     if @player_profile.save
+      # Call the UserMailer to send a welcome email after save
+      PlayerProfileMailer.welcome_email(@player_profile).deliver_later
       render json: @player_profile, status: :created, location: @player_profile
     else
       render json: @player_profile.errors, status: :unprocessable_entity
@@ -46,6 +48,6 @@ class PlayerProfilesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def player_profile_params
-      params.fetch(:player_profile, {})
+        params.require(:player_profile).permit(:pp_username, :email, :password, :location_id)
     end
 end
