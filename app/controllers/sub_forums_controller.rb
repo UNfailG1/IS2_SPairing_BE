@@ -5,7 +5,7 @@ class SubForumsController < ApplicationController
 
   # GET /sub_forums
   def index
-    @sub_forums = SubForum.all
+    @sub_forums = SubForum.paginate(page: params['page'], per_page: 15)
 
     render json: @sub_forums
   end

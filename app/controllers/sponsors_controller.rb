@@ -4,7 +4,7 @@ class SponsorsController < ApplicationController
 
   # GET /sponsors
   def index
-    @sponsors = Sponsor.all
+    @sponsors = Sponsor.paginate(page: params['page'], per_page: 15)
 
     render json: @sponsors
   end

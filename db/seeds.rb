@@ -17,15 +17,15 @@ def seedSponsorsAndAds
     Sponsor.create(spo_name: Faker::Company.name)                                                     # Creating Sponsors
     10.times do
       product = Faker::Company.bs
-      product_link = Faker::Internet.url(product.split(" ")[0] + '.com')
+      product_link = Faker::Internet.url(product.split(' ')[0] + '.com')
       path = 'ads/' + i.to_s + '/' + product.split(' ')[0] + '/main.jpg'
-      Ad.create(ad_description: product, ad_link: product_link, ad_image: path, sponsor_id: i)   # Creating ads for Sponsors
+      Ad.create(ad_description: product, ad_link: product_link, ad_image: path, sponsor_id: i) # Creating ads for Sponsors
     end
   end
   print("-- Added 20 fake Sponsors\n")
   print("-- Added 10 fake Ads per Sponsor\n")
   print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB:  Created Sponsors and Ads ========================\n")          # Informing about what was done
+  print("================= SeedingDB:  Created Sponsors and Ads ========================\n") # Informing about what was done
   print("\n")
 end
 
@@ -194,9 +194,9 @@ def seedPlayerProfilesAndPlayerGameProfiles
     username = Faker::Internet.user_name(real_name)
     password = Faker::Internet.password(8, 20)
     email = Faker::Internet.free_email(real_name)
-    location = Faker::Number.between(1,15)
-    PlayerProfile.create(pp_username: username, location_id: location,
-      email: email, pp_spairing_elo: Faker::Number.between(0, 5))
+    location = Faker::Number.between(1, 15)
+    PlayerProfile.create(pp_username: username, password_digest: password,
+       location_id: location, email: email, pp_spairing_elo: Faker::Number.between(0, 5))
     reputation = Faker::Number.between(1, 5)
     player_nickname = Faker::Internet.user_name
     p_game_rate = Faker::Number.between(1, 5)
@@ -265,8 +265,7 @@ def seedPlayerBlokedList
 end
 
 def seedRatings
-
-  #To do seeding
+  # To do seeding
 
   # print("================= SeedingDB - Creating Ratings ================================\n")
   # start = Time.now
@@ -307,7 +306,7 @@ def seedComments
 end
 
 def seedAttachments
-  #To do seeding of seedAttachments of comments of thread forums of sub forums
+  # To do seeding of seedAttachments of comments of thread forums of sub forums
 end
 
 # Seeding with functions

@@ -5,7 +5,7 @@ class GenresController < ApplicationController
 
   # GET /genres
   def index
-    @genres = Genre.all
+    @genres = Genre.paginate(page: params['page'], per_page: 15)
 
     render json: @genres
   end

@@ -5,7 +5,7 @@ class MailboxesController < ApplicationController
 
   # GET /mailboxes
   def index
-    @mailboxes = Mailbox.all
+    @mailboxes = Mailbox.paginate(page: params['page'], per_page: 15)
 
     render json: @mailboxes
   end

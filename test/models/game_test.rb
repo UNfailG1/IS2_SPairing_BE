@@ -10,6 +10,10 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
+# Indexes
+#
+#  index_games_on_pegi_id  (pegi_id)
+#
 
 require 'test_helper'
 

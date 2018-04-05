@@ -4,7 +4,7 @@ class AdsController < ApplicationController
 
   # GET /ads
   def index
-    @ads = Ad.all
+    @ads = Ad.paginate(page: params['page'], per_page: 15)
 
     render json: @ads
   end
