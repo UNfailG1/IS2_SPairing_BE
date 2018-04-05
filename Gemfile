@@ -51,6 +51,7 @@ end
 group :production do
   #Use postgres to deploy on Heroku
   gem 'pg'
+  gem 'will_paginate'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
