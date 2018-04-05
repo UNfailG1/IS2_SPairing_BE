@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+
+  before_action :authenticate_player_profile
   before_action :set_game, only: [:show, :update, :destroy]
 
   # GET /games

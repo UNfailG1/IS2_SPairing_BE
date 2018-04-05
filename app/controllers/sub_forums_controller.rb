@@ -1,4 +1,6 @@
 class SubForumsController < ApplicationController
+
+  before_action :authenticate_player_profile
   before_action :set_sub_forum, only: [:show, :update, :destroy]
 
   # GET /sub_forums

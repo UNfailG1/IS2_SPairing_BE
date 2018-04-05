@@ -1,4 +1,5 @@
 class AdsController < ApplicationController
+  
   before_action :set_ad, only: [:show, :update, :destroy]
 
   # GET /ads

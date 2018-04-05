@@ -1,4 +1,5 @@
 class PlayerProfile < ApplicationRecord
+  
   has_secure_password
   belongs_to :location
 
