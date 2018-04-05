@@ -7,12 +7,12 @@ class PlatformsController < ApplicationController
   def index
     @platforms = Platform.paginate(page: params['page'], per_page: 15)
 
-    render json: @platforms
+    render json: @platforms, each_serializer: PlatformSerializer
   end
 
   # GET /platforms/1
   def show
-    render json: @platform
+    render json: @platform, serializer: PlatformSerializer
   end
 
   # POST /platforms

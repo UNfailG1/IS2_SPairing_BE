@@ -18,6 +18,8 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'knock'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+#Use active_model_serializers to do serializers
+gem 'active_model_serializers'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production

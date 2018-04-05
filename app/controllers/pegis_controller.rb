@@ -7,12 +7,12 @@ class PegisController < ApplicationController
   def index
     @pegis = Pegi.paginate(page: params['page'], per_page: 15)
 
-    render json: @pegis
+    render json: @pegis, each_serializer: PegiSerializer
   end
 
   # GET /pegis/1
   def show
-    render json: @pegi
+    render json: @pegi, serializer: PegiSerializer
   end
 
   # POST /pegis

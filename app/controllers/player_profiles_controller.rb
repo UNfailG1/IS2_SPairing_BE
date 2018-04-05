@@ -7,12 +7,12 @@ class PlayerProfilesController < ApplicationController
   def index
     @player_profiles = PlayerProfile.paginate(page: params['page'], per_page: 15)
 
-    render json: @player_profiles
+    render json: @player_profiles, each_serializer: PlayerProfileSerializer
   end
 
   # GET /player_profiles/1
   def show
-    render json: @player_profile
+    render json: @player_profile, serializer: PlayerProfileSerializer
   end
 
   # POST /player_profiles

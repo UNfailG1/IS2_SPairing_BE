@@ -6,12 +6,12 @@ class SponsorsController < ApplicationController
   def index
     @sponsors = Sponsor.paginate(page: params['page'], per_page: 15)
 
-    render json: @sponsors
+    render json: @sponsors, each_serializer: SponsorSerializer
   end
 
   # GET /sponsors/1
   def show
-    render json: @sponsor
+    render json: @sponsor, serializer: SponsorSerializer
   end
 
   # POST /sponsors

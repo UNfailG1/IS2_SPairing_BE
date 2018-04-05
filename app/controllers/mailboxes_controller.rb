@@ -7,12 +7,12 @@ class MailboxesController < ApplicationController
   def index
     @mailboxes = Mailbox.paginate(page: params['page'], per_page: 15)
 
-    render json: @mailboxes
+    render json: @mailboxes, each_serializer: MailboxSerializer
   end
 
   # GET /mailboxes/1
   def show
-    render json: @mailbox
+    render json: @mailbox, serializer: MailboxSerializer
   end
 
   # POST /mailboxes

@@ -6,12 +6,12 @@ class AdsController < ApplicationController
   def index
     @ads = Ad.paginate(page: params['page'], per_page: 15)
 
-    render json: @ads
+    render json: @ads, each_serializer: AdSerializer
   end
 
   # GET /ads/1
   def show
-    render json: @ad
+    render json: @ad, serializer: AdSerializer
   end
 
   # POST /ads

@@ -7,12 +7,12 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.paginate(page: params['page'], per_page: 15)
 
-    render json: @comments
+    render json: @comments, each_serializer: CommentSerializer
   end
 
   # GET /comments/1
   def show
-    render json: @comment
+    render json: @comment, serializer: CommentSerializer
   end
 
   # POST /comments

@@ -8,12 +8,12 @@ class GamesController < ApplicationController
   def index
     @games = Game.paginate(page: params['page'], per_page: 10)
 
-    render json: @games
+    render json: @games, each_serializer: GameSerializer
   end
 
   # GET /games/1
   def show
-    render json: @game
+    render json: @game, serializer: GameSerializer
   end
 
   # POST /games
