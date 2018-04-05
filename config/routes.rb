@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  post "player_profile_token" => "player_profile_token#create"
+  
   resources :sponsors do
     resources :ads, shallow: true
   end
