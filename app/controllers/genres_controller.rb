@@ -1,6 +1,6 @@
 class GenresController < ApplicationController
 
-  before_action :authenticate_player_profile
+  # before_action :authenticate_player_profile
   before_action :set_genre, only: [:show, :update, :destroy]
 
   # GET /genres

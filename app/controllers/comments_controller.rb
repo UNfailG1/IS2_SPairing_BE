@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  before_action :authenticate_player_profile
+  # before_action :authenticate_player_profile
   before_action :set_comment, only: [:show, :update, :destroy]
 
   # GET /comments
