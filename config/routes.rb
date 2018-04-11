@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :player_games
   post "player_profile_token" => "player_profile_token#create"
   
   resources :sponsors do

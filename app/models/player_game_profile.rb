@@ -103,4 +103,11 @@ class PlayerGameProfile < ApplicationRecord
   def self.getByReputationEqual(rate_low, rate_upp)
     PlayerGameProfile.where("pgp_rate BETWEEN ? AND ?", rate_low, rate_upp)
   end
+
+  #Search a Player Game Profile by PlayerProfile id and Game id
+  #param player_id
+  #param game_id
+  def self.getPlayerGameProfileByPlayerProfileIdAndGameId(player_id, game_id)
+      PlayerGameProfile.where("game_id = ? AND player_profile_id = ?", game_id, player_id)[0]
+  end
 end
