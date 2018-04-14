@@ -20,6 +20,10 @@ gem 'knock'
 gem 'bcrypt', '~> 3.1.7'
 #Use active_model_serializers to do serializers
 gem 'active_model_serializers'
+#Use carrierwave to upload files
+gem 'carrierwave'
+#Use wii_paginate to do paginations
+gem 'will_paginate'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -32,8 +36,6 @@ gem 'active_model_serializers'
 gem 'rack-cors'
 
 group :development, :test do
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -47,14 +49,14 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   #Use annotate and wii_paginate to do paginate
   gem 'annotate'
-  gem 'will_paginate'
 end
 
 group :production do
   #Use postgres to deploy on Heroku
   gem 'pg'
-  gem 'will_paginate'
+  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+

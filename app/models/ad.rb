@@ -14,8 +14,12 @@
 #
 #  index_ads_on_sponsor_id  (sponsor_id)
 #
+require 'carrierwave/orm/activerecord'
 
 class Ad < ApplicationRecord
+
+  mount_uploader :ad_image, AdUploader
+
   belongs_to :sponsor
 
   validates :ad_description, presence: true

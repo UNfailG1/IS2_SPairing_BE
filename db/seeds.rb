@@ -18,8 +18,8 @@ def seedSponsorsAndAds
     10.times do
       product = Faker::Company.bs
       product_link = Faker::Internet.url(product.split(' ')[0] + '.com')
-      path = 'ads/' + i.to_s + '/' + product.split(' ')[0] + '/main.jpg'
-      Ad.create(ad_description: product, ad_link: product_link, ad_image: path, sponsor_id: i) # Creating ads for Sponsors
+      #path = 'ads/' + i.to_s + '/' + product.split(' ')[0] + '/main.jpg'
+      Ad.create(ad_description: product, ad_link: product_link, sponsor_id: i) # Creating ads for Sponsors
     end
   end
   print("-- Added 20 fake Sponsors\n")

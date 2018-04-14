@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  
+
   resources :player_games
   post "player_profile_token" => "player_profile_token#create"
-  
+
   resources :sponsors do
     resources :ads, shallow: true
   end
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :sub_forums, :thread_forums, :comments, only: [:show, :update, :destroy]
+  resources :ads_image, only: [:update]
 
   resources :player_profiles, shallow: true do
     resources :mailboxes
