@@ -10,13 +10,17 @@
 #  location_id     :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  pp_avatar       :string
 #
 # Indexes
 #
 #  index_player_profiles_on_location_id  (location_id)
 #
+require 'carrierwave/orm/activerecord'
 
 class PlayerProfile < ApplicationRecord
+
+  mount_uploader :pp_avatar, PlayerProfileUploader
 
   has_secure_password
   belongs_to :location
