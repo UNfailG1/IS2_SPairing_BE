@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   resources :player_games
   post "player_profile_token" => "player_profile_token#create"
+  post "google_authentication" => "player_profile_token#google_authentication"
   
   resources :sponsors do
     resources :ads, shallow: true
