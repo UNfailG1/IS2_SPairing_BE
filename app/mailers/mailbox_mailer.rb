@@ -1,7 +1,7 @@
 class MailboxMailer < ApplicationMailer
 
   def message_received message
-    @url = "http://spairing.herokuapp.com/"
+    @url = @@url
     @sender = message.sender
     @receiver = message.receiver
     @message = message.mail_message

@@ -42,6 +42,27 @@ class PlayerProfilesController < ApplicationController
     @player_profile.destroy
   end
 
+  def friend_request
+    sender = PlayerProfile.find(params[:sender_id])
+    receiver = PlayerProfile.find(params[:receiver_id])
+    sender.friends.push(receiver)
+    # Falta enviar la notificacion en la pagina
+    if receiver.friends.include? sender
+      PlayerProfileMailer.request_accepted_email(sender, receiver).deliver_later
+    else
+      PlayerProfileMailer.request_sended_email(sender, receiver).deliver_later
+    end
+    render json: [sender, receiver], status: :ok
+  end
+
+  def remove_friend
+    sender = PlayerProfile.find(params[:sender_id])
+    receiver = PlayerProfile.find(params[:receiver_id])
+    sender.friends.delete(receiver)
+    receiver.friends.delete(sender)
+    render json: sender, status: :ok
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_player_profile

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  
+
   resources :player_games
   post "player_profile_token" => "player_profile_token#create"
-  
+
   resources :sponsors do
     resources :ads, shallow: true
   end
@@ -23,5 +23,8 @@ Rails.application.routes.draw do
   end
 
   resources :genres, :locations, :pegis, :platforms
+
+  get "/friend_request/:sender_id/:receiver_id" => "player_profiles#friend_request"
+  get "/remove_friend/:sender_id/:receiver_id" => "player_profiles#remove_friend"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

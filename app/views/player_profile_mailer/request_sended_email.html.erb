@@ -1,0 +1,6 @@
+<h1>Hi <%= @receiver.pp_username %>!</h1>
+<h3>You have a friend request from:</h3>
+<%= @sender.pp_username %>
+<p>
+For to accept it, login in <%= link_to "SPairing", @url + 'login' %>
+</p>
