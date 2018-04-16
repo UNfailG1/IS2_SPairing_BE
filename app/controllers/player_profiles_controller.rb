@@ -30,10 +30,26 @@ class PlayerProfilesController < ApplicationController
 
   # PATCH/PUT /player_profiles/1
   def update
-    if @player_profile.update(player_profile_params)
-      render json: @player_profile
+    @pp_up = PlayerProfile.find(params[:id])
+    if params.has_key?(:pp_username)
+      @pp_up.pp_username = params[:pp_username]
+    end
+    if params.has_key?(:password)
+      @pp_up.password = params[:password]
+    end
+    if params.has_key?(:email)
+      @pp_up.email = params[:email]
+    end
+    if params.has_key?(:pp_spairing_elo)
+      @pp_up.pp_spairing_elo = params[:pp_spairing_elo]
+    end
+    if params.has_key?(:location_id)
+      @pp_up.location_id = params[:location_id]
+    end
+    if @pp_up.save
+      render json: @pp_up, status: :ok, serializer: PlayerProfileOnlySerializer
     else
-      render json: @player_profile.errors, status: :unprocessable_entity
+      render json: @pp_up.errors, status: :unprocessable_entity
     end
   end
 

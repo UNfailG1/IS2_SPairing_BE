@@ -10,6 +10,7 @@
 #  location_id     :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  pp_avatar       :string
 #
 # Indexes
 #
@@ -47,9 +48,9 @@ class PlayerProfile < ApplicationRecord
   end
 
   validates :pp_username, presence: true
-  validates :password, presence: true
-  validates :password, length: {minimum: 8}
-  validates :password, length: {maximum: 20}
+  #validates :password, presence: true
+  #validates :password, length: {minimum: 8}
+  #validates :password, length: {maximum: 20}
   validates :email, presence: true
   validates_with EmailValidator
   validates :pp_spairing_elo, presence: true

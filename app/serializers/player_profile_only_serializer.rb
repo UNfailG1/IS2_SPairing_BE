@@ -10,24 +10,15 @@
 #  location_id     :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  pp_avatar       :string
 #
 # Indexes
 #
 #  index_player_profiles_on_location_id  (location_id)
 #
 
-class PlayerProfileSerializer < ActiveModel::Serializer
-  attributes :pp_username, :email, :pp_spairing_elo
+class PlayerProfileOnlySerializer < ActiveModel::Serializer
+  attributes :pp_username, :email, :pp_spairing_elo, :location_id
 
   belongs_to :location
-
-  has_many :player_game_profiles
-  has_many :games
-  has_many :comments
-  has_many :mailboxes
-  has_many :senders
-  has_many :friends
-  has_many :blocked_players
 
 end
