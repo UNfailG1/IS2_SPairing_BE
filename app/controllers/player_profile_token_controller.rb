@@ -9,6 +9,13 @@ class PlayerProfileTokenController < Knock::AuthTokenController
     
     puts response
     puts response.parsed_response
+    
+    comparo 2 cadenas
+      devulvo el token
+      self.create
+    si no
+      no devuelvo nada
+    
   end
   
   
