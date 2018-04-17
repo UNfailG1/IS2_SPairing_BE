@@ -65,7 +65,7 @@ class PlayerProfile < ApplicationRecord
       user.pp_googleId=data["sub"]
       user.pp_spairing_elo=0.0
       user.location_id=1
-      user.password="12345678"
+      user.password=Time.now.to_i.to_s
       user.save!
     end
   end
