@@ -30,8 +30,8 @@ class PlayerProfileReporter
       image "#{Rails.root}/assets/pdf_back.jpg", at: [-50, 900], fit: [700, 1000]
       collect.each do |playerProfile|
         text playerProfile.pp_username + " report", align: :center, size: 20
-        text "Player's email: " + playerProfile.email, size: 18
-        text 'Spairing elo: ' + playerProfile.pp_spairing_elo.to_s, size: 18
+        text "Player's email: " + playerProfile.email, size: 16
+        text 'Spairing elo: ' + playerProfile.pp_spairing_elo.to_s, size: 16
         if(i==10)
           break
         end
