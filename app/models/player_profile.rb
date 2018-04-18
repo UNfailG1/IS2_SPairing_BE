@@ -51,6 +51,12 @@ class PlayerProfile < ApplicationRecord
   #validates :password, presence: true
   #validates :password, length: {minimum: 8}
   #validates :password, length: {maximum: 20}
+  validates :email, uniqueness: {
+    case_sensitive: false,
+  }
+  validates :pp_username, uniqueness: {
+    case_sensitive: false,
+  }
   validates :email, presence: true
   validates_with EmailValidator
   validates :pp_spairing_elo, presence: true
