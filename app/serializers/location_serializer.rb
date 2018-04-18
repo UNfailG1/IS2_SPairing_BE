@@ -11,5 +11,5 @@
 #
 
 class LocationSerializer < ActiveModel::Serializer
-  attributes :id, :loc_name
+  attributes :id, :id, :loc_name
 end

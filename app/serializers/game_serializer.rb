@@ -16,7 +16,7 @@
 #
 
 class GameSerializer < ActiveModel::Serializer
-  attributes :gam_name, :gam_description, :gam_link
+  attributes :id, :gam_name, :gam_description, :gam_link
 
   belongs_to :pegi
   has_many :sub_forums

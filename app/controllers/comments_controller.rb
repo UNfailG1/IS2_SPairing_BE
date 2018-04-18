@@ -21,6 +21,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       render json: @comment, status: :created, location: @comment
+      @comment.thread_forum.update_attribure(:thr_comments, @comment.thread_forum.thr_comments + 1)
     else
       render json: @comment.errors, status: :unprocessable_entity
     end

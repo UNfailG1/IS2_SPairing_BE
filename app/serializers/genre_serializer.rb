@@ -9,5 +9,5 @@
 #
 
 class GenreSerializer < ActiveModel::Serializer
-  attributes :gen_name
+  attributes :id, :gen_name
 end

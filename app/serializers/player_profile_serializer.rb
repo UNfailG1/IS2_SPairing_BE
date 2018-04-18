@@ -18,7 +18,7 @@
 #
 
 class PlayerProfileSerializer < ActiveModel::Serializer
-  attributes :pp_username, :email, :pp_spairing_elo
+  attributes :id, :pp_username, :email, :pp_spairing_elo
 
   belongs_to :location
 
