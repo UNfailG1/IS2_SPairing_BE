@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20180415010655) do
     t.string "password_digest"
     t.string "email"
     t.float "pp_spairing_elo"
+    t.string "pp_googleId"
     t.integer "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

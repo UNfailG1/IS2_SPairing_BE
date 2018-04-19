@@ -7,6 +7,7 @@
 #  password_digest :string
 #  email           :string
 #  pp_spairing_elo :float
+#  pp_googleId     :string
 #  location_id     :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -63,6 +64,23 @@ class PlayerProfile < ApplicationRecord
   validates :email, presence: true
   validates_with EmailValidator
   validates :pp_spairing_elo, presence: true
+
+  #social networks signin
+
+  def self.create_user_for_google(data)
+    #sub toca verificarlo googleId
+    where(email: data["email"]).first_or_initialize.tap do |user|
+      user.pp_username=data["name"]
+      user.email=data["email"]
+      user.pp_googleId=data["sub"]
+      user.pp_spairing_elo=0.0
+      user.location_id=1
+      user.password=Time.now.to_i.to_s
+      user.save!
+    end
+  end
+
+
 
   #Queries
 

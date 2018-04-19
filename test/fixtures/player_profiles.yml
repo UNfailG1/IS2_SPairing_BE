@@ -7,6 +7,7 @@
 #  password_digest :string
 #  email           :string
 #  pp_spairing_elo :float
+#  pp_googleId     :string
 #  location_id     :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
