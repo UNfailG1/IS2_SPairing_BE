@@ -1,7 +1,26 @@
-<h1>Hi <%= @receiver.pp_username %>!</h1>
-<h3>You have a new mail from <%= @sender.pp_username %></h3>
-<p>
-<b><%= @sender.pp_username %>: </b><br />
-<%= truncate @message, length: 50%>
+<h4>Hi, <%= @receiver.pp_username %></h4>
+<p style="font-size: 20px">
+  You have a new mail on <%= link_to "SPairing", @url %>.
 </p>
-<p>To read the complete message, go to your mailbox on <%= link_to "SPairing", @url %></p>
+<div class="row" style="height: 60px; margin-bottom: 0px;">
+  <div class="col s2">
+
+  </div>
+  <div class="col s10">
+    <h5><%= @sender.pp_username %></h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12">
+    <p style="font-size: 20px;">
+      <%= truncate @message, length: 50%>
+    </p>
+  </div>
+</div>
+<p style="font-size: 20px;">
+  To read the complete message, go to your <%= link_to "mailbox", @url + 'mailbox' %>.
+</p>
+<p style="font-size: 20px; margin-bottom: 0">
+  You have a great day<br />
+  <small>SPairing Team</small>
+</p>

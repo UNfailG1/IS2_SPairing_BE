@@ -1,8 +1,9 @@
 Welcome to SPairing, <%= @player_profile.pp_username %>
-========================================================
-You have successfully signed up to <%= @url %>,
-your username is: <%= @player_profile.pp_username %>.
 
-To login to the site, just follow this link: <%= @url + "/login" %>.
+You have successfully signed up to <%= link_to "SPairing", @url %>
+your username is: <%= @player_profile.pp_username %>
+
+To login on the site, just follow this link: <%= link_to "Login", @url + "login" %>
 
 Thanks for joining and have a great day!
+SPairing Team

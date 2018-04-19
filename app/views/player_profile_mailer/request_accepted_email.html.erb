@@ -1,7 +1,19 @@
-<h1>Hi <%= @receiver.pp_username %></h1>
-<p>
-<b><%= @sender.pp_username %></b> has accepted your friend request.
+<h4>Hi, <%= @receiver.pp_username %></h4>
+<p style="font-size: 16px">
+  You and <b><%= @sender.pp_username %></b> are now friends on <%= link_to "SPairing", @url %>.
 </p>
-<p>
-Send a greeting to <b><%= @sender.pp_username %></b> on <%= link_to "SPairing", @url %>.
+<div class="row valign-wrapper">
+  <div class="col s3">
+    
+  </div>
+  <div class="col s9">
+    <h5><%= @sender.pp_username %></h5>
+  </div>
+</div>
+<p style="font-size: 16px;">
+  Say hello to <b><%= @sender.pp_username %></b> on <%= link_to "SPairing", @url %>.
+</p>
+<p style="font-size: 16px; margin-bottom: 0">
+  You have a great day<br />
+  <small>SPairing Team</small>
 </p>
