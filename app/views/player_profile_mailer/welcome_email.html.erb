@@ -1,9 +1,19 @@
-<h1>Welcome to SPairing, <%= @player_profile.pp_username %></h1>
-<p>
-  You have successfully signed up to <%= @url %>,
-  your username is: <%= @player_profile.pp_username %>.<br>
+<h4>Welcome to SPairing, <%= @player_profile.pp_username %></h4>
+<div class="row valign-wrapper">
+  <div class="col s3">
+    <img src="" alt="SPairing Logo" class="circle responsive-img"/>
+  </div>
+  <div class="col s9">
+    <p style="font-size: 16px;">
+      You have successfully signed up to <%= link_to "SPairing", @url %>
+      your username is: <%= @player_profile.pp_username %><br>
+    </p>
+    <p style="font-size: 16px;">
+      To login on the site, just follow this link: <%= link_to "Login", @url + "/login" %>
+    </p>
+  </div>
+</div>
+<p style="font-size: 16px; margin-bottom: 0">
+  Thanks for joining and have a great day!<br />
+  <small>SPairing Team</small>
 </p>
-<p>
-  To login to the site, just follow this link: <%= @url + "login" %>.
-</p>
-<p>Thanks for joining and have a great day!</p>

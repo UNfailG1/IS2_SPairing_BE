@@ -1,0 +1,17 @@
+<h4>Hi, <%= @receiver.pp_username %></h4>
+<p style="font-size: 16px">You have a friend request</p>
+<div class="row valign-wrapper">
+  <div class="col s3">
+    <img src="<%= 'https://spairing-api.herokuapp.com' + @sender.pp_avatar %>" alt="" class="circle responsive-img"/>
+  </div>
+  <div class="col s9">
+    <h5><%= @sender.pp_username %></h5>
+  </div>
+</div>
+<p style="font-size: 16px;">
+  For to accept it, login in <%= link_to "SPairing", @url + '/login' %>
+</p>
+<p style="font-size: 16px; margin-bottom: 0">
+  You have a great day<br />
+  <small>SPairing Team</small>
+</p>

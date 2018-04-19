@@ -1,0 +1,21 @@
+<h4>Hi, <%= @profile.pp_username %></h4>
+<p style="font-size: 16px">Your information has been updated.</p>
+<div class="row valign-wrapper">
+  <div class="col s3">
+    <img src="<%= 'https://spairing-api.herokuapp.com' + @profile.pp_avatar %>" alt="" class="circle responsive-img"/>
+  </div>
+  <div class="col s9">
+    <p style="font-size: 16px">
+      <b>username:</b> <%= @profile.pp_username %> <br/>
+      <b>email:</b> <%= @profile.email %> <br/>
+      <b>location:</b> <%= @profile.location.loc_name %> <br/>
+    </p>
+  </div>
+</div>
+<p style="font-size: 16px">
+  For to see these changes, go to your profile on <%= link_to 'Spairing', @url + '/profile' %></p>
+</p>
+<p style="font-size: 16px">
+  You have a great day! <br/>
+  <small>SPairing Team</small>
+</p>

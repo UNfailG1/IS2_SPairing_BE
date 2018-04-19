@@ -48,6 +48,9 @@ class PlayerProfilesController < ApplicationController
     end
     if @pp_up.save
       render json: @pp_up, status: :ok, serializer: PlayerProfileOnlySerializer
+    if @player_profile.update(player_profile_params)
+      PlayerProfileMailer.update_profile(@player_profile).deliver_later
+      render json: @player_profile
     else
       render json: @pp_up.errors, status: :unprocessable_entity
     end
@@ -56,6 +59,27 @@ class PlayerProfilesController < ApplicationController
   # DELETE /player_profiles/1
   def destroy
     @player_profile.destroy
+  end
+
+  def friend_request
+    sender = current_user
+    receiver = PlayerProfile.find(params[:receiver_id])
+    sender.friends.push(receiver)
+    # Falta enviar la notificacion en la pagina
+    if receiver.friends.include? sender
+      PlayerProfileMailer.request_accepted_email(sender, receiver).deliver_later
+    else
+      PlayerProfileMailer.request_sended_email(sender, receiver).deliver_later
+    end
+    render json: [sender, receiver], status: :ok
+  end
+
+  def remove_friend
+    sender = current_user
+    receiver = PlayerProfile.find(params[:receiver_id])
+    sender.friends.delete(receiver)
+    receiver.friends.delete(sender)
+    render json: sender, status: :ok
   end
 
   private

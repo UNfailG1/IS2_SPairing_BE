@@ -28,5 +28,8 @@ Rails.application.routes.draw do
   end
 
   resources :genres, :locations, :pegis, :platforms
+
+  get "/friend_request/:receiver_id" => "player_profiles#friend_request"
+  get "/remove_friend/:receiver_id" => "player_profiles#remove_friend"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
