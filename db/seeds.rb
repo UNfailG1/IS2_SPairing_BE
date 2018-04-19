@@ -196,7 +196,7 @@ def seedPlayerProfilesAndPlayerGameProfiles
     email = Faker::Internet.free_email(real_name)
     location = Faker::Number.between(1, 15)
     PlayerProfile.create(pp_username: username, password_confirmation: password, password: password, location_id: location,
-      email: email, pp_spairing_elo: Faker::Number.between(0, 5))
+      email: email, pp_spairing_elo: Faker::Number.between(0, 5), pp_avatar: 'user.svg')
     reputation = Faker::Number.between(1, 5)
     player_nickname = Faker::Internet.user_name
     p_game_rate = Faker::Number.between(1, 5)
