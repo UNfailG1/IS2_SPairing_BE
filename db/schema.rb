@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180329042519) do
+ActiveRecord::Schema.define(version: 20180415010655) do
 
   create_table "ads", force: :cascade do |t|
     t.text "ad_description"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20180329042519) do
     t.integer "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pp_avatar"
     t.index ["location_id"], name: "index_player_profiles_on_location_id"
   end
 

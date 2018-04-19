@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   #resources :sub_forums, :thread_forums, :comments, only: [:show, :update, :destroy]
 
   resources :games, :sub_forums, :thread_forums, :comments
+  resources :ads_image, only: [:update]
+  resources :player_profiles_avatar, only: [:update]
 
   resources :player_profiles, shallow: true do
     resources :mailboxes

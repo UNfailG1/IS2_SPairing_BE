@@ -16,8 +16,11 @@
 #
 #  index_player_profiles_on_location_id  (location_id)
 #
+require 'carrierwave/orm/activerecord'
 
 class PlayerProfile < ApplicationRecord
+
+  mount_uploader :pp_avatar, PlayerProfileUploader
 
   has_secure_password
   belongs_to :location
@@ -48,15 +51,15 @@ class PlayerProfile < ApplicationRecord
   end
 
   validates :pp_username, presence: true
-  #validates :password, presence: true
-  #validates :password, length: {minimum: 8}
-  #validates :password, length: {maximum: 20}
   validates :email, uniqueness: {
     case_sensitive: false,
   }
   validates :pp_username, uniqueness: {
     case_sensitive: false,
   }
+  validates :password, presence: true, if: :password
+  validates :password, length: {minimum: 8}, if: :password
+  validates :password, length: {maximum: 20}, if: :password
   validates :email, presence: true
   validates_with EmailValidator
   validates :pp_spairing_elo, presence: true

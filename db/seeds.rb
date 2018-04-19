@@ -18,8 +18,8 @@ def seedSponsorsAndAds
     10.times do
       product = Faker::Company.bs
       product_link = Faker::Internet.url(product.split(' ')[0] + '.com')
-      path = 'ads/' + i.to_s + '/' + product.split(' ')[0] + '/main.jpg'
-      Ad.create(ad_description: product, ad_link: product_link, ad_image: path, sponsor_id: i) # Creating ads for Sponsors
+      #path = 'ads/' + i.to_s + '/' + product.split(' ')[0] + '/main.jpg'
+      Ad.create(ad_description: product, ad_link: product_link, sponsor_id: i) # Creating ads for Sponsors
     end
   end
   print("-- Added 20 fake Sponsors\n")
@@ -196,7 +196,7 @@ def seedPlayerProfilesAndPlayerGameProfiles
     email = Faker::Internet.free_email(real_name)
     location = Faker::Number.between(1, 15)
     PlayerProfile.create(pp_username: username, password_confirmation: password, password: password, location_id: location,
-      email: email, pp_spairing_elo: Faker::Number.between(0, 5))
+      email: email, pp_spairing_elo: Faker::Number.between(0, 5), pp_avatar: 'user.svg')
     reputation = Faker::Number.between(1, 5)
     player_nickname = Faker::Internet.user_name
     p_game_rate = Faker::Number.between(1, 5)
