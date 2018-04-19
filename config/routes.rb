@@ -7,15 +7,17 @@ Rails.application.routes.draw do
     resources :ads, shallow: true
   end
 
-  resources :games do
-    resources :sub_forums, only: [:index, :create] do
-      resources :thread_forums, only: [:index, :create] do
-        resources :comments, only: [:index, :create]
-      end
-    end
-  end
+  #resources :games do
+  #  resources :sub_forums, only: [:index, :create] do
+  #    resources :thread_forums, only: [:index, :create] do
+  #      resources :comments, only: [:index, :create]
+  #    end
+  #  end
+  #end
 
-  resources :sub_forums, :thread_forums, :comments, only: [:show, :update, :destroy]
+  #resources :sub_forums, :thread_forums, :comments, only: [:show, :update, :destroy]
+
+  resources :games, :sub_forums, :thread_forums, :comments
 
   resources :player_profiles, shallow: true do
     resources :mailboxes
