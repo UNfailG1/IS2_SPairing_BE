@@ -13,6 +13,7 @@ class ThreadForumsController < ApplicationController
   # GET /thread_forums/1
   def show
     render json: @thread_forum, serializer: ThreadForumSerializer
+    @thread_forum.update_attribute(:thr_views, @thread_forum.thr_views + 1)
   end
 
   # POST /thread_forums
