@@ -1,0 +1,11 @@
+# DEVELOPED FEATURES
+### SIGN IN GOOGLE - Andres Gonzalez
+### MAILERS WITH STYLES - Raul Coral
+### FILE UPLOAD - Antonio Suarez
+### PDF REPORTS - Antonio Suarez
+### COMPLEX REQUESTS - Antonio Suarez/ Juan Lozano
+
+# POSSIBLE FEATURES
+### REFACTOR ROUTES
+### ALGORITMIC LOGIC
+### CHANGE PASSWORD
