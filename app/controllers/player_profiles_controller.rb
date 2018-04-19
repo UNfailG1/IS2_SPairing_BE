@@ -31,6 +31,7 @@ class PlayerProfilesController < ApplicationController
   # PATCH/PUT /player_profiles/1
   def update
     if @player_profile.update(player_profile_params)
+      PlayerProfileMailer.update_profile(@player_profile).deliver_later
       render json: @player_profile
     else
       render json: @player_profile.errors, status: :unprocessable_entity

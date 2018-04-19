@@ -47,9 +47,9 @@ class PlayerProfile < ApplicationRecord
   end
 
   validates :pp_username, presence: true
-  validates :password, presence: true
-  validates :password, length: {minimum: 8}
-  validates :password, length: {maximum: 20}
+  validates :password, presence: true, if: :password
+  validates :password, length: {minimum: 8}, if: :password
+  validates :password, length: {maximum: 20}, if: :password
   validates :email, presence: true
   validates_with EmailValidator
   validates :pp_spairing_elo, presence: true

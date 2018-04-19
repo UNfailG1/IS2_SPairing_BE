@@ -22,4 +22,12 @@ class PlayerProfileMailer < ApplicationMailer
     mail to: @receiver.email,
          subject: "You have a new friend"
   end
+
+  def update_profile profile
+    @url = @@url
+    @profile = profile
+    mail to: @profile.email,
+         subject: "Your information has been updated"
+  end
+
 end

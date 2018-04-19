@@ -1,0 +1,11 @@
+Hi <%= @profile.username %>
+
+Your information has been updated:
+
+  username: <%= @profile.username %>
+  email: <%= @profile.email %>
+  location: <%= @profile.location.loc_name %>
+
+For to see these changes, go to your profile on <%= link_to 'Spairing', @url + 'profile' %>
+
+You have a great day!
