@@ -73,7 +73,7 @@ class PlayerProfile < ApplicationRecord
     where(email: data["email"]).first_or_initialize.tap do |user|
       user.pp_username=data["name"]
       user.email=data["email"]
-      user.pp_googleId=data["sub"]
+      #user.pp_googleId=data["sub"]
       user.pp_spairing_elo=0.0
       user.location_id=1
       user.password=Time.now.to_i.to_s
