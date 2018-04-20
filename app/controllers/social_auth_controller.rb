@@ -11,7 +11,7 @@ class SocialAuthController < ApplicationController
     if Time.at(response["exp"].to_i) > Time.now
       if response["iss"].eql?("accounts.google.com") || reponse["iss"].eql?("https://accounts.google.com")
         @player_profile = PlayerProfile.create_user_for_google(response.parsed_response)
-        token = { jwt: Knock::AuthToken.new(payload: { sub: @player_profile.id }).token }
+        token = { jwt: Knock::AuthToken.new(payload: { sub: @player_profile.id }).token, user_id: @player_profile.id }
         render json: token
       end
     else
