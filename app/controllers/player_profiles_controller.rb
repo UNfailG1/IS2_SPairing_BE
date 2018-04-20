@@ -17,7 +17,7 @@ class PlayerProfilesController < ApplicationController
 
   # POST /player_profiles
   def create
-    @player_profile = PlayerProfile.new(player_profile_params.merge({pp_spairing_elo: 0.0, pp_avatar: 'user.svg'}))
+    @player_profile = PlayerProfile.new(player_profile_params.merge({pp_spairing_elo: 0.0}))
 
     if @player_profile.save
       # Call the UserMailer to send a welcome email after save
@@ -47,10 +47,8 @@ class PlayerProfilesController < ApplicationController
       @pp_up.location_id = params[:location_id]
     end
     if @pp_up.save
+      PlayerProfileMailer.update_profile(@pp_up).deliver_later
       render json: @pp_up, status: :ok, serializer: PlayerProfileOnlySerializer
-    if @player_profile.update(player_profile_params)
-      PlayerProfileMailer.update_profile(@player_profile).deliver_later
-      render json: @player_profile
     else
       render json: @pp_up.errors, status: :unprocessable_entity
     end
@@ -83,13 +81,13 @@ class PlayerProfilesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_player_profile
-      @player_profile = PlayerProfile.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_player_profile
+    @player_profile = PlayerProfile.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def player_profile_params
-        params.require(:player_profile).permit(:pp_username, :email, :password, :location_id)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def player_profile_params
+      params.require(:player_profile).permit(:pp_username, :email, :password, :password_confirmation, :location_id)
+  end
 end

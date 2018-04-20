@@ -17,6 +17,7 @@
 #
 #  index_player_profiles_on_location_id  (location_id)
 #
+
 require 'carrierwave/orm/activerecord'
 
 class PlayerProfile < ApplicationRecord
