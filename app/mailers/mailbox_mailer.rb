@@ -2,6 +2,7 @@ class MailboxMailer < ApplicationMailer
 
   def message_received message
     @url = @@url
+    @api = @@api
     @sender = message.sender
     @receiver = message.receiver
     @message = message.mail_message

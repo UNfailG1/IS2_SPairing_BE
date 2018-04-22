@@ -24,8 +24,10 @@ gem 'active_model_serializers'
 gem 'prawn'
 #Use carrierwave to upload files
 gem 'carrierwave'
-#Use wii_paginate to do paginations
+#Use will_paginate to do paginations
 gem 'will_paginate'
+#Use premailer-rails to use CSS on mailers
+gem 'premailer-rails', '~> 1.10', '>= 1.10.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production

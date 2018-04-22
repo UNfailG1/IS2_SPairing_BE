@@ -1,19 +1,33 @@
-<h4>Hi, <%= @receiver.pp_username %></h4>
+<h5>
+  Hi,<br>
+  <%= @receiver.pp_username %>
+</h5>
 <p style="font-size: 16px">
-  You and <b><%= @sender.pp_username %></b> are now friends on <%= link_to "SPairing", @url %>.
+  <b><%= @sender.pp_username %></b> and you are now friends on <%= link_to "SPairing", @url %>.
 </p>
-<div class="row valign-wrapper">
-  <div class="col s3">
-    <img src="<%= 'https://spairing-api.herokuapp.com' + @sender.pp_avatar.url %>" alt="" class="circle responsive-img"/>
+<div class="hide-on-small-only">
+  <div class="row valign-wrapper">
+    <div class="col s3">
+      <img src="<%= @api + @sender.pp_avatar.url %>" alt="Friend" class="circle responsive-img"/>
+    </div>
+    <div class="col s9">
+      <h6><%= @sender.pp_username %></h6>
+    </div>
   </div>
-  <div class="col s9">
-    <h5><%= @sender.pp_username %></h5>
+</div>
+<div class="hide-on-med-and-up">
+  <br>
+  <div class="row center-align">
+    <img src="<%= @api + @sender.pp_avatar.url %>" alt="Friend" class="circle responsive-img"/>
+  </div>
+  <div class="row center-align">
+    <h6><%= @sender.pp_username %></h6>
   </div>
 </div>
 <p style="font-size: 16px;">
   Say hello to <b><%= @sender.pp_username %></b> on <%= link_to "SPairing", @url %>.
 </p>
 <p style="font-size: 16px; margin-bottom: 0">
-  You have a great day<br />
+  Have a great day! <br/>
   <small>SPairing Team</small>
 </p>

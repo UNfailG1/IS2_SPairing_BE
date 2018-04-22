@@ -43,6 +43,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     annotate (2.7.2)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
@@ -58,6 +60,8 @@ GEM
       activesupport
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    css_parser (1.6.0)
+      addressable
     erubi (1.7.1)
     faker (1.8.7)
       i18n (>= 0.7)
@@ -66,6 +70,7 @@ GEM
       thor (~> 0.14)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    htmlentities (4.3.4)
     httparty (0.16.2)
       concurrent-ruby (~> 1.0)
       multi_xml (>= 0.5.2)
@@ -101,6 +106,14 @@ GEM
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
       ttfunk (~> 1.5)
+    premailer (1.11.1)
+      addressable
+      css_parser (>= 1.6.0)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.10.2)
+      actionmailer (>= 3, < 6)
+      premailer (~> 1.7, >= 1.7.9)
+    public_suffix (3.0.2)
     puma (3.11.3)
     rack (2.0.4)
     rack-cors (1.0.2)
@@ -173,6 +186,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   pg
   prawn
+  premailer-rails (~> 1.10, >= 1.10.2)
   puma (~> 3.7)
   rack-cors
   rails (~> 5.1.5)

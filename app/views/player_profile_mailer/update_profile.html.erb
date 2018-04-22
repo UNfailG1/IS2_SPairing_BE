@@ -1,10 +1,28 @@
-<h4>Hi, <%= @profile.pp_username %></h4>
+<h5>
+  Hi,<br>
+  <%= @profile.pp_username %>
+</h5>
 <p style="font-size: 16px">Your information has been updated.</p>
-<div class="row valign-wrapper">
-  <div class="col s3">
-    <img src="<%= 'https://spairing-api.herokuapp.com' + @profile.pp_avatar.url %>" alt="" class="circle responsive-img"/>
+<div class="hide-on-small-only">
+  <div class="row valign-wrapper">
+    <div class="col s3">
+      <img src="<%= @api + @profile.pp_avatar.url %>" alt="Profile" class="circle responsive-img"/>
+    </div>
+    <div class="col s9">
+      <p style="font-size: 16px">
+        <b>Username:</b> <br/> <%= @profile.pp_username %> <br/><br/>
+        <b>email:</b> <br/> <%= @profile.email %> <br/><br/>
+        <b>Location:</b> <br/> <%= @profile.location.loc_name %> <br/>
+      </p>
+    </div>
   </div>
-  <div class="col s9">
+</div>
+<div class="hide-on-med-and-up">
+  <br>
+  <div class="row center-align">
+    <img src="<%= @api + @profile.pp_avatar.url %>" alt="Profile" class="circle responsive-img"/>
+  </div>
+  <div class="row">
     <p style="font-size: 16px">
       <b>Username:</b> <br/> <%= @profile.pp_username %> <br/><br/>
       <b>email:</b> <br/> <%= @profile.email %> <br/><br/>
@@ -13,9 +31,9 @@
   </div>
 </div>
 <p style="font-size: 16px">
-  For to see these changes, go to your profile on <%= link_to 'Spairing', @url + '/profile' %></p>
+  To see these changes, go to your profile on <%= link_to 'Spairing', @url + '/profile' %>
 </p>
-<p style="font-size: 16px">
-  You have a great day! <br/>
+<p style="font-size: 16px; margin-bottom: 0">
+  Have a great day! <br/>
   <small>SPairing Team</small>
 </p>
