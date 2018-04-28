@@ -1,63 +1,143 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 require 'faker'
 
-# Defining functions to seed DB
+
+@nameSeed     = ""
+@added        = ""
+@flagTracker  = true
+def trackerTime()
+  if @flagTracker
+    print("== SeedingDB: " + @nameSeed + " seeding\n")    # Information about what will be performe
+    @start        = Time.now
+    @flagTracker  = false
+  else
+    print("\t-- Added " + @added + "\n")
+    print("\t-> " + (Time.now - @start).to_s +  "s\n")
+    print("== SeedingDB: " + @nameSeed + " seeded\n\n")
+    @flagTracker  = true
+  end
+end
 
 def seedSponsorsAndAds
-  print("================= SeedingDB:  Creating Sponsors and Ads =======================\n")          # Information about what will be performed
-  start = Time.now                                                                                    # Recording start time
-  for i in 1..20 do
-    Sponsor.create(spo_name: Faker::Company.name)                                                     # Creating Sponsors
-    10.times do
-      product = Faker::Company.bs
-      product_link = Faker::Internet.url(product.split(' ')[0] + '.com')
-      #path = 'ads/' + i.to_s + '/' + product.split(' ')[0] + '/main.jpg'
-      Ad.create(ad_description: product, ad_link: product_link, sponsor_id: i) # Creating ads for Sponsors
-    end
-  end
-  print("-- Added 20 fake Sponsors\n")
-  print("-- Added 10 fake Ads per Sponsor\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB:  Created Sponsors and Ads ========================\n") # Informing about what was done
-  print("\n")
+  @nameSeed = "Sponsor and Ads"
+  @added    = "10 sponsors and 45 ads"
+  trackerTime()
+
+  Sponsor.create(spo_name:  "Google")
+  Ad.create(ad_description: "Andoid",               ad_link: "https://www.android.com",               sponsor_id: 1)
+  Ad.create(ad_description: "Google Maps",          ad_link: "https://www.google.com/maps",           sponsor_id: 1)
+  Ad.create(ad_description: "Youtube",              ad_link: "https://www.youtube.com",               sponsor_id:1)
+  Ad.create(ad_description: "Google Drive",         ad_link: "https://www.google.com/drive/",         sponsor_id: 1)
+
+  Sponsor.create(spo_name:  "Microsoft")
+  Ad.create(ad_description: "Windows",              ad_link: "https://www.microsoft.com",             sponsor_id: 2)
+  Ad.create(ad_description: "Age of Empires",       ad_link: "https://www.ageofempires.com",          sponsor_id: 2)
+  Ad.create(ad_description: "Halo",                 ad_link: "https://www.halowaypoint.com",          sponsor_id: 2)
+  Ad.create(ad_description: "Office suite",         ad_link: "https://www.office.com",                sponsor_id: 2)
+
+  Sponsor.create(spo_name:  "Blizzard")
+  Ad.create(ad_description: "World of Warcraft",    ad_link: "https://worldofwarcraft.com",           sponsor_id: 3)
+  Ad.create(ad_description: "Overwatch",            ad_link: "https://playoverwatch.com",             sponsor_id: 3)
+  Ad.create(ad_description: "Heroes of the Dorm",   ad_link: "https://heroesofthedorm.com",           sponsor_id: 3)
+  Ad.create(ad_description: "Hearth Stone",         ad_link: "https://playhearthstone.com/en-us/",    sponsor_id: 3)
+
+  Sponsor.create(spo_name:  "Hi-Rez Studios")
+  Ad.create(ad_description: "Smite",                ad_link: "https://www.smitegame.com",             sponsor_id: 4)
+  Ad.create(ad_description: "Paladins",             ad_link: "https://www.paladins.com",              sponsor_id: 4)
+  Ad.create(ad_description: "Hand of the Gods",     ad_link: "https://www.handofthegods.com",         sponsor_id: 4)
+
+  Sponsor.create(spo_name:  "Riot Games")
+  Ad.create(ad_description: "League of Legenfs",    ad_link: "https://na.leagueoflegends.com",        sponsor_id: 5)
+
+  Sponsor.create(spo_name:  "Nintendo")
+  Ad.create(ad_description: "Nintendo Switch",      ad_link: "https://www.nintendo.com/switch/",      sponsor_id: 6)
+  Ad.create(ad_description: "Nintendo 3DS",         ad_link: "https://www.nintendo.com/3ds/",         sponsor_id: 6)
+  Ad.create(ad_description: "Nintendo 2DS",         ad_link: "https://www.nintendo.com/2ds/",         sponsor_id: 6)
+  Ad.create(ad_description: "Amiibo Detective Pikachu",
+    ad_link: "https://www.nintendo.com/amiibo/detail/detective-pikachu-amiibo",   sponsor_id: 6)
+  Ad.create(ad_description: "Amiibo Mipha",
+    ad_link: "https://www.nintendo.com/amiibo/detail/mipha-amiibo-the-legend-of-zelda-series",        sponsor_id: 6)
+  Ad.create(ad_description: "Amiibo Urbosa",
+    ad_link: "https://www.nintendo.com/amiibo/detail/urbosa-amiibo-the-legend-of-zelda-series",       sponsor_id: 6)
+  Ad.create(ad_description: "Amiibo daruk",
+    ad_link: "https://www.nintendo.com/amiibo/detail/daruk-amiibo-the-legend-of-zelda-series",        sponsor_id: 6)
+  Ad.create(ad_description: "Kirby Star Allies",
+    ad_link: "https://www.nintendo.com/games/detail/kirby-star-allies-switch",                        sponsor_id: 6)
+  Ad.create(ad_description: "Bayonetta 2",
+    ad_link: "https://www.nintendo.com/games/detail/bayonetta-2-switch",                              sponsor_id: 6)
+
+  Sponsor.create(spo_name:  "Sony")
+  Ad.create(ad_description: "God of War",           ad_link: "https://godofwar.playstation.com",      sponsor_id: 7)
+  Ad.create(ad_description: "Playstation 4",
+    ad_link: "https://www.playstation.com/en-us/explore/ps4/",                                        sponsor_id: 7)
+  Ad.create(ad_description: "Playstation 4 Pro",
+    ad_link: "https://www.playstation.com/en-us/explore/ps4-pro",                                     sponsor_id: 7)
+  Ad.create(ad_description: "Playstation 4 Accessories",
+    ad_link: "https://www.playstation.com/en-us/explore/accessories/",                                sponsor_id: 7)
+  Ad.create(ad_description: "Playstation VR",
+    ad_link: "https://www.playstation.com/en-us/explore/playstation-vr/",                             sponsor_id: 7)
+  Ad.create(ad_description: "Uncharted",
+    ad_link: "https://www.unchartedthegame.com/en-us/",                                               sponsor_id: 7)
+
+  Sponsor.create(spo_name:  "Electronic Arts")
+  Ad.create(ad_description: "Anthem",               ad_link: "https://www.ea.com/games/anthem",       sponsor_id: 8)
+  Ad.create(ad_description: "A Way Out",            ad_link: "https://www.ea.com/games/a-way-out",    sponsor_id: 8)
+  Ad.create(ad_description: "Fe",                   ad_link: "https://www.ea.com/games/fe",           sponsor_id: 8)
+  Ad.create(ad_description: "UFC 3",                ad_link: "https://www.ea.com/games/ufc/ufc-3",    sponsor_id: 8)
+  Ad.create(ad_description: "FIFA",                 ad_link: "https://www.easports.com/fifa",         sponsor_id: 8)
+  Ad.create(ad_description: "Star Wars BattleFront II",
+    ad_link: "https://www.ea.com/games/starwars/battlefront/battlefront-2",                           sponsor_id: 8)
+  Ad.create(ad_description: "Need for Speed Payback",
+    ad_link: "https://www.ea.com/games/need-for-speed/need-for-speed-payback",                        sponsor_id: 8)
+
+  Sponsor.create(spo_name:  "Rockstar Games")
+  Ad.create(ad_description: "Bully",
+    ad_link: "https://www.rockstargames.com/games/info/bully",                                        sponsor_id: 9)
+  Ad.create(ad_description: "Grand Theft Auto V",
+    ad_link: "https://www.rockstargames.com/games/info/V",                                            sponsor_id: 9)
+  Ad.create(ad_description: "Red Dead Redemption 2",
+    ad_link: "https://www.rockstargames.com/games/info/reddeadredemption2",                           sponsor_id: 9)
+
+  Sponsor.create(spo_name:  "Ubisoft")
+  Ad.create(ad_description: "Assassin's Creed",     ad_link: "https://assassinscreed.ubisoft.com",    sponsor_id: 10)
+  Ad.create(ad_description: "For Honor",            ad_link: "https://forhonor.ubisoft.com",          sponsor_id: 10)
+  Ad.create(ad_description: "Farcry 5",             ad_link: "https://far-cry.ubisoft.com",           sponsor_id: 10)
+  Ad.create(ad_description: "Farcry Primal",
+    ad_link: "https://www.ubisoft.com/es-mx/game/far-cry-primal/",                                    sponsor_id: 10)
+
+  trackerTime()
 end
 
 def seedLocations
-  print("================= SeedingDB - Creating Locations ==============================\n")
-  start = Time.now
+  @nameSeed = "Locations"
+  @added    = "15 Locations"
+  trackerTime()
+
   for i in 1..15 do
     Location.create(loc_lat: Faker::Address.latitude, loc_long: Faker::Address.longitude, loc_name: Faker::Address.community)
   end
-  print("-- Added 15 fake Locations\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created Locations ===============================\n")
-  print("\n")
+
+  trackerTime()
 end
 
 def seedPegi
-  print("================= SeedingDB - Creating Platforms ==============================\n")
-  start = Time.now
-  Pegi.create(peg_name: '3 or older', peg_age: 3, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/PEGI_3.svg')
-  Pegi.create(peg_name: '7 or older', peg_age: 7, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/2/29/PEGI_7.svg')
-  Pegi.create(peg_name: '12 or older', peg_age: 12, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/4/44/PEGI_12.svg')
-  Pegi.create(peg_name: '16 or older', peg_age: 16, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/8/8a/PEGI_16.svg')
-  Pegi.create(peg_name: '18 or older', peg_age: 18, peg_image: 'https://upload.wikimedia.org/wikipedia/commons/7/75/PEGI_18.svg')
-  print("-- Added 5 Pegi\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created Platforms ===============================\n")
-  print("\n")
+  @nameSeed = "Pegi"
+  @added    = "5 Pegis"
+  trackerTime
+
+  Pegi.create(peg_name: '3 or older',   peg_age: 3,   peg_image: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/PEGI_3.svg')
+  Pegi.create(peg_name: '7 or older',   peg_age: 7,   peg_image: 'https://upload.wikimedia.org/wikipedia/commons/2/29/PEGI_7.svg')
+  Pegi.create(peg_name: '12 or older',  peg_age: 12,  peg_image: 'https://upload.wikimedia.org/wikipedia/commons/4/44/PEGI_12.svg')
+  Pegi.create(peg_name: '16 or older',  peg_age: 16,  peg_image: 'https://upload.wikimedia.org/wikipedia/commons/8/8a/PEGI_16.svg')
+  Pegi.create(peg_name: '18 or older',  peg_age: 18,  peg_image: 'https://upload.wikimedia.org/wikipedia/commons/7/75/PEGI_18.svg')
+
+  trackerTime
 end
 
 def seedGenres
-  print("================= SeedingDB - Creating Genres =================================\n")
-  start = Time.now
+  @nameSeed = "Genres"
+  @added    = "65 Genres"
+  trackerTime()
+
   Genre.create(gen_name: 'Action')
   Genre.create(gen_name: 'Platform games')
   Genre.create(gen_name: 'Shooter games')
@@ -123,15 +203,16 @@ def seedGenres
   Genre.create(gen_name: 'Exergame')
   Genre.create(gen_name: 'Serious game')
   Genre.create(gen_name: 'Scientific studies')
-  print("-- Added 15 fake Genres\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created Genres ==================================\n")
-  print("\n")
+
+  trackerTime()
 end
 
 def seedPlatforms
-  print("================= SeedingDB - Creating Platforms ==============================\n")
-  start = Time.now
+
+  @nameSeed = "Platforms"
+  @added    = "25 Platform"
+  trackerTime
+
   Platform.create(plat_name: 'Atari 7800', plat_link: 'http://www.atari.com')
   Platform.create(plat_name: 'Atari Jaguar', plat_link: 'http://www.atari.com')
   Platform.create(plat_name: 'Sega Mega Drive / Genesis', plat_link: 'http://www.sega.com')
@@ -157,15 +238,16 @@ def seedPlatforms
   Platform.create(plat_name: 'Nintendo Nintendo Game Boy Advance SP', plat_link: 'http://www.nintendo.com')
   Platform.create(plat_name: 'Nintendo Nintendo Game Boy Advance', plat_link: 'http://www.nintendo.com')
   Platform.create(plat_name: 'Nintendo Nintendo 3DS', plat_link: 'http://www.nintendo.com')
-  print("-- Added 15 fake Plataforms\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created Platforms ===============================\n")
-  print("\n")
+
+  trackerTime
 end
 
 def seedGames
-  print("================= SeedingDB - Creating Games ==================================\n")
-  start = Time.now
+
+  @nameSeed = "Games"
+  @added    = "15 Games"
+  trackerTime
+
   for i in 1..15 do
     title = Faker::Book.title
     new_genres = []
@@ -180,15 +262,16 @@ def seedGames
     new_game.genres = new_genres
     new_game.platforms = new_platforms
   end
-  print("-- Added 15 fake Games\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created Games ===================================\n")
-  print("\n")
+
+  trackerTime
 end
 
 def seedPlayerProfilesAndPlayerGameProfiles
-  print("================= SeedingDB - Creating Player Profiles ========================\n")
-  start = Time.now
+
+  @nameSeed = "Player profiles and Player game profiles"
+  @added    = "15 player profiles"
+  trackerTime
+
   for i in 1..15 do
     real_name = Faker::Name.name
     username = Faker::Internet.user_name(real_name)
@@ -205,10 +288,8 @@ def seedPlayerProfilesAndPlayerGameProfiles
     PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game_id: game)
     print('   -> email: ' + email + ' password: ' + password + "\n")
   end
-  print("-- Added 15 fake Player Profiles\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created Player Profiles =========================\n")
-  print("\n")
+
+  trackerTime
 end
 
 def seedSubForum
@@ -219,23 +300,27 @@ def seedSubForum
 end
 
 def seedMailBoxes
-  print("================= SeedingDB - Creating Mailboxs ===============================\n")
-  start = Time.now
+
+  @nameSeed = "MailBoxes"
+  @added    = "50 Mailboxes"
+  trackerTime
+
   for i in 1..50 do
     sender = Faker::Number.between(1, 15)
     recever = Faker::Number.between(1, 15)
     msg = Faker::Hipster.sentence(10)
     Mailbox.create(sender_id: sender, receiver_id: recever, mail_message: msg)
   end
-  print("-- Added 50 fake Mails\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created Mailboxs ================================\n")
-  print("\n")
+
+  trackerTime
 end
 
 def seedPlayerFriends
-  print("================= SeedingDB - Creating PlayerWhiteLists =======================\n")
-  start = Time.now
+
+  @nameSeed = "PlayerFriends"
+  @added    = "50 Fake friends :'c"
+  trackerTime
+
   for i in 1..50 do
     player_id = Faker::Number.between(1, 15)
     player = PlayerProfile.find(player_id)
@@ -244,69 +329,50 @@ def seedPlayerFriends
     player.friends.push(friend)
     friend.friends.push(player)
   end
-  print("-- Added 50 fake friend :'c\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created PlayerWhiteLists ========================\n")
-  print("\n")
+
+  trackerTime
 end
 
 def seedPlayerBlokedList
-  print("================= SeedingDB - Creating PlayerBlackLists =======================\n")
-  start = Time.now
+
+  @nameSeed = "BlockedPlayers"
+  @added    = "50 bad friends :'c"
+  trackerTime
+
   for i in 1..50 do
     player = PlayerProfile.find(Faker::Number.between(1, 15))
     blocked = PlayerProfile.find(Faker::Number.between(1, 15))
     player.blocked_players.push(blocked)
   end
-  print("-- Added 50 fake bad friend :'c\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created PlayerBlackLists ========================\n")
-  print("\n")
-end
 
-def seedRatings
-  # To do seeding
+  trackerTime
 
-  # print("================= SeedingDB - Creating Ratings ================================\n")
-  # start = Time.now
-  # for i in 1..50 do
-  #   sender = Faker::Number.between(1, 15)
-  #   recever = Faker::Number.between(1, 15)
-  #   rat = Faker::Number.between(1, 5)
-  #   Rating.create(rat_rater_id: sender, rat_recever_id: recever, rat_rate: rat)
-  # end
-  # print("-- Added 50 fake Ratings\n")
-  # print('   -> ' + (Time.now - start).to_s + "s\n")
-  # print("================= SeedingDB - Created Ratings =================================\n")
-  # print("\n")
 end
 
 def seedThreadForum
-  print("================= SeedingDB - Creating Thread Forums ==========================\n")
-  start = Time.now
+
+  @nameSeed = "ThreadForums"
+  @added    = "15 ThreadForums"
+  trackerTime
+
   15.times do
     ThreadForum.create(thr_name: Faker::Zelda.item, thr_views: 0, thr_comments: 0, sub_forum: SubForum.find(Faker::Number.between(1, 15)))
   end
-  print("-- Added 15 fake Thread Forums\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created Thread Forums ===========================\n")
-  print("\n")
+
+  trackerTime
 end
 
 def seedComments
-  print("================= SeedingDB - Creating Comments ===============================\n")
-  start = Time.now
+
+  @nameSeed = "Comments"
+  @added    = "15 Comments"
+  trackerTime
+
   15.times do
     Comment.create(com_comment: Faker::MostInterestingManInTheWorld.quote, thread_forum: ThreadForum.find(Faker::Number.between(1, 15)), player_profile: PlayerProfile.find(Faker::Number.between(1, 15)))
   end
-  print("-- Added 15 fake Comments\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created Comments ================================\n")
-  print("\n")
-end
 
-def seedAttachments
-  # To do seeding of seedAttachments of comments of thread forums of sub forums
+  trackerTime
 end
 
 # Seeding with functions
@@ -322,6 +388,5 @@ seedSubForum
 seedMailBoxes
 seedPlayerFriends
 seedPlayerBlokedList
-#seedRatings
 seedThreadForum
 seedComments
