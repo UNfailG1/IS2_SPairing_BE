@@ -14,8 +14,9 @@ def seedSponsorsAndAds
   print("================= SeedingDB:  Creating Sponsors and Ads =======================\n")          # Information about what will be performed
   start = Time.now                                                                                    # Recording start time
   for i in 1..20 do
-    Sponsor.create(spo_name: Faker::Company.name)                                                     # Creating Sponsors
-    10.times do
+    Sponsor.create(spo_name: Faker::Company.name)
+    ads_todo = Faker::Number.between(1, 10)                                                    # Creating Sponsors
+    ads_todo.times do
       product = Faker::Company.bs
       product_link = Faker::Internet.url(product.split(' ')[0] + '.com')
       #path = 'ads/' + i.to_s + '/' + product.split(' ')[0] + '/main.jpg'
@@ -123,7 +124,7 @@ def seedGenres
   Genre.create(gen_name: 'Exergame')
   Genre.create(gen_name: 'Serious game')
   Genre.create(gen_name: 'Scientific studies')
-  print("-- Added 15 fake Genres\n")
+  print("-- Added 65 fake Genres\n")
   print('   -> ' + (Time.now - start).to_s + "s\n")
   print("================= SeedingDB - Created Genres ==================================\n")
   print("\n")
@@ -157,7 +158,7 @@ def seedPlatforms
   Platform.create(plat_name: 'Nintendo Nintendo Game Boy Advance SP', plat_link: 'http://www.nintendo.com')
   Platform.create(plat_name: 'Nintendo Nintendo Game Boy Advance', plat_link: 'http://www.nintendo.com')
   Platform.create(plat_name: 'Nintendo Nintendo 3DS', plat_link: 'http://www.nintendo.com')
-  print("-- Added 15 fake Plataforms\n")
+  print("-- Added 25 fake Plataforms\n")
   print('   -> ' + (Time.now - start).to_s + "s\n")
   print("================= SeedingDB - Created Platforms ===============================\n")
   print("\n")
@@ -176,7 +177,7 @@ def seedGames
     for i in 1..Faker::Number.between(1, 10)
       new_platforms += [Platform.find(i)]
     end
-    new_game = Game.create(gam_name: title, gam_description: Faker::Lovecraft.paragraph, gam_link: Faker::Internet.url(title + '.com'), pegi_id: Faker::Number.between(1, 5))
+    new_game = Game.create(gam_name: title, gam_description: Faker::Lovecraft.paragraph, gam_link: Faker::Internet.url(title + '.com'), pegi_id: Faker::Number.between(1, 5), gam_user_counter: 0)
     new_game.genres = new_genres
     new_game.platforms = new_platforms
   end
@@ -203,6 +204,7 @@ def seedPlayerProfilesAndPlayerGameProfiles
     player = i
     game = Faker::Number.between(1, 15)
     PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game_id: game)
+    Game.find(game).update_attribute(:gam_user_counter, Game.find(game).gam_user_counter + 1)
     print('   -> email: ' + email + ' password: ' + password + "\n")
   end
   print("-- Added 15 fake Player Profiles\n")
@@ -282,27 +284,25 @@ def seedRatings
 end
 
 def seedThreadForum
-  print("================= SeedingDB - Creating Thread Forums ==========================\n")
+  print("================= SeedingDB - Creating Thread Forums and Comments =============\n")
   start = Time.now
-  15.times do
-    ThreadForum.create(thr_name: Faker::Zelda.item, thr_views: 0, thr_comments: 0, sub_forum: SubForum.find(Faker::Number.between(1, 15)))
+  30.times do
+    a = ThreadForum.create(thr_name: Faker::Zelda.item, thr_views: 0, thr_comments: 0, sub_forum: SubForum.find(Faker::Number.between(1, 15)))
+    seedComments(a)
+    a.save
   end
   print("-- Added 15 fake Thread Forums\n")
   print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created Thread Forums ===========================\n")
+  print("================= SeedingDB - Created Thread Forums and Comments ==============\n")
   print("\n")
 end
 
-def seedComments
-  print("================= SeedingDB - Creating Comments ===============================\n")
-  start = Time.now
-  15.times do
-    Comment.create(com_comment: Faker::MostInterestingManInTheWorld.quote, thread_forum: ThreadForum.find(Faker::Number.between(1, 15)), player_profile: PlayerProfile.find(Faker::Number.between(1, 15)))
+def seedComments(thr_forum)
+  comments_todo = Faker::Number.between(1, 20)
+  comments_todo.times do
+    Comment.create(com_comment: Faker::MostInterestingManInTheWorld.quote, thread_forum: thr_forum, player_profile: PlayerProfile.find(Faker::Number.between(1, 15)))
+    thr_forum.thr_comments = thr_forum.thr_comments + 1
   end
-  print("-- Added 15 fake Comments\n")
-  print('   -> ' + (Time.now - start).to_s + "s\n")
-  print("================= SeedingDB - Created Comments ================================\n")
-  print("\n")
 end
 
 def seedAttachments
@@ -324,4 +324,3 @@ seedPlayerFriends
 seedPlayerBlokedList
 #seedRatings
 seedThreadForum
-seedComments

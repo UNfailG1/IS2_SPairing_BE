@@ -2,13 +2,14 @@
 #
 # Table name: games
 #
-#  id              :integer          not null, primary key
-#  gam_name        :string
-#  gam_description :text
-#  gam_link        :string
-#  pegi_id         :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id               :integer          not null, primary key
+#  gam_name         :string
+#  gam_description  :text
+#  gam_link         :string
+#  pegi_id          :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  gam_user_counter :integer
 #
 # Indexes
 #
@@ -74,4 +75,18 @@ class Game < ApplicationRecord
   def self.getFirstByName(name)
     Game.getByName(name)[0]
   end
+
+  #Get a collection of threads of the Game sorted by number of comments
+  def getMostCommentedThreads
+    list = []
+    sub_forums.each{|subForum| list << 'sub_forum_id = ' + subForum.id.to_s}
+    whereStatment = list.join(' OR ')
+    ThreadForum.order(thr_comments: :desc).where(whereStatment)
+  end
+
+  #Get most played games
+  def self.getMostPlayed
+    self.order(gam_user_counter: :desc)
+  end
+
 end
