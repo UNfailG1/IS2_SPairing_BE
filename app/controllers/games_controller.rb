@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
 
   before_action :authenticate_player_profile
-  before_action :set_game, only: [:show, :update, :destroy]
+  before_action :set_game, only: [:update, :destroy]
   #before_action :set_game, only: %i[show update destroy]
 
   # GET /games
@@ -13,7 +13,12 @@ class GamesController < ApplicationController
 
   # GET /games/1
   def show
-    render json: @game, serializer: GameSerializer
+    if Game.exists?(params[:id])
+      @game = Game.find(params[:id])
+    else
+      @game = GameGetter.createGame(params[:id])
+      render json: @game, serializer: GameSerializer
+    end
   end
 
   # POST /games

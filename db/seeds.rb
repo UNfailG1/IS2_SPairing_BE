@@ -138,71 +138,13 @@ def seedGenres
   @added    = "65 Genres"
   trackerTime()
 
-  Genre.create(gen_name: 'Action')
-  Genre.create(gen_name: 'Platform games')
-  Genre.create(gen_name: 'Shooter games')
-  Genre.create(gen_name: "Fighting games and beat 'em ups")
-  Genre.create(gen_name: 'Stealth game')
-  Genre.create(gen_name: 'Survival games')
-  Genre.create(gen_name: 'Rhythm games')
-  Genre.create(gen_name: 'Action-adventure')
-  Genre.create(gen_name: 'Survival horror')
-  Genre.create(gen_name: 'Metroidvania')
-  Genre.create(gen_name: 'Adventure')
-  Genre.create(gen_name: 'Text adventures')
-  Genre.create(gen_name: 'Graphic adventures')
-  Genre.create(gen_name: 'Visual novels')
-  Genre.create(gen_name: 'Interactive movie')
-  Genre.create(gen_name: 'Real-time 3D adventures')
-  Genre.create(gen_name: 'Role-playing')
-  Genre.create(gen_name: 'Action RPG')
-  Genre.create(gen_name: 'MMORPG')
-  Genre.create(gen_name: 'Roguelikes')
-  Genre.create(gen_name: 'Tactical RPG')
-  Genre.create(gen_name: 'Sandbox RPG')
-  Genre.create(gen_name: 'First-person party-based RPG')
-  Genre.create(gen_name: 'Cultural differences')
-  Genre.create(gen_name: 'Choices')
-  Genre.create(gen_name: 'Fantasy')
-  Genre.create(gen_name: 'Simulation')
-  Genre.create(gen_name: 'Construction and management simulation')
-  Genre.create(gen_name: 'Life simulation')
-  Genre.create(gen_name: 'Vehicle simulation')
-  Genre.create(gen_name: 'Strategy')
-  Genre.create(gen_name: '4X game')
-  Genre.create(gen_name: 'Artillery game')
-  Genre.create(gen_name: 'Real-time strategy (RTS)')
-  Genre.create(gen_name: 'Real-time tactics (RTT)')
-  Genre.create(gen_name: 'Multiplayer online battle arena (MOBA)')
-  Genre.create(gen_name: 'Tower defense')
-  Genre.create(gen_name: 'Turn-based strategy (TBS)')
-  Genre.create(gen_name: 'Turn-based tactics (TBT)')
-  Genre.create(gen_name: 'Wargame')
-  Genre.create(gen_name: 'Grand strategy wargame')
-  Genre.create(gen_name: 'Sports')
-  Genre.create(gen_name: 'Racing')
-  Genre.create(gen_name: 'Sports game')
-  Genre.create(gen_name: 'Competitive')
-  Genre.create(gen_name: 'Sports-based fighting')
-  Genre.create(gen_name: 'Other notable genres')
-  Genre.create(gen_name: 'MMO')
-  Genre.create(gen_name: 'Casual game')
-  Genre.create(gen_name: 'Party game')
-  Genre.create(gen_name: 'Programming game')
-  Genre.create(gen_name: 'Logic game')
-  Genre.create(gen_name: 'Trivia game')
-  Genre.create(gen_name: 'Board game / Card game')
-  Genre.create(gen_name: 'Idle gaming')
-  Genre.create(gen_name: 'Video game genres by purpose')
-  Genre.create(gen_name: 'Advergame')
-  Genre.create(gen_name: 'Art game')
-  Genre.create(gen_name: 'Casual game')
-  Genre.create(gen_name: 'Christian game')
-  Genre.create(gen_name: 'Educational game')
-  Genre.create(gen_name: 'Electronic sports')
-  Genre.create(gen_name: 'Exergame')
-  Genre.create(gen_name: 'Serious game')
-  Genre.create(gen_name: 'Scientific studies')
+  Genre.create(id: 5, gen_name: "Shooter")
+  Genre.create(id: 11, gen_name: "Real Time Strategy (RTS)")
+  Genre.create(id: 13, gen_name: "Simulator")
+  Genre.create(id: 14, gen_name: "Sport")
+  Genre.create(id: 15, gen_name: "Strategy")
+  Genre.create(id: 31, gen_name: "Adventure")
+  Genre.create(id: 32, gen_name: "Indie")
 
   trackerTime()
 end
@@ -213,31 +155,20 @@ def seedPlatforms
   @added    = "25 Platform"
   trackerTime
 
-  Platform.create(plat_name: 'Atari 7800', plat_link: 'http://www.atari.com')
-  Platform.create(plat_name: 'Atari Jaguar', plat_link: 'http://www.atari.com')
-  Platform.create(plat_name: 'Sega Mega Drive / Genesis', plat_link: 'http://www.sega.com')
-  Platform.create(plat_name: 'Sega Saturn', plat_link: 'http://www.sega.com')
-  Platform.create(plat_name: 'Sega DreamCast', plat_link: 'http://www.sega.com')
-  Platform.create(plat_name: 'Microsoft Xbox', plat_link: 'http://www.microsoft.com')
-  Platform.create(plat_name: 'Microsoft Xbox 360', plat_link: 'http://www.microsoft.com')
-  Platform.create(plat_name: 'Microsoft Xbox One', plat_link: 'http://www.microsoft.com')
-  Platform.create(plat_name: 'Sony PlayStation', plat_link: 'http://www.sony.com')
-  Platform.create(plat_name: 'Sony PlayStation 2', plat_link: 'http://www.sony.com')
-  Platform.create(plat_name: 'Sony PlayStation 3', plat_link: 'http://www.sony.com')
-  Platform.create(plat_name: 'Sony PlayStation 4', plat_link: 'http://www.sony.com')
-  Platform.create(plat_name: 'Sony PlayStation Vita', plat_link: 'http://www.sony.com')
-  Platform.create(plat_name: 'Nintendo Nintendo Entretainmen System', plat_link: 'http://www.nintendo.com')
-  Platform.create(plat_name: 'Nintendo Super Nintendo Entretainmen System', plat_link: 'http://www.nintendo.com')
-  Platform.create(plat_name: 'Nintendo Nintendo 64', plat_link: 'http://www.nintendo.com')
-  Platform.create(plat_name: 'Nintendo Nintendo Wii', plat_link: 'http://www.nintendo.com')
-  Platform.create(plat_name: 'Nintendo Nintendo Wii U', plat_link: 'http://www.nintendo.com')
-  Platform.create(plat_name: 'Nintendo Nintendo Switch', plat_link: 'http://www.nintendo.com')
-  Platform.create(plat_name: 'Nintendo Nintendo Game Boy', plat_link: 'http://www.nintendo.com')
-  Platform.create(plat_name: 'Nintendo Nintendo Game Boy Color', plat_link: 'http://www.nintendo.com')
-  Platform.create(plat_name: 'Nintendo Nintendo Game Boy Micro', plat_link: 'http://www.nintendo.com')
-  Platform.create(plat_name: 'Nintendo Nintendo Game Boy Advance SP', plat_link: 'http://www.nintendo.com')
-  Platform.create(plat_name: 'Nintendo Nintendo Game Boy Advance', plat_link: 'http://www.nintendo.com')
-  Platform.create(plat_name: 'Nintendo Nintendo 3DS', plat_link: 'http://www.nintendo.com')
+  Platform.create(id: 3, plat_name: 'Linux', plat_link: "http://www.linux.org")
+  Platform.create(id: 6, plat_name: 'PC (Microsoft Windows)', plat_link: 'http://windows.microsoft.com/')
+  Platform.create(id: 9, plat_name: 'PlayStation 3', plat_link: "http://us.playstation.com/ps3/")
+  Platform.create(id: 12, plat_name: 'Xbox 360', plat_link: "http://www.xbox.com/en-US/xbox-360")
+  Platform.create(id: 14, plat_name: 'Mac', plat_link: 'https://www.apple.com/osx/')
+  Platform.create(id: 34, plat_name: 'Android', plat_link: "http://www.android.com/")
+  Platform.create(id: 39, plat_name: 'iOS', plat_link: "https://www.igdb.com/platforms/ios")
+  Platform.create(id: 41, plat_name: 'Wii U', plat_link: "http://www.nintendo.com/wiiu/")
+  Platform.create(id: 45, plat_name: 'PlayStation Network', plat_link: "https://www.igdb.com/platforms/psn")
+  Platform.create(id: 46, plat_name: 'PlayStation Vita', plat_link: "https://www.igdb.com/platforms/psvita")
+  Platform.create(id: 48, plat_name: 'PlayStation 4', plat_link: "http://www.playstation.com/ps4/")
+  Platform.create(id: 49, plat_name: 'Xbox One', plat_link: "http://www.xbox.com/en-US/xbox-one")
+  Platform.create(id: 74, plat_name: 'Windows Phone', plat_link: "https://www.igdb.com/platforms/winphone")
+  Platform.create(id: 130, plat_name: 'Nintendo Switch', plat_link: "http://www.nintendo.com/switch")
 
   trackerTime
 end
@@ -248,20 +179,51 @@ def seedGames
   @added    = "15 Games"
   trackerTime
 
-  for i in 1..15 do
-    title = Faker::Book.title
-    new_genres = []
-    for i in 1..Faker::Number.between(1, 10)
-      new_genres += [Genre.find(i)]
-    end
-    new_platforms = []
-    for i in 1..Faker::Number.between(1, 10)
-      new_platforms += [Platform.find(i)]
-    end
-    new_game = Game.create(gam_name: title, gam_description: Faker::Lovecraft.paragraph, gam_link: Faker::Internet.url(title + '.com'), pegi_id: Faker::Number.between(1, 5))
-    new_game.genres = new_genres
-    new_game.platforms = new_platforms
-  end
+  #Origin Games
+  game = Game.create(id: 115, gam_name: "League of Legends", gam_description: "League of Legends is a fast-paced, competitive online game that blends the speed and intensity of an RTS with RPG elements. Two teams of powerful champions, each with a unique design and playstyle, battle head-to-head across multiple battlefields and game modes. With an ever-expanding roster of champions, frequent updates and a thriving tournament scene, League of Legends offers endless replayability for players of every skill level.",
+      gam_link: "http://www.leagueoflegends.com", pegi_id: 3)
+  game.genres << Genre.find(11)
+  game.genres << Genre.find(15)
+  game.platforms << Platform.find(6)
+  game.platforms << Platform.find(14)
+
+  game = Game.create(id: 121, gam_name: "Minecraft", gam_description: "Minecraft is an open world game that has no specific goals for the player to accomplish, allowing players a large amount of freedom in choosing how to play the game however, there is an achievement system. The gameplay by default is first person, but players have the option to play in third person mode. The core gameplay revolves around breaking and placing blocks. The game world is essentially composed of rough 3D objects—mainly cubes—that are arranged in a fixed grid pattern and represent different materials, such as dirt, stone, various ores, water, and tree trunks. While players can move freely across the world, objects and items can only be placed at fixed locations relative to the grid. Players can gather these material blocks and place them elsewhere, thus allowing for various constructions.",
+    gam_link: "https://minecraft.net/", pegi_id: 2)
+  game.genres << Genre.find(13)
+  game.genres << Genre.find(31)
+  game.genres << Genre.find(32)
+  game.platforms << Platform.find(3)
+  game.platforms << Platform.find(6)
+  game.platforms << Platform.find(9)
+  game.platforms << Platform.find(12)
+  game.platforms << Platform.find(14)
+  game.platforms << Platform.find(34)
+  game.platforms << Platform.find(39)
+  game.platforms << Platform.find(41)
+  game.platforms << Platform.find(45)
+  game.platforms << Platform.find(46)
+  game.platforms << Platform.find(48)
+  game.platforms << Platform.find(49)
+  game.platforms << Platform.find(74)
+  game.platforms << Platform.find(130)
+
+  game = Game.create(id: 990, gam_name: "Halo: Reach", gam_description: "Experience the story before the events of Halo: Combat Evolved as you fight to defend the planet Reach from a harrowing Covenant invasion. In this first-person shooter you can customize your own Spartan with armor and accessories to experience both a pulse-pounding campaign and addictive multiplayer mode. Reach will fall, but it won't go down without a fight.",
+    gam_link: "https://www.halowaypoint.com/en-us/games/halo-reach/xbox-360", pegi_id: 4)
+  game.genres << Genre.find(5)
+  game.platforms << Platform.find(12)
+
+  game = Game.create(id: 1905, gam_name: "Fortnite", gam_description: "Fortnite is the living, action building game from the developer formerly known as Epic MegaGames. You and your friends will lead a group of Heroes to reclaim and rebuild a homeland that has been left empty by mysterious darkness only known as \"the Storm\". \n \nBand together online to build extravagant forts, find or build insane weapons and traps and protect your towns from the strange monsters that emerge during the Storm. In an action experience from the only company smart enough to attach chainsaws to guns, get out there to push back the Storm and save the world. And don't forget to loot all the things.",
+    gam_link: "http://fortnitegame.com", pegi_id: 2)
+  game.genres << Genre.find(5)
+  game.genres << Genre.find(13)
+  game.genres << Genre.find(14)
+  game.genres << Genre.find(31)
+  game.platforms << Platform.find(6)
+  game.platforms << Platform.find(14)
+  game.platforms << Platform.find(39)
+  game.platforms << Platform.find(45)
+  game.platforms << Platform.find(48)
+  game.platforms << Platform.find(49)
 
   trackerTime
 end
@@ -272,6 +234,7 @@ def seedPlayerProfilesAndPlayerGameProfiles
   @added    = "15 player profiles"
   trackerTime
 
+  games_array = [115, 121, 990, 1905]
   for i in 1..15 do
     real_name = Faker::Name.name
     username = Faker::Internet.user_name(real_name)
@@ -284,7 +247,7 @@ def seedPlayerProfilesAndPlayerGameProfiles
     player_nickname = Faker::Internet.user_name
     p_game_rate = Faker::Number.between(1, 5)
     player = i
-    game = Faker::Number.between(1, 15)
+    game = games_array[i%4]
     PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game_id: game)
     print('   -> email: ' + email + ' password: ' + password + "\n")
   end
@@ -293,9 +256,11 @@ def seedPlayerProfilesAndPlayerGameProfiles
 end
 
 def seedSubForum
-  15.times do
-    game = Game.find(Faker::Number.between(1, 15))
-    SubForum.create(sf_name: Faker::Zelda.location + " " + Faker::Zelda.character, sf_description: Faker::LeagueOfLegends.quote, game: game)
+  games_array = [115, 121, 990, 1905]
+  for i in 1..15 do
+    game = Game.find(games_array[i%4])
+    SubForum.create(sf_name: Faker::Zelda.location + " " + Faker::Zelda.character,
+      sf_description: Faker::LeagueOfLegends.quote, game: game)
   end
 end
 
