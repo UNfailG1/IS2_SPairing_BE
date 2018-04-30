@@ -22,4 +22,9 @@ class Platform < ApplicationRecord
     self.where(platform_id: platform_id).pluck(:gam_name)
   end
 
+  #Seed record of the game
+  def seedRecord
+    puts("Platform.create(id: " + id.to_s + ", plat_name: \""+ plat_name + "\", plat_link: \"" + plat_link + "\")")
+  end
+
 end

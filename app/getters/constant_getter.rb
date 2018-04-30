@@ -1,5 +1,5 @@
 class ConstantGetter
   def self.IGDBKey
-    'key'           #Reemplazar por key de IGDB
+    ENV["IGDB_user_key"]
   end
 end
