@@ -6,12 +6,14 @@
 #  gen_name   :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  gen_views  :integer
 #
 
 class Genre < ApplicationRecord
   has_and_belongs_to_many :games, dependent: :nullify
 
   validates :gen_name, presence: true
+  validates :gen_views, presence: true
 
   #Queries
 
@@ -32,6 +34,11 @@ class Genre < ApplicationRecord
   #param name may be a string
   def self.getFirstByName(name)
     Genre.getByName(name)[0]
+  end
+
+  #Show the 10 most viewed genres
+  def self.getMostViewed()
+    order(gen_views: :desc).limit(10)
   end
 
 end

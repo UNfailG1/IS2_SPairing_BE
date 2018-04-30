@@ -10,6 +10,7 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  gam_user_counter :integer
+#  gam_views        :integer
 #
 # Indexes
 #

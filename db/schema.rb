@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180428151841) do
+ActiveRecord::Schema.define(version: 20180430170321) do
 
   create_table "ads", force: :cascade do |t|
     t.text "ad_description"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20180428151841) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "gam_user_counter"
+    t.integer "gam_views"
     t.index ["pegi_id"], name: "index_games_on_pegi_id"
   end
 
@@ -71,6 +72,7 @@ ActiveRecord::Schema.define(version: 20180428151841) do
     t.string "gen_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "gen_views"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -102,6 +104,7 @@ ActiveRecord::Schema.define(version: 20180428151841) do
     t.string "plat_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "plat_views"
   end
 
   create_table "player_game_profiles", force: :cascade do |t|

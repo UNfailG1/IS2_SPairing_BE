@@ -10,6 +10,7 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  gam_user_counter :integer
+#  gam_views        :integer
 #
 # Indexes
 #
@@ -26,6 +27,7 @@ class Game < ApplicationRecord
   has_and_belongs_to_many :platforms
 
   validates :gam_name, presence: true
+  validates :gam_views, presence: true
   validates :gam_description, presence: true
   validates :gam_link, presence: true
   validates :pegi_id, presence: true

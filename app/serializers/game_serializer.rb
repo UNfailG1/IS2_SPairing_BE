@@ -10,6 +10,7 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  gam_user_counter :integer
+#  gam_views        :integer
 #
 # Indexes
 #
@@ -17,7 +18,7 @@
 #
 
 class GameSerializer < ActiveModel::Serializer
-  attributes :id, :gam_name, :gam_description, :gam_link
+  attributes :id, :gam_name, :gam_description, :gam_link, :gam_user_counter, :gam_views
 
   belongs_to :pegi
   has_many :sub_forums

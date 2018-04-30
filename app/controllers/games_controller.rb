@@ -6,14 +6,18 @@ class GamesController < ApplicationController
 
   # GET /games
   def index
-    @games = Game.paginate(page: params['page'], per_page: 10)
-
+    if params['name'] == nil
+      @games = Game.paginate(page: params['page'], per_page: 10)
+    else
+      @games = Game.getByNameLike(params['name'])
+    end
     render json: @games, each_serializer: GameSerializer
   end
 
   # GET /games/1
   def show
     render json: @game, serializer: GameSerializer
+    @game.update_attribute(:gam_views, @game.gam_views + 1)
   end
 
   # POST /games
