@@ -40,7 +40,7 @@ class PlayerProfileReporter
       end
     end
 
-    file_name
+    file_name[7..-1]
   end
 
   #Defines how the PDF will be created
@@ -55,7 +55,7 @@ class PlayerProfileReporter
       text 'Spairing elo: ' + playerProfile.pp_spairing_elo.to_s, size: 18
     end
 
-    file_name
+    file_name[7..-1]
   end
 
 end

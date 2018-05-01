@@ -39,7 +39,7 @@ class AdReporter
       end
     end
 
-    file_name
+    file_name[7..-1]
   end
 
   #Defines how the PDF will be created
@@ -55,6 +55,6 @@ class AdReporter
       text 'Ad sponsor: ' + ad.sponsor.spo_name, size: 18
     end
 
-    file_name
+    file_name[7..-1]
   end
 end

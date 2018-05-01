@@ -40,6 +40,6 @@ class SubForumThreadForumReporter
       end
     end
 
-    file_name
+    file_name[7..-1]
   end
 end

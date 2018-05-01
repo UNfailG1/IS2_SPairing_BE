@@ -26,7 +26,7 @@ class ReportsController < ApplicationController
       else
         @report.link = AdReporter.createAdReport Ad.find(options[:id])
       end
-      @report.filename = @report.link.split('/')[3]
+      @report.filename = @report.link.split('/')[2]
     when "PlayerProfile"
       @report.report_type = "PlayerProfile"
       if options[:id] == 0
@@ -34,7 +34,7 @@ class ReportsController < ApplicationController
       else
         @report.link = PlayerProfileReporter.createPlayerProfileReport PlayerProfile.find(options[:id])
       end
-      @report.filename = @report.link.split('/')[3]
+      @report.filename = @report.link.split('/')[2]
     end
 
     if @report.save
