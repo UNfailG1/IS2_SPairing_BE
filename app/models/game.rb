@@ -9,6 +9,7 @@
 #  pegi_id         :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  gam_image       :string
 #
 # Indexes
 #
@@ -73,5 +74,27 @@ class Game < ApplicationRecord
   #param name my be a string
   def self.getFirstByName(name)
     Game.getByName(name)[0]
+  end
+
+  #Seed record of the game
+  def seedRecord()
+    puts("game = Game.create(id: " + id.to_s +
+      ", gam_name: \"" + gam_name +
+      "\", gam_description: \"" + gam_description +
+      "\", gam_link: \"" + gam_link +
+      "\", pegi_id: " + pegi_id.to_s +
+      ", gam_image: \"" + gam_image +
+      "\")")
+    genres.each{ |genre|
+      puts("game.genres << Genre.find(" + genre.id.to_s + ")")
+    }
+
+    platforms.each{ |platform|
+      puts("game.platforms << Platform.find(" + platform.id.to_s + ")")
+    }
+
+    platforms.each{ |platform| platform.seedRecord }
+    genres.each{ |genre| genre.seedRecord}
+
   end
 end

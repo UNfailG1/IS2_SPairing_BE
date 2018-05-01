@@ -34,4 +34,9 @@ class Genre < ApplicationRecord
     Genre.getByName(name)[0]
   end
 
+  #Seed record of the game
+  def seedRecord
+    puts("Genre.create(id: " + id.to_s + ", gen_name: \"" + gen_name + "\")")
+  end
+
 end
