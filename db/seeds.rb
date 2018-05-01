@@ -27,7 +27,7 @@ def seedSponsorsAndAds
   Sponsor.create(spo_name:  "Google")
   Ad.create(ad_description: "Andoid",               ad_link: "https://www.android.com",               sponsor_id: 1)
   Ad.create(ad_description: "Google Maps",          ad_link: "https://www.google.com/maps",           sponsor_id: 1)
-  Ad.create(ad_description: "Youtube",              ad_link: "https://www.youtube.com",               sponsor_id:1)
+  Ad.create(ad_description: "Youtube",              ad_link: "https://www.youtube.com",               sponsor_id: 1)
   Ad.create(ad_description: "Google Drive",         ad_link: "https://www.google.com/drive/",         sponsor_id: 1)
 
   Sponsor.create(spo_name:  "Microsoft")
@@ -121,6 +121,84 @@ def seedLocations
   end
 
   trackerTime()
+
+end
+
+def seedPlayerProfilesAndPlayerGameProfiles
+
+  @nameSeed = "Player profiles and Player game profiles"
+  @added    = "15 player profiles"
+  trackerTime
+
+  games_array = [115, 121, 990, 1905]
+  for i in 1..15 do
+    real_name = Faker::Name.name
+    username = Faker::Internet.user_name(real_name)
+    password = Faker::Internet.password(8, 20)
+    email = Faker::Internet.free_email(real_name)
+    location = Faker::Number.between(1, 15)
+    PlayerProfile.create(pp_username: username, password_confirmation: password, password: password, location_id: location,
+      email: email, pp_spairing_elo: Faker::Number.between(0, 5), pp_avatar: 'user.svg')
+    reputation = Faker::Number.between(1, 5)
+    player_nickname = Faker::Internet.user_name
+    p_game_rate = Faker::Number.between(1, 5)
+    player = i
+    game = games_array[i%4]
+    PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game_id: game)
+    Game.find(game).update_attribute(:gam_user_counter, Game.find(game).gam_user_counter + 1)
+    print('   -> email: ' + email + ' password: ' + password + "\n")
+  end
+
+  trackerTime
+end
+
+def seedMailBoxes
+
+  @nameSeed = "MailBoxes"
+  @added    = "50 Mailboxes"
+  trackerTime
+
+  for i in 1..50 do
+    sender = Faker::Number.between(1, 15)
+    recever = Faker::Number.between(1, 15)
+    msg = Faker::Hipster.sentence(10)
+    Mailbox.create(sender_id: sender, receiver_id: recever, mail_message: msg)
+  end
+
+  trackerTime
+end
+
+def seedPlayerFriends
+
+  @nameSeed = "PlayerFriends"
+  @added    = "5 Fake friends :'c"
+  trackerTime
+
+  for i in 1..5 do
+    player_id = Faker::Number.between(1, 15)
+    player = PlayerProfile.find(player_id)
+    friend_id = Faker::Number.between(1, 15)
+    friend = PlayerProfile.find(friend_id)
+    player.friends.push(friend)
+    friend.friends.push(player)
+  end
+
+  trackerTime
+end
+
+def seedPlayerBlokedList
+
+  @nameSeed = "BlockedPlayers"
+  @added    = "5 bad friends :'c"
+  trackerTime
+
+  for i in 1..5 do
+    player = PlayerProfile.find(Faker::Number.between(1, 15))
+    blocked = PlayerProfile.find(Faker::Number.between(1, 15))
+    player.blocked_players.push(blocked)
+  end
+
+  trackerTime
 
 end
 
@@ -566,128 +644,76 @@ def seedGames
   trackerTime
 end
 
-def seedPlayerProfilesAndPlayerGameProfiles
-
-  @nameSeed = "Player profiles and Player game profiles"
-  @added    = "15 player profiles"
-  trackerTime
-
-  games_array = [115, 121, 990, 1905]
-  for i in 1..15 do
-    real_name = Faker::Name.name
-    username = Faker::Internet.user_name(real_name)
-    password = Faker::Internet.password(8, 20)
-    email = Faker::Internet.free_email(real_name)
-    location = Faker::Number.between(1, 15)
-    PlayerProfile.create(pp_username: username, password_confirmation: password, password: password, location_id: location,
-      email: email, pp_spairing_elo: Faker::Number.between(0, 5), pp_avatar: 'user.svg')
-    reputation = Faker::Number.between(1, 5)
-    player_nickname = Faker::Internet.user_name
-    p_game_rate = Faker::Number.between(1, 5)
-    player = i
-    game = games_array[i%4]
-    PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game_id: game)
-    Game.find(game).update_attribute(:gam_user_counter, Game.find(game).gam_user_counter + 1)
-    print('   -> email: ' + email + ' password: ' + password + "\n")
-  end
-
-  trackerTime
-end
-
 def seedSubForum
-  games_array = [115, 121, 990, 1905]
-  for i in 1..15 do
-    game = Game.find(games_array[i%4])
-    SubForum.create(sf_name: Faker::Zelda.location + " " + Faker::Zelda.character,
-      sf_description: Faker::LeagueOfLegends.quote, game: game)
-  end
-end
-
-def seedMailBoxes
-
-  @nameSeed = "MailBoxes"
-  @added    = "50 Mailboxes"
+  @nameSeed = "SubForum"
+  @comments = 0
+  @added    = "114 subforums, 342 thread forums and "
   trackerTime
 
-  for i in 1..50 do
-    sender = Faker::Number.between(1, 15)
-    recever = Faker::Number.between(1, 15)
-    msg = Faker::Hipster.sentence(10)
-    Mailbox.create(sender_id: sender, receiver_id: recever, mail_message: msg)
-  end
+  counter = 0.0
+  total = Game.count
+  puts ((counter/total)*100).to_s + "%"
+  Game.all.each{ |game|
+    2.times do
+      sf = SubForum.create(sf_name: Faker::Zelda.location + " " + Faker::Zelda.character,
+        sf_description: Faker::LeagueOfLegends.quote, game: game)
+      seedThreadForum(sf)
+    end
+    counter = counter + 1
+    puts ((counter/total)*100).to_s + "%"
+  }
 
+  @added = @added + @comments + "comments"
   trackerTime
 end
 
-def seedPlayerFriends
-
-  @nameSeed = "PlayerFriends"
-  @added    = "50 Fake friends :'c"
-  trackerTime
-
-  for i in 1..50 do
-    player_id = Faker::Number.between(1, 15)
-    player = PlayerProfile.find(player_id)
-    friend_id = Faker::Number.between(1, 15)
-    friend = PlayerProfile.find(friend_id)
-    player.friends.push(friend)
-    friend.friends.push(player)
-  end
-
-  trackerTime
-end
-
-def seedPlayerBlokedList
-
-  @nameSeed = "BlockedPlayers"
-  @added    = "50 bad friends :'c"
-  trackerTime
-
-  for i in 1..50 do
-    player = PlayerProfile.find(Faker::Number.between(1, 15))
-    blocked = PlayerProfile.find(Faker::Number.between(1, 15))
-    player.blocked_players.push(blocked)
-  end
-
-  trackerTime
-
-end
-
-def seedThreadForum
-
-  @nameSeed = "ThreadForums"
-  @added    = "15 ThreadForums and "
-  trackerTime
-
-  15.times do
-    a = ThreadForum.create(thr_name: Faker::Zelda.item, thr_views: 0, thr_comments: 0, sub_forum: SubForum.find(Faker::Number.between(1, 15)))
+def seedThreadForum(sub_forum)
+  2.times do
+    a = ThreadForum.create(thr_name: Faker::Zelda.item, thr_views: 0, thr_comments: 0, sub_forum: sub_forum)
     seedComments(a)
     a.save
   end
-
-  trackerTime
 end
 
 def seedComments(thread_forum)
-
-  5.times do
+  comments = Faker::Number.between(1, 10)
+  @comments = @comments + comments
+  comments.times do
     Comment.create(com_comment: Faker::MostInterestingManInTheWorld.quote,
       thread_forum: thread_forum, player_profile: PlayerProfile.find(Faker::Number.between(1, 15)))
   end
+  thread_forum.update_attribute(:thr_comments, comments)
+end
 
+def rawSeed
+  @nameSeed = "rawSeed"
+  @comments = 0
+  @added    = "everything"
+  trackerTime
+  puts ActiveRecord::Base.connection.execute("BEGIN TRANSACTION")
+  File.open("db/raw_seed.sql", "r") do |f|
+    f.each_line do |line|
+      puts ActiveRecord::Base.connection.execute(line)
+    end
+  end
+  puts ActiveRecord::Base.connection.execute("COMMIT")
+  PlayerProfile.create(pp_username: "admin", password_confirmation: "admin1234", password: "admin1234", location_id: 1,
+    email: "admin@admin.com", pp_spairing_elo: 0, pp_avatar: 'user.svg')
+  print("   -> email: admin@admin.com password: admin \n")
+  trackerTime
 end
 
 # Seeding with functions
 
-seedSponsorsAndAds
-seedLocations
-seedPegi
-seedGenres
-seedPlatforms
-seedGames
-seedPlayerProfilesAndPlayerGameProfiles
-seedSubForum
-seedMailBoxes
-seedPlayerFriends
-seedPlayerBlokedList
-seedThreadForum
+#seedSponsorsAndAds
+#seedLocations
+#seedPegi
+#seedGenres
+#seedPlatforms
+#seedGames
+#seedPlayerProfilesAndPlayerGameProfiles
+#seedSubForum
+#seedMailBoxes
+#seedPlayerFriends
+#seedPlayerBlokedList
+rawSeed
