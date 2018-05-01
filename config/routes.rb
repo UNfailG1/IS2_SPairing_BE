@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :reports
   resources :player_games
   post "player_profile_token" => "player_profile_token#create"
   post "google_authentication" => "social_auth#google_authentication"
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
     resources :player_game_profiles
   end
 
-  resources :genres, :locations, :pegis, :platforms, :mailboxes
+  resources :genres, :locations, :pegis, :platforms, :mailboxes, :reports
 
   get "/friend_request/:receiver_id" => "player_profiles#friend_request"
   get "/remove_friend/:receiver_id" => "player_profiles#remove_friend"

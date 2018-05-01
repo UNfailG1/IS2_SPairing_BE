@@ -17,13 +17,14 @@ class SubForumThreadForumReporter
 
   #Defines the path to be used on the reporter
   def self.pdf_temp_path
-    'tmp/PDFs/Forum Report/'
+    Reporter.pdf_temp_path "Forum_Report"
   end
 
   def self.reportThread(thread_forum)
     @game = thread_forum.sub_forum.game
     @sub_forum = thread_forum.sub_forum
-    file_name = pdf_temp_path + @game.gam_name + '_' + @sub_forum.sf_name + '_' + thread_forum.thr_name + '_report.pdf'
+    file_name = pdf_temp_path + @game.gam_name + '_' + @sub_forum.sf_name + '_' +
+                thread_forum.thr_name + Time.now.strftime("%Y%m%d%H%M%S") + '.pdf'
     Prawn::Document.generate(file_name) do
       image "#{Rails.root}/assets/pdf_back.jpg", at: [-50, 900], fit: [700, 1000]
       text thread_forum.thr_name + " report", align: :center, size: 20
@@ -38,5 +39,7 @@ class SubForumThreadForumReporter
           text ' '
       end
     end
+
+    file_name
   end
 end

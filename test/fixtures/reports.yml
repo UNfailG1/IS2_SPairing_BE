@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: reports
+#
+#  id          :integer          not null, primary key
+#  report_type :string
+#  filename    :string
+#  link        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  filename: MyString
+  link: MyString
+
+two:
+  type: 
+  filename: MyString
+  link: MyString
