@@ -178,6 +178,33 @@ class PlayerProfile < ApplicationRecord
     where(:created_at => start_date.beginning_of_day..end_date.end_of_day)
   end
 
+  #Get statistic users registered on a intervale of time, per days
+  #Param start_date is a date that represents the first date to begin the querie
+  #Param end_date is a date that represents is the last date to end the querie
+  def self.getUsersBetweenDatesPerDay(start_date, end_date)
+    getUsersBetweenDatesPerUnit(start_date, end_date, 1.day)
+  end
+
+  #Get statistic users registered on a intervale of time, per months
+  #Param start_date is a date that represents the first date to begin the querie
+  #Param end_date is a date that represents is the last date to end the querie
+  def self.getUsersBetweenDatesPerMonth(start_date, end_date)
+    getUsersBetweenDatesPerUnit(start_date, end_date, 1.months)
+  end
+
+  #Get statistic users registered on a intervale of time, per unit of time
+  #Param start_date is a date that represents the first date to begin the querie
+  #Param end_date is a date that represents is the last date to end the querie
+  #param unit is the amount of time to be counted
+  def self.getUsersBetweenDatesPerUnit(start_date, end_date, unit)
+    answer = {}
+    while start_date <= end_date
+      answer[start_date] = getUserCountDay(start_date)
+      start_date = start_date + unit
+    end
+    answer
+  end
+
   #Get best 10 players on the website
   def self.getBestPlayers
     order(pp_spairing_elo: :desc).limit(10)
