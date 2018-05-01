@@ -11,6 +11,8 @@
 #
 
 class MailboxSerializer < ActiveModel::Serializer
+  attributes :id, :mail_message
+
   belongs_to :sender
   belongs_to :receiver
 end

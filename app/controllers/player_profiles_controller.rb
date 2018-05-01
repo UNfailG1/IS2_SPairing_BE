@@ -60,7 +60,7 @@ class PlayerProfilesController < ApplicationController
   end
 
   def friend_request
-    sender = current_user
+    sender = current_player_profile
     receiver = PlayerProfile.find(params[:receiver_id])
     sender.friends.push(receiver)
     # Falta enviar la notificacion en la pagina
@@ -73,7 +73,7 @@ class PlayerProfilesController < ApplicationController
   end
 
   def remove_friend
-    sender = current_user
+    sender = current_player_profile
     receiver = PlayerProfile.find(params[:receiver_id])
     sender.friends.delete(receiver)
     receiver.friends.delete(sender)

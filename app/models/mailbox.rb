@@ -22,7 +22,7 @@ class Mailbox < ApplicationRecord
   #If more than one PlayerProfile have the same Username, is
   #returned mails of the first found
   #param name may be a string
-  def self.getByPlayerProfileName(username)
-    Mailbox.where(sender: PlayerProfile.getFirstByUsername(username)) + Mailbox.where(receiver: PlayerProfile.getFirstByUsername(username))
+  def self.getByPlayerProfileName(id)
+    Mailbox.where(receiver_id: id)
   end
 end

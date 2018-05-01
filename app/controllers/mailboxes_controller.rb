@@ -5,8 +5,8 @@ class MailboxesController < ApplicationController
 
   # GET /mailboxes
   def index
-    @mailboxes = Mailbox.paginate(page: params['page'], per_page: 15)
-
+    # @mailboxes = Mailbox.paginate(page: params['page'], per_page: 15)
+    @mailboxes = Mailbox.getByPlayerProfileName(current_player_profile.id)
     render json: @mailboxes, each_serializer: MailboxSerializer
   end
 
@@ -17,7 +17,12 @@ class MailboxesController < ApplicationController
 
   # POST /mailboxes
   def create
-    @mailbox = Mailbox.new(mailbox_params)
+    puts "paramtros ------ #{params}"
+    @mailbox = Mailbox.new({sender_id: current_player_profile.id}.merge(mailbox_params))
+    # @mailbox.sender_id = current_player_profile.id
+    # @mailbox.receiver_id = params[:mailbox][:receiver_id]
+    # @mailbox.mail_message = params[:mailbox][:mail_message]
+    puts @mailbox.mail_message
 
     if @mailbox.save
       MailboxMailer.message_received(@mailbox).deliver_later
@@ -49,6 +54,6 @@ class MailboxesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def mailbox_params
-      params.require(:mailbox).permit(:sender_id, :receiver_id, :mail_message)
+      params.require(:mailbox).permit(:receiver_id, :mail_message)
     end
 end
