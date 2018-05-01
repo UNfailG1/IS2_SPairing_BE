@@ -2,19 +2,22 @@
 #
 # Table name: games
 #
-#  id              :integer          not null, primary key
-#  gam_name        :string
-#  gam_description :text
-#  gam_link        :string
-#  pegi_id         :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  gam_image       :string
+#  id               :integer          not null, primary key
+#  gam_name         :string
+#  gam_description  :text
+#  gam_link         :string
+#  gam_image        :string
+#  gam_user_counter :integer
+#  gam_views        :integer
+#  pegi_id          :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 # Indexes
 #
 #  index_games_on_pegi_id  (pegi_id)
 #
+
 
 class Game < ApplicationRecord
   belongs_to :pegi
@@ -29,6 +32,8 @@ class Game < ApplicationRecord
   validates :gam_description, presence: true
   validates :gam_link, presence: true
   validates :pegi_id, presence: true
+  validates :gam_views, presence: true
+  validates :gam_image, presence: true
 
   #Search for games with a Pegi age below age param
   #param age may be an integer
@@ -76,6 +81,20 @@ class Game < ApplicationRecord
     Game.getByName(name)[0]
   end
 
+
+  #Get a collection of threads of the Game sorted by number of comments
+  def getMostCommentedThreads
+    list = []
+    sub_forums.each{|subForum| list << 'sub_forum_id = ' + subForum.id.to_s}
+    whereStatment = list.join(' OR ')
+    ThreadForum.order(thr_comments: :desc).where(whereStatment)
+  end
+
+  #Get most played games
+  def self.getMostPlayed
+    self.order(gam_user_counter: :desc)
+  end
+
   #Seed record of the game
   def seedRecord()
     puts("game = Game.create(id: " + id.to_s +
@@ -97,4 +116,5 @@ class Game < ApplicationRecord
     genres.each{ |genre| genre.seedRecord}
 
   end
+
 end

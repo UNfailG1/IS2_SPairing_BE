@@ -5,14 +5,18 @@ class GenresController < ApplicationController
 
   # GET /genres
   def index
-    @genres = Genre.paginate(page: params['page'], per_page: 15)
-
+    if params['name'] == nil
+      @genres = Genre.paginate(page: params['page'], per_page: 15)
+    else
+      @genres = Genre.getByNameLike(params['name'])
+    end
     render json: @genres, each_serializer: GenreSerializer
   end
 
   # GET /genres/1
   def show
     render json: @genre, serializer: GenreSerializer
+    @genre.update_attribute(:gen_views, @genre.gen_views + 1)
   end
 
   # POST /genres

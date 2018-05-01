@@ -7,16 +7,18 @@
 #  password_digest :string
 #  email           :string
 #  pp_spairing_elo :float
+#  pp_avatar       :string
 #  pp_googleId     :string
 #  location_id     :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  pp_avatar       :string
 #
 # Indexes
 #
 #  index_player_profiles_on_location_id  (location_id)
 #
+
+
 
 require 'carrierwave/orm/activerecord'
 
@@ -67,7 +69,6 @@ class PlayerProfile < ApplicationRecord
   validates :pp_spairing_elo, presence: true
 
   #social networks signin
-
   def self.create_user_for_google(data)
     #sub toca verificarlo googleId
     where(email: data["email"]).first_or_initialize.tap do |user|
@@ -80,8 +81,6 @@ class PlayerProfile < ApplicationRecord
       user.save!
     end
   end
-
-
 
   #Queries
 
@@ -166,5 +165,21 @@ class PlayerProfile < ApplicationRecord
     PlayerProfile.joins(:comments).where(whereStatment)
   end
 
+  #Get count of users registered on a given day
+  #Param day is a date that represents the of the querie
+  def self.getUserCountDay(day)
+    getUsersBetweenDates(day, day).count
+  end
 
+  #Get users registered on a intervale of time
+  #Param start_date is a date that represents the first date to begin the querie
+  #Param end_date is a date that represents is the last date to end the querie
+  def self.getUsersBetweenDates(start_date, end_date)
+    where(:created_at => start_date.beginning_of_day..end_date.end_of_day)
+  end
+
+  #Get best 10 players on the website
+  def self.getBestPlayers
+    order(pp_spairing_elo: :desc).limit(10)
+  end
 end

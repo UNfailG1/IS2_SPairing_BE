@@ -5,6 +5,7 @@ class CreatePlayerProfiles < ActiveRecord::Migration[5.1]
       t.string :password_digest
       t.string :email
       t.float :pp_spairing_elo
+      t.string :pp_avatar
       t.string :pp_googleId
       t.references :location, foreign_key: true
 

@@ -37,4 +37,9 @@ class ThreadForum < ApplicationRecord
     self.where(whereStatment)
   end
 
+  #Get a collection of threads sorted by number of comments
+  def self.getMostCommentedThreads
+    self.order(thr_comments: :desc)
+  end
+
 end

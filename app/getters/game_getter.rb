@@ -5,6 +5,7 @@ class GameGetter
   #Creating a new game from rawGame type
   #param id is the id of IGDB query
   def self.createGame(id)
+
     rawGame = getJsonIGDBGame(id)
 
     genres = rawGame["genres"]
@@ -12,7 +13,8 @@ class GameGetter
 
     game = Game.create(id: rawGame["id"], gam_name: rawGame["name"],
       gam_description: rawGame["summary"], pegi_id: rawGame["pegi"]["rating"],
-      gam_link: rawGame["website"], gam_image: rawGame["cover"]["url"])
+      gam_link: rawGame["website"], gam_image: rawGame["cover"]["url"],
+        gam_views: 0)
 
     platforms.each{ |platform|
       puts platform

@@ -7,16 +7,17 @@
 #  password_digest :string
 #  email           :string
 #  pp_spairing_elo :float
+#  pp_avatar       :string
 #  pp_googleId     :string
 #  location_id     :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  pp_avatar       :string
 #
 # Indexes
 #
 #  index_player_profiles_on_location_id  (location_id)
 #
+
 
 class PlayerProfileSerializer < ActiveModel::Serializer
   attributes :id, :pp_username, :email, :pp_spairing_elo, :pp_avatar

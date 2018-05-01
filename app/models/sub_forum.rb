@@ -42,4 +42,8 @@ class SubForum < ApplicationRecord
     SubForum.getByName(name)[0]
   end
 
+  #Get a collection of threads of the SubForum sorted by number of comments
+  def getMostCommentedThreads
+    thread_forums.order(thr_comments: :desc)
+  end
 end

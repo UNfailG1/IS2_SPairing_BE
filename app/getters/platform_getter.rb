@@ -10,7 +10,7 @@ class PlatformGetter
       rawPlatform["website"] = rawPlatform["url"]
     end
 
-    Platform.create(id: rawPlatform["id"], plat_name: rawPlatform["name"], plat_link: rawPlatform["website"])
+    Platform.create(id: rawPlatform["id"], plat_name: rawPlatform["name"], plat_link: rawPlatform["website"], plat_views: 0)
   end
 
   private

@@ -5,7 +5,11 @@ class PlatformsController < ApplicationController
 
   # GET /platforms
   def index
-    @platforms = Platform.paginate(page: params['page'], per_page: 15)
+    if params['name'] == nil
+      @platforms = Platform.paginate(page: params['page'], per_page: 15)
+    else
+      @platforms = Platform.getByNameLike(params['name'])
+    end
 
     render json: @platforms, each_serializer: PlatformSerializer
   end
@@ -13,6 +17,7 @@ class PlatformsController < ApplicationController
   # GET /platforms/1
   def show
     render json: @platform, serializer: PlatformSerializer
+    @platform.update_attribute(:plat_views, @platform.plat_views + 1)
   end
 
   # POST /platforms

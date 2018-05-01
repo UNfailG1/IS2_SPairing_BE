@@ -6,7 +6,7 @@ class GenreGetter
 
     rawGenre = getJsonIGDBGenre(id)
 
-    Genre.create(id: rawGenre["id"], gen_name: rawGenre["name"])
+    Genre.create(id: rawGenre["id"], gen_name: rawGenre["name"], gen_views: 0)
   end
 
   private

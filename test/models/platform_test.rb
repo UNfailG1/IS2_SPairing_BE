@@ -7,6 +7,7 @@
 #  plat_link  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  plat_views :integer
 #
 
 require 'test_helper'

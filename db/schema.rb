@@ -46,10 +46,12 @@ ActiveRecord::Schema.define(version: 20180501032428) do
     t.string "gam_name"
     t.text "gam_description"
     t.string "gam_link"
+    t.string "gam_image"
+    t.integer "gam_user_counter"
+    t.integer "gam_views"
     t.integer "pegi_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "gam_image"
     t.index ["pegi_id"], name: "index_games_on_pegi_id"
   end
 
@@ -69,6 +71,7 @@ ActiveRecord::Schema.define(version: 20180501032428) do
 
   create_table "genres", force: :cascade do |t|
     t.string "gen_name"
+    t.integer "gen_views"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -100,6 +103,7 @@ ActiveRecord::Schema.define(version: 20180501032428) do
   create_table "platforms", force: :cascade do |t|
     t.string "plat_name"
     t.string "plat_link"
+    t.integer "plat_views"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -121,11 +125,11 @@ ActiveRecord::Schema.define(version: 20180501032428) do
     t.string "password_digest"
     t.string "email"
     t.float "pp_spairing_elo"
+    t.string "pp_avatar"
     t.string "pp_googleId"
     t.integer "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "pp_avatar"
     t.index ["location_id"], name: "index_player_profiles_on_location_id"
   end
 
