@@ -127,26 +127,41 @@ end
 def seedPlayerProfilesAndPlayerGameProfiles
 
   @nameSeed = "Player profiles and Player game profiles"
-  @added    = "15 player profiles"
+  @added    = "between 0 and 485 player profiles. Between 0 and 485 player game profiles"
   trackerTime
 
-  games_array = [115, 121, 990, 1905]
-  for i in 1..15 do
-    real_name = Faker::Name.name
-    username = Faker::Internet.user_name(real_name)
-    password = Faker::Internet.password(8, 20)
-    email = Faker::Internet.free_email(real_name)
-    location = Faker::Number.between(1, 15)
-    PlayerProfile.create(pp_username: username, password_confirmation: password, password: password, location_id: location,
-      email: email, pp_spairing_elo: Faker::Number.between(0, 5), pp_avatar: 'user.svg')
+  count = 0;
+  start_date = Date.new(2017, 01, 01)
+  end_date = Date.new(2018, 4, 30)
+  puts ((count/485.0)*100).to_i.to_s + '%'
+  while start_date <= end_date
+    Faker::Number.between(0, 1).times do
+      real_name = Faker::Name.name
+      username = Faker::Internet.user_name(real_name)
+      password = Faker::Internet.password(8, 20)
+      email = Faker::Internet.free_email(real_name)
+      location = Faker::Number.between(1, 15)
+      PlayerProfile.create(pp_username: username, password_confirmation: password, password: password, location_id: location,
+        email: email, pp_spairing_elo: Faker::Number.between(0, 5), pp_avatar: 'user.svg', created_at: start_date)
+    end
+    start_date = start_date + 1.days
+    count = count + 1
+    puts ((count/(485.0*2))*100).to_i.to_s + '%'
+  end
+
+  games = Game.all
+  for i in 1..PlayerProfile.all.count do
     reputation = Faker::Number.between(1, 5)
     player_nickname = Faker::Internet.user_name
     p_game_rate = Faker::Number.between(1, 5)
     player = i
-    game = games_array[i%4]
-    PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game_id: game)
-    Game.find(game).update_attribute(:gam_user_counter, Game.find(game).gam_user_counter + 1)
-    print('   -> email: ' + email + ' password: ' + password + "\n")
+    pp_times = Faker::Number.between(0, 1)
+    pp_times.times do
+      game = games[Faker::Number.between(1, 37)]
+      PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game_id: game)
+      game.update_attribute(:gam_user_counter, game.gam_user_counter + 1)
+    end
+    puts ((PlayerProfile.all.count + i)/(PlayerProfile.all.count*2.0)*100).to_i.to_s + '%'
   end
 
   trackerTime
@@ -155,15 +170,26 @@ end
 def seedMailBoxes
 
   @nameSeed = "MailBoxes"
-  @added    = "50 Mailboxes"
+  @added    = "between 0 and 1 times the number of player profiles Mailboxes"
   trackerTime
 
-  for i in 1..50 do
-    sender = Faker::Number.between(1, 15)
-    recever = Faker::Number.between(1, 15)
-    msg = Faker::Hipster.sentence(10)
-    Mailbox.create(sender_id: sender, receiver_id: recever, mail_message: msg)
-  end
+  count = 0.0
+  numb_players = PlayerProfile.count
+  puts ((count/numb_players)*100).to_i.to_s + '%'
+  PlayerProfile.all.each{ |player|
+    mail_times = Faker::Number.between(0, 1)
+    mail_times.times do
+      recever = PlayerProfile.find(Faker::Number.between(1, numb_players))
+      date = Faker::Date.between([player.created_at, recever.created_at].max, Date.today)
+      while recever.id == player.id
+        recever = PlayerProfile.find(Faker::Number.between(1, PlayerProfile.count))
+      end
+      msg = Faker::Hipster.sentence(10)
+      Mailbox.create(sender_id: player.id, receiver_id: recever.id, mail_message: msg, created_at: date)
+    end
+    count = count + 1
+    puts ((count/numb_players)*100).to_i.to_s + '%'
+  }
 
   trackerTime
 end
@@ -690,13 +716,11 @@ def rawSeed
   @comments = 0
   @added    = "everything"
   trackerTime
-  puts ActiveRecord::Base.connection.execute("BEGIN TRANSACTION")
   File.open("db/raw_seed.sql", "r") do |f|
     f.each_line do |line|
       puts ActiveRecord::Base.connection.execute(line)
     end
   end
-  puts ActiveRecord::Base.connection.execute("COMMIT")
   PlayerProfile.create(pp_username: "admin", password_confirmation: "admin1234", password: "admin1234", location_id: 1,
     email: "admin@admin.com", pp_spairing_elo: 0, pp_avatar: 'user.svg')
   print("   -> email: admin@admin.com password: admin \n")

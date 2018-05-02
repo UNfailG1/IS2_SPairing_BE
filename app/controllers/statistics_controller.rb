@@ -106,4 +106,5 @@ class StatisticsController < ApplicationController
     @querie = PlayerProfile.getBestPlayers
     render json: @querie, each_serializer: PlayerProfileSimpleSerializer
   end
+  
 end

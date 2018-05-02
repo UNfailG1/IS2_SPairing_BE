@@ -60,7 +60,7 @@ class Mailbox < ApplicationRecord
   def self.getMailsBetweenDatesPerUnit(start_date, end_date, unit)
     answer = {}
     while start_date <= end_date
-      answer[start_date] = getMailsCountDay(start_date)
+      answer[start_date] = getMailsBetweenDates(start_date, start_date + unit).count
       start_date = start_date + unit
     end
     answer
