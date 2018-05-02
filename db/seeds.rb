@@ -731,10 +731,10 @@ end
 
 #seedSponsorsAndAds
 #seedLocations
-#seedPegi
-#seedGenres
-#seedPlatforms
-#seedGames
+seedPegi
+seedGenres
+seedPlatforms
+seedGames
 #seedPlayerProfilesAndPlayerGameProfiles
 #seedSubForum
 #seedMailBoxes
