@@ -68,7 +68,7 @@ class StatisticsController < ApplicationController
       else
         @querie = PlayerProfile.getUsersBetweenDatesPerMonth(start_date, end_date)
       end
-      render json: @querie
+      render json: treat_querie_dir(@querie)
     end
   end
 
@@ -84,7 +84,7 @@ class StatisticsController < ApplicationController
       else
         @querie = Mailbox.getMailsBetweenDatesPerMonth(start_date, end_date)
       end
-      render json: @querie
+      render json: treat_querie_dir(@querie)
     end
   end
 
@@ -106,5 +106,12 @@ class StatisticsController < ApplicationController
     @querie = PlayerProfile.getBestPlayers
     render json: @querie, each_serializer: PlayerProfileSimpleSerializer
   end
-  
+
+  def treat_querie_dir(querie)
+    answer = []
+    for i in querie.keys
+      answer += [{date: i, count: querie  [i]}]
+    end
+    answer
+  end
 end
