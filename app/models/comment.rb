@@ -40,4 +40,9 @@ class Comment < ApplicationRecord
     whereStatment = list.join(' OR ')
     self.where(whereStatment)
   end
+  
+  def self.getCommentByDay(day,thread_forum_id)
+    where(:created_at => day.beginning_of_day..day.end_of_day, :thread_forum_id => thread_forum_id)
+  end
+  
 end

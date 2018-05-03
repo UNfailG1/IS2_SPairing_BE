@@ -22,6 +22,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
 # Use Prawn to do PDF generation
 gem 'prawn'
+# Use Prawn-graph for pdf graphics
+gem 'prawn-graph'
 #Use carrierwave to upload files
 gem 'carrierwave'
 #Use will_paginate to do paginations
