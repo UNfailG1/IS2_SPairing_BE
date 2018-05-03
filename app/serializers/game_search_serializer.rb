@@ -21,5 +21,5 @@
 
 
 class GameSearchSerializer < ActiveModel::Serializer
-  attributes :id, :gam_name, :gam_description, :gam_image
+  attributes :id, :gam_name, :gam_image
 end

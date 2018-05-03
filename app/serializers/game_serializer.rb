@@ -27,4 +27,6 @@ class GameSerializer < ActiveModel::Serializer
   has_many :sub_forums
   has_many :player_game_profiles
   has_many :player_profiles
+  has_many :genres
+  has_many :platforms
 end
