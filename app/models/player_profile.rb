@@ -18,8 +18,6 @@
 #  index_player_profiles_on_location_id  (location_id)
 #
 
-
-
 require 'carrierwave/orm/activerecord'
 
 class PlayerProfile < ApplicationRecord
@@ -27,7 +25,7 @@ class PlayerProfile < ApplicationRecord
   mount_uploader :pp_avatar, PlayerProfileUploader
 
   has_secure_password
-  belongs_to :location
+  belongs_to :location, optional: true
 
   has_many :player_game_profiles, dependent: :destroy
   has_many :games, through: :player_game_profiles

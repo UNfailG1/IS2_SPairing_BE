@@ -5,6 +5,7 @@
 #  id           :integer          not null, primary key
 #  sender_id    :integer
 #  receiver_id  :integer
+#  mail_subject :string
 #  mail_message :text
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
@@ -22,8 +23,12 @@ class Mailbox < ApplicationRecord
   #If more than one PlayerProfile have the same Username, is
   #returned mails of the first found
   #param name may be a string
-  def self.getByPlayerProfileName(id)
-    Mailbox.where(receiver_id: id)
+  def self.getInbox(id)
+    self.where(receiver_id: id)
+  end
+
+  def self.getSent(id)
+    self.where(sender_id: id)
   end
 
   #Get count of mails sent on a given day

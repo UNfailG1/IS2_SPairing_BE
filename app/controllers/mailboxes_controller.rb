@@ -5,8 +5,17 @@ class MailboxesController < ApplicationController
 
   # GET /mailboxes
   def index
-    # @mailboxes = Mailbox.paginate(page: params['page'], per_page: 15)
-    @mailboxes = Mailbox.getByPlayerProfileName(current_player_profile.id)
+    # @mailboxes = Mailbox
+    case params[:section]
+    when 'Inbox'
+      @mailboxes = Mailbox.getInbox(current_player_profile.id)
+        .paginate(page: params['page'], per_page: 25)
+
+    when 'Sent'
+      @mailboxes = Mailbox.getSent(current_player_profile.id)
+        .paginate(page: params['page'], per_page: 25)
+
+    end
     render json: @mailboxes, each_serializer: MailboxSerializer
   end
 
@@ -17,19 +26,25 @@ class MailboxesController < ApplicationController
 
   # POST /mailboxes
   def create
-    puts "paramtros ------ #{params}"
-    @mailbox = Mailbox.new({sender_id: current_player_profile.id}.merge(mailbox_params))
-    # @mailbox.sender_id = current_player_profile.id
-    # @mailbox.receiver_id = params[:mailbox][:receiver_id]
-    # @mailbox.mail_message = params[:mailbox][:mail_message]
-    puts @mailbox.mail_message
+    with_error = []
+    mail = mailbox_params
+    puts mail[:recipient_ids]
+    mail[:recipient_ids].each { |receiver_id|
 
-    if @mailbox.save
-      MailboxMailer.message_received(@mailbox).deliver_later
-      render json: @mailbox, status: :created
-    else
-      render json: @mailbox.errors, status: :unprocessable_entity
-    end
+      @mailbox = Mailbox.new(
+        sender_id: current_player_profile.id,
+        receiver_id: receiver_id,
+        mail_subject: mail[:mail_subject],
+        mail_message: mail[:mail_message]
+      )
+
+      if @mailbox.save
+        MailboxMailer.message_received(@mailbox).deliver_later
+      else
+        with_error.push(receiver_id)
+      end
+    }
+    render json: with_error, status: :ok
   end
 
   # PATCH/PUT /mailboxes/1
@@ -54,6 +69,6 @@ class MailboxesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def mailbox_params
-      params.require(:mailbox).permit(:receiver_id, :mail_message)
+      params.require(:mailbox).permit(:mail_subject, :mail_message, recipient_ids: [])
     end
 end

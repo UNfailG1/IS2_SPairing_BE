@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20180501032428) do
   create_table "mailboxes", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "receiver_id"
+    t.string "mail_subject"
     t.text "mail_message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

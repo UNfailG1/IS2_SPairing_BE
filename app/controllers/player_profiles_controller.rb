@@ -80,6 +80,12 @@ class PlayerProfilesController < ApplicationController
     render json: sender, status: :ok
   end
 
+  def usernameLike
+    profiles = PlayerProfile.getByUsernameLike(params[:username])
+      .paginate(page: params['page'], per_page: 5)
+    render json: profiles, status: :ok, each_serializer: PlayerProfileOnlySerializer
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_player_profile
@@ -88,6 +94,6 @@ class PlayerProfilesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def player_profile_params
-      params.require(:player_profile).permit(:pp_username, :email, :password, :password_confirmation, :location_id)
+      params.require(:player_profile).permit(:pp_username, :email, :password, :password_confirmation)
   end
 end
