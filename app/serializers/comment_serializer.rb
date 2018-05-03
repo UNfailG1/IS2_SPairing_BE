@@ -16,8 +16,7 @@
 #
 
 class CommentSerializer < ActiveModel::Serializer
-  attributes :id, :com_comment
+  attributes :id, :com_comment, :created_at
 
-  belongs_to :thread_forum
   belongs_to :player_profile
 end

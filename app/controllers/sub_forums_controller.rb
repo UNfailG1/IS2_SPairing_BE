@@ -1,11 +1,12 @@
 class SubForumsController < ApplicationController
 
-  before_action :authenticate_player_profile
+  # before_action :authenticate_player_profile
   before_action :set_sub_forum, only: [:show, :update, :destroy]
 
   # GET /sub_forums
   def index
-    @sub_forums = SubForum.paginate(page: params['page'], per_page: 15)
+    @sub_forums = SubForum.getByGameId(params[:game_id])
+      .paginate(page: params['page'], per_page: 15)
 
     render json: @sub_forums, each_serializer: SubForumSerializer
   end

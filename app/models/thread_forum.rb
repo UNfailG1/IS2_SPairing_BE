@@ -30,6 +30,10 @@ class ThreadForum < ApplicationRecord
     self.joins(:comments).select('thread_forums.thr_name, comments.com_comment')
   end
 
+  def self.getBySubForumId(subForumId)
+    self.where(sub_forum_id: subForumId)
+  end
+
   def self.getCommentByTerm(words)
     list = []
     words.each {|word| list << 'thr_name like "%' + word + '%"'}

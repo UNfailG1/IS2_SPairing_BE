@@ -1,11 +1,12 @@
 class ThreadForumsController < ApplicationController
 
-  before_action :authenticate_player_profile
+  # before_action :authenticate_player_profile
   before_action :set_thread_forum, only: [:show, :update, :destroy]
 
   # GET /thread_forums
   def index
-    @thread_forums = ThreadForum.paginate(page: params['page'], per_page: 15)
+    @thread_forums = ThreadForum.getBySubForumId(params[:sub_forum_id])
+      .paginate(page: params['page'], per_page: 15)
 
     render json: @thread_forums, each_serializer: ThreadForumSerializer
   end

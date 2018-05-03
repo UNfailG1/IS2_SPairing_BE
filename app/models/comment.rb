@@ -30,8 +30,8 @@ class Comment < ApplicationRecord
   end
 
   # get comments from a ThreadForum.
-  def self.getCommentsOfPlayer(thread_forum_id)
-    self.where(thread_forum_id: thread_forum_id)
+  def self.getByThreadId(threadId)
+    self.where(thread_forum_id: threadId)
   end
 
   def self.getCommentByTerm(words)

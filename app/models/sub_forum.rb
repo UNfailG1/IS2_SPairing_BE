@@ -35,6 +35,12 @@ class SubForum < ApplicationRecord
     SubForum.where(sf_name: name)
   end
 
+  #Search for SubForums with a id equals to gameId param
+  #param name may be a integer
+  def self.getByGameId(gameId)
+    SubForum.where(game_id: gameId)
+  end
+
   #Search for a SubForum with a name equals to name param
   #If many, the first is returned
   #param name may be a string

@@ -1,11 +1,12 @@
 class CommentsController < ApplicationController
 
-  before_action :authenticate_player_profile
+  # before_action :authenticate_player_profile
   before_action :set_comment, only: [:show, :update, :destroy]
 
   # GET /comments
   def index
-    @comments = Comment.paginate(page: params['page'], per_page: 15)
+    @comments = Comment.getByThreadId(params[:thread_forum_id])
+      .paginate(page: params['page'], per_page: 15)
 
     render json: @comments, each_serializer: CommentSerializer
   end
