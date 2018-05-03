@@ -80,7 +80,7 @@ class PlayerProfilesController < ApplicationController
     render json: sender, status: :ok
   end
 
-  def usernameLike
+  def usernamesLike
     profiles = PlayerProfile.getByUsernameLike(params[:username])
       .paginate(page: params['page'], per_page: 5)
     render json: profiles, status: :ok, each_serializer: PlayerProfileOnlySerializer

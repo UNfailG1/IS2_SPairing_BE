@@ -50,6 +50,11 @@ class GamesController < ApplicationController
     @game.destroy
   end
 
+  def gameslike
+    games = Game.getByNameLike(params['gam_name']).paginate(page: params['page'], per_page: 15)
+    render json: games, status: :ok, each_serializer: GameSearchSerializer
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
