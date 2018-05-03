@@ -21,11 +21,13 @@ class SubForumThreadForumReporter
 
   require 'prawn-graph'
 
-  def self.reportThread(thread_forum, dayInit, dayEnd)
+  def self.reportThread(thread_forum)
     @game = thread_forum.sub_forum.game
     @sub_forum = thread_forum.sub_forum
     answer = Array.new
     xaxis_labels = []
+    dayInit = Date.today - 7.day
+    dayEnd = Date.today
     unit = 1.day
     while dayInit <= dayEnd
       xaxis_labels.push(dayInit.to_s)
@@ -54,20 +56,21 @@ class SubForumThreadForumReporter
     file_name = pdf_temp_path + @game.gam_name + '_' + @sub_forum.sf_name + '_' +
                 thread_forum.thr_name + Time.now.strftime("%Y%m%d%H%M%S") + '.pdf'
     a = 6 + (thread_forum.thr_comments * 2)
-    Prawn::Document.generate(file_name) do
-      image "#{Rails.root}/assets/pdf_back.jpg", at: [-50, 900], fit: [700, 1000]
+    Prawn::Document.generate(file_name, :background => "#{Rails.root}/assets/pdf_back.jpg") do
+      #image "#{Rails.root}/assets/pdf_back.jpg", at: [-50, 900], fit: [700, 1000]
       text thread_forum.thr_name + " report", align: :center, size: 20
       text ' '
       text 'thread_forum names: ' + thread_forum.thr_name, size: 16
       text 'Number of views: ' + thread_forum.thr_views.to_s, size: 16
       text 'Number of comments: ' + thread_forum.thr_comments.to_s, size: 16
       text ' '
+      graph series, width: 500, height: 200, title: "Comments Per Day",at: [10,600],theme: theme, xaxis_labels: xaxis_labels
+      text ' '
       thread_forum.comments.each do |comment|
           text '  Player: ' + comment.player_profile.pp_username, size:14
           text '  Comment: ' + comment.com_comment, size: 14
           text ' '
       end
-      graph series, width: 500, height: 200, title: "Comments Per Day",at: [10,700],theme: theme, xaxis_labels: xaxis_labels
     end
 
     file_name[7..-1]
