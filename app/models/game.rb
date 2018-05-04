@@ -92,7 +92,7 @@ class Game < ApplicationRecord
 
   #Get most played games
   def self.getMostPlayed
-    self.order(gam_user_counter: :desc)
+    self.order(gam_user_counter: :desc).limit(10)
   end
 
   #Seed record of the game
