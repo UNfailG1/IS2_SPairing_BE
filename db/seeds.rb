@@ -388,7 +388,7 @@ def seedGames
 
   game = Game.create(id: 990, gam_name: "Halo: Reach", gam_description: "Experience the story before the events of Halo: Combat Evolved as you fight to defend the planet Reach from a harrowing Covenant invasion. In this first-person shooter you can customize your own Spartan with armor and accessories to experience both a pulse-pounding campaign and addictive multiplayer mode. Reach will fall, but it won't go down without a fight.",
     gam_link: "https://www.halowaypoint.com/en-us/games/halo-reach/xbox-360", pegi_id: 4,
-    gam_image: "://images.igdb.com/igdb/image/upload/t_cover_big_2x/btb2qjrmavliwaiqtuyz.jpg", gam_user_counter: 0, gam_views: 0)
+    gam_image: "//images.igdb.com/igdb/image/upload/t_cover_big_2x/btb2qjrmavliwaiqtuyz.jpg", gam_user_counter: 0, gam_views: 0)
   game.genres << Genre.find(5)
   game.platforms << Platform.find(12)
 
