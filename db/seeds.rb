@@ -185,7 +185,9 @@ def seedMailBoxes
         recever = PlayerProfile.find(Faker::Number.between(1, PlayerProfile.count))
       end
       msg = Faker::Hipster.sentence(10)
-      Mailbox.create(sender_id: player.id, receiver_id: recever.id, mail_message: msg, created_at: date)
+      subject = Faker::Hipster.sentence(Faker::Number.between(2, 6))
+      Mailbox.create(sender_id: player.id, receiver_id: recever.id, mail_message: msg,
+                     mail_subject: subject, created_at: date)
     end
     count = count + 1
     puts ((count/numb_players)*100).to_i.to_s + '%'
@@ -729,16 +731,15 @@ end
 
 # Seeding with functions
 
-#seedSponsorsAndAds
-#seedLocations
+seedSponsorsAndAds
+seedLocations
 seedPegi
 seedGenres
 seedPlatforms
 seedGames
 seedPlayerProfilesAndPlayerGameProfiles
-
-#seedMailBoxes
-#seedPlayerFriends
-#seedPlayerBlokedList
-rawSeed
+seedMailBoxes
+seedPlayerFriends
+seedPlayerBlokedList
 seedSubForum
+# rawSeed
