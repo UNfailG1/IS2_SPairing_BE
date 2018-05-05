@@ -6,7 +6,13 @@
 <div class="hide-on-small-only">
   <div class="row valign-wrapper">
     <div class="col s3">
-      <img src="<%= @api + @profile.pp_avatar.url %>" alt="Profile" class="circle responsive-img"/>
+      <% if @sender.pp_avatar.url %>
+        <img src="<%= @api + @profile.pp_avatar.url %>" alt="Friend"
+            class="circle responsive-img" style="height: 140px"/>
+      <% else %>
+        <img src="<%= @api + '/user.svg' %>" alt="Friend" class="circle responsive-img"
+          style="height: 140px"/>
+      <% end %>
     </div>
     <div class="col s9">
       <p style="font-size: 16px">
@@ -20,7 +26,13 @@
 <div class="hide-on-med-and-up">
   <br>
   <div class="row center-align">
-    <img src="<%= @api + @profile.pp_avatar.url %>" alt="Profile" class="circle responsive-img"/>
+    <% if @sender.pp_avatar.url %>
+      <img src="<%= @api + @profile.pp_avatar.url %>" alt="Friend"
+          class="circle responsive-img" style="height: 140px"/>
+    <% else %>
+      <img src="<%= @api + '/user.svg' %>" alt="Friend" class="circle responsive-img" 
+        style="height: 140px"/>
+    <% end %>
   </div>
   <div class="row">
     <p style="font-size: 16px">

@@ -2,6 +2,7 @@ class PlayerProfileMailer < ApplicationMailer
 
   def welcome_email profile
     @url = @@url
+    @api = @@api
     @profile = profile
     mail  to: @profile.email,
           subject: "Welcome to SPairing"

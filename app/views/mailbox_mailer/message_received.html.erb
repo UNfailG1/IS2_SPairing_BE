@@ -9,7 +9,11 @@
   <div class="row valign-wrapper">
     <div class="col s3">
       <% if @sender.pp_avatar.url %>
-        <img src="<%= @api + @sender.pp_avatar.url %>" alt="Friend" class="circle responsive-img"/>
+        <img src="<%= @api + @sender.pp_avatar.url %>" alt="Friend"
+            class="circle responsive-img" style="height: 140px"/>
+      <% else %>
+        <img src="<%= @api + '/user.svg' %>" alt="Friend" class="circle responsive-img"
+          style="height: 140px"/>
       <% end %>
     </div>
     <div class="col s9">
@@ -24,7 +28,11 @@
   <br>
   <div class="row center-align">
     <% if @sender.pp_avatar.url %>
-      <img src="<%= @api + @sender.pp_avatar.url %>" alt="Friend" class="circle responsive-img"/>
+      <img src="<%= @api + @sender.pp_avatar.url %>" alt="Friend"
+        class="circle responsive-img" style="height: 140px"/>
+    <% else %>
+      <img src="<%= @api + '/user.svg' %>" alt="Friend" class="circle responsive-img"
+        style="height: 140px"/>
     <% end %>
   </div>
   <div class="row center-align">
