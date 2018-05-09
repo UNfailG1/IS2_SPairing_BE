@@ -65,7 +65,7 @@ class Game < ApplicationRecord
   #Search for games with names like name param
   #param name may be a string
   def self.getByNameLike(name)
-    Game.where('gam_name like "%' + name + '%"')
+    Game.where('gam_name LIKE ?', '%'+ name +'%')
   end
 
   #Search for games with the name equal to name param
