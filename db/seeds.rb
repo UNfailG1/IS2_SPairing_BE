@@ -737,9 +737,9 @@ seedPegi
 seedGenres
 seedPlatforms
 seedGames
-seedPlayerProfilesAndPlayerGameProfiles
-seedMailBoxes
-seedPlayerFriends
-seedPlayerBlokedList
-seedSubForum
+#seedPlayerProfilesAndPlayerGameProfiles
+#seedMailBoxes
+#seedPlayerFriends
+#seedPlayerBlokedList
+#seedSubForum
 # rawSeed
