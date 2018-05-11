@@ -24,6 +24,7 @@ class Game < ApplicationRecord
   has_many :sub_forums, dependent: :destroy
   has_many :player_game_profiles, dependent: :destroy
   has_many :player_profiles, through: :player_game_profiles
+  has_many :screenshots
 
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :platforms

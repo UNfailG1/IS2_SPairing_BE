@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180501032428) do
+ActiveRecord::Schema.define(version: 20180511021251) do
 
   create_table "ads", force: :cascade do |t|
     t.text "ad_description"
@@ -140,6 +140,16 @@ ActiveRecord::Schema.define(version: 20180501032428) do
     t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "screenshots", force: :cascade do |t|
+    t.string "scr_url"
+    t.integer "scr_height"
+    t.integer "scr_width"
+    t.integer "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_screenshots_on_game_id"
   end
 
   create_table "sponsors", force: :cascade do |t|

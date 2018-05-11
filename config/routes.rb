@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   post "player_profile_token" => "player_profile_token#create"
   post "google_authentication" => "social_auth#google_authentication"
 
@@ -8,11 +9,12 @@ Rails.application.routes.draw do
   end
 
   resources :games do
-   resources :sub_forums, only: [:index, :create] do
-     resources :thread_forums, only: [:index, :create] do
-       resources :comments, only: [:index, :create]
-     end
-   end
+    resources :screenshots, shallow: true
+    resources :sub_forums, only: [:index, :create] do
+      resources :thread_forums, only: [:index, :create] do
+        resources :comments, only: [:index, :create]
+      end
+    end
   end
 
   resources :sub_forums, :thread_forums, :comments, only: [:show, :update, :destroy]
