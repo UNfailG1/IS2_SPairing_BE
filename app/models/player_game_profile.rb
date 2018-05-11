@@ -20,6 +20,7 @@
 class PlayerGameProfile < ApplicationRecord
   belongs_to :game
   belongs_to :player_profile
+  has_and_belongs_to_many :tags, join_table: 'tag_players'
 
   validates :pgp_reputation, presence: true
   validates :pgp_nickname, presence: true
@@ -110,4 +111,5 @@ class PlayerGameProfile < ApplicationRecord
   def self.getPlayerGameProfileByPlayerProfileIdAndGameId(player_id, game_id)
       PlayerGameProfile.where("game_id = ? AND player_profile_id = ?", game_id, player_id)[0]
   end
+
 end

@@ -209,5 +209,11 @@ class PlayerProfile < ApplicationRecord
     end
     answer
   end
-  
+
+  def self.getSimilarProfiles(location, pgps)
+
+    #Filter location
+    playersByLocation = self.where(location_id: location)
+  end
+
 end

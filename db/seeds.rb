@@ -124,6 +124,18 @@ def seedLocations
 
 end
 
+def seedTags
+  @nameSeed = "Tag"
+  @added    = "Aca va algo"
+  trackerTime
+
+  for i in 0..15 do
+    Tag.create(tag_name: Faker::Hipster.word)
+  end
+
+end
+
+
 def seedPlayerProfilesAndPlayerGameProfiles
 
   @nameSeed = "Player profiles and Player game profiles"
@@ -149,17 +161,30 @@ def seedPlayerProfilesAndPlayerGameProfiles
     puts ((count/(485.0*2))*100).to_i.to_s + '%'
   end
 
-  games = Game.all
   for i in 1..PlayerProfile.all.count do
     reputation = Faker::Number.between(1, 5)
     player_nickname = Faker::Internet.user_name
     p_game_rate = Faker::Number.between(1, 5)
-    player = i
-    pp_times = Faker::Number.between(0, 1)
+    pp_times = Faker::Number.between(1, 5)
+    games = []
+
     pp_times.times do
-      game = games[Faker::Number.between(1, 37)]
-      PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game_id: game)
+
+      game = Faker::Number.between(1, 37)
+
+      while games.include?(game) do
+        game = Faker::Number.between(1, 37)
+      end
+
+      pgp = PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game_id: game)
       game.update_attribute(:gam_user_counter, game.gam_user_counter + 1)
+
+      for j in 0..3 do
+        pgp.tags.push(Tag.find(Faker::Number.between(1, 15)))
+      end
+
+      games.push(game)
+
     end
     puts ((PlayerProfile.all.count + i)/(PlayerProfile.all.count*2.0)*100).to_i.to_s + '%'
   end
@@ -737,9 +762,10 @@ seedPegi
 seedGenres
 seedPlatforms
 seedGames
-#seedPlayerProfilesAndPlayerGameProfiles
-#seedMailBoxes
-#seedPlayerFriends
-#seedPlayerBlokedList
-#seedSubForum
+seedTags
+seedPlayerProfilesAndPlayerGameProfiles
+seedMailBoxes
+seedPlayerFriends
+seedPlayerBlokedList
+seedSubForum
 # rawSeed

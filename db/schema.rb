@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180501032428) do
+ActiveRecord::Schema.define(version: 20180511221133) do
 
   create_table "ads", force: :cascade do |t|
     t.text "ad_description"
@@ -155,6 +155,17 @@ ActiveRecord::Schema.define(version: 20180501032428) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_sub_forums_on_game_id"
+  end
+
+  create_table "tag_players", id: false, force: :cascade do |t|
+    t.integer "player_game_profile_id"
+    t.integer "tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "thread_forums", force: :cascade do |t|
