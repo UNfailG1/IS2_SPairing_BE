@@ -303,6 +303,286 @@ def seedPlatforms
 
 end
 
+def seedScreenshots
+
+  @nameSeed = "Screenshots"
+  @added = "Muchos screenshots"
+  trackerTime
+
+  Screenshot.create(game_id: 115,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/aujhj4buodogepfhpovb",  scr_height:1200,  scr_width:1920)
+  Screenshot.create(game_id: 115,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/dg0yrobaqpnlgmypujaw",  scr_height:1200,  scr_width:1920)
+  Screenshot.create(game_id: 115,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/mxijcstlc25nv8vfhidl",  scr_height:1200,  scr_width:1920)
+  Screenshot.create(game_id: 115,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/gedd5lz7856ynljzsgbi",  scr_height:1200,  scr_width:1920)
+
+  Screenshot.create(game_id: 121,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ezwxiewpilswtdpkv0fz",  scr_height:414,  scr_width:552)
+  Screenshot.create(game_id: 121,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/vm8dthz69tuppu1pazjc",  scr_height:228,  scr_width:406)
+  Screenshot.create(game_id: 121,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/t7judm5cnur6sy7pfs9p",  scr_height:228,  scr_width:406)
+  Screenshot.create(game_id: 121,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/jdxezqeifzxa2qlofkst",  scr_height:228,  scr_width:406)
+  Screenshot.create(game_id: 121,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/rh6e9mxic6whyrj6ohku",  scr_height:228,  scr_width:406)
+  Screenshot.create(game_id: 121,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/gax7uhosbg5uil7w8xro",  scr_height:228,  scr_width:406)
+  Screenshot.create(game_id: 121,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/kvbwjprt8tnweegegv3u",  scr_height:576,  scr_width:1024)
+  Screenshot.create(game_id: 121,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/risbtotrixghfy8o9wdj",  scr_height:576,  scr_width:1024)
+  Screenshot.create(game_id: 121,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/cf4mbecc1blh5k3rlszr",  scr_height:348,  scr_width:600)
+  Screenshot.create(game_id: 121,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ldeuxkt76th569psyzhq",  scr_height:838,  scr_width:1600)
+  Screenshot.create(game_id: 121,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/c5ofbzndvfgpclfra7cq",  scr_height:838,  scr_width:1600)
+
+  Screenshot.create(game_id: 289,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/njuk3cmzkjzyfciarkss",  scr_height:600,  scr_width:800)
+  Screenshot.create(game_id: 289,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/leb2txcktir3m73n5xec",  scr_height:600,  scr_width:800)
+  Screenshot.create(game_id: 289,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/n7jsfyyrdeavv74bbmto",  scr_height:600,  scr_width:800)
+
+  Screenshot.create(game_id: 327,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/jws3rcfqn56at8fbvdad",  scr_height:600,  scr_width:800)
+  Screenshot.create(game_id: 327,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/wziuqznk3pvfenh26b3u",  scr_height:1024,  scr_width:1280)
+  Screenshot.create(game_id: 327,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/o8xq24lxl1bisgrtycgd",  scr_height:480,  scr_width:640)
+  Screenshot.create(game_id: 327,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/qofn6ooa6mrgdkanrfiw",  scr_height:600,  scr_width:800)
+
+  Screenshot.create(game_id: 492,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/phbrtx8udp3icuqfsno5",  scr_height:1440,  scr_width:2560)
+  Screenshot.create(game_id: 492,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/uyiwlcqgiekcv5grgz8c",  scr_height:1440,  scr_width:2560)
+  Screenshot.create(game_id: 492,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/fioqfi33rtjwmhrnd3ci",  scr_height:1440,  scr_width:2560)
+  Screenshot.create(game_id: 492,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/mg0lugxfomajsrfw4twa",  scr_height:1440,  scr_width:2560)
+  Screenshot.create(game_id: 492,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/m3zk1qe18wrm4dymwchs",  scr_height:1440,  scr_width:2560)
+
+  Screenshot.create(game_id: 547,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/qfbhiurzrro8frjaz2oy",  scr_height:500,  scr_width:800)
+  Screenshot.create(game_id: 547,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/txccwmvw61dnxospzh3w",  scr_height:500,  scr_width:800)
+  Screenshot.create(game_id: 547,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/xsx6p2nro5vjl1lkhcxg",  scr_height:500,  scr_width:800)
+  Screenshot.create(game_id: 547,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/gvcptdtdmlkmvynxas7d",  scr_height:500,  scr_width:800)
+  Screenshot.create(game_id: 547,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/fvidgpneu6qgpga8sbss",  scr_height:500,  scr_width:800)
+
+  Screenshot.create(game_id: 548,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/xrkt3gnqedisrtuhgnhd",  scr_height:1684,  scr_width:2935)
+  Screenshot.create(game_id: 548,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/fde5mbwk0tuqwdllgdwq",  scr_height:1684,  scr_width:2935)
+  Screenshot.create(game_id: 548,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/hmsmlnonm3bsmvs3w5eh",  scr_height:1688,  scr_width:3000)
+  Screenshot.create(game_id: 548,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/hi48uwrlxqxlg9z4thel",  scr_height:1684,  scr_width:2935)
+  Screenshot.create(game_id: 548,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/v4t5lxcbjcwz6wssctg6",  scr_height:1684,  scr_width:2935)
+
+  Screenshot.create(game_id: 990,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/v4rholuf3auyh5gwkr9u",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 990,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/htydjpggdnqiwjxpj4ul",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 990,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/oo0qmrx5unwv2klud3ww",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 990,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/preecffkv0xcmj7gx569",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 990,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/d0uionjuun4dw3euapeg",  scr_height:1080,  scr_width:1920)
+
+  Screenshot.create(game_id: 1020,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/hjnzngnrtwr82jzmmkef",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 1020,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/n3t2agwuxlqggp3kryf9",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 1020,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/o7q3ikzmkjxbftrd64ok",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 1020,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/eepecmqsq6uqxiaukar1",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 1020,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/vfdeo6kgu0o4cyzd0sng",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 1020,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/glvmulyejlde31q8b70z",  scr_height:720,  scr_width:1280)
+
+  Screenshot.create(game_id: 1905,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/wklmdcc9vn93257yjg1c",  scr_height:540,  scr_width:960)
+  Screenshot.create(game_id: 1905,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/xxta3pauqxscx89ou887",  scr_height:540,  scr_width:960)
+  Screenshot.create(game_id: 1905,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/yrhcvy88atrfuhfshj2b",  scr_height:540,  scr_width:960)
+  Screenshot.create(game_id: 1905,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/vqphwdpqcsk0yvo8sbhu",  scr_height:540,  scr_width:960)
+  Screenshot.create(game_id: 1905,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/fev4okgev4xmxdogdwdf",  scr_height:540,  scr_width:960)
+
+  Screenshot.create(game_id: 2609,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/hanq5pi75ankls2siicj",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 2609,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/zwitvvmcsrqvewt4uq0m",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 2609,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/yo8vjkiibyqgibo4ixo3",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 2609,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/n01rtfiwhymf4urfffaz",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 2609,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/dt2w3ogqu8u6ibtgijud",  scr_height:1080,  scr_width:1920)
+
+  Screenshot.create(game_id: 2920,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/yk04zke5s62ybekoosbp",  scr_height:1081,  scr_width:1920)
+  Screenshot.create(game_id: 2920,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/w8qwdc5fxkkpvz0kzamv",  scr_height:900,  scr_width:1600)
+  Screenshot.create(game_id: 2920,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/s9sn17mwt5sxnjk7ells",  scr_height:675,  scr_width:1200)
+  Screenshot.create(game_id: 2920,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ls4c6ofcuefjfwmuurok",  scr_height:675,  scr_width:1200)
+  Screenshot.create(game_id: 2920,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/bxkzty0lzg8ytl28vbtj",  scr_height:338,  scr_width:600)
+
+  Screenshot.create(game_id: 2963,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/wndbrpp6xjggtt1yewmc",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 2963,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/pvivr1k1ojw6wuyqnx2y",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 2963,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/tsbnyv0ewxnmy8ki06sk",  scr_height:1200,  scr_width:1920)
+  Screenshot.create(game_id: 2963,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/qeuk2oddkes1m1n2q4nw",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 2963,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/mvmb0himvqtxzqt1ht1e",  scr_height:1080,  scr_width:1920)
+
+  Screenshot.create(game_id: 5589,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/onebv3agsuofsnepeo68",  scr_height:414,  scr_width:552)
+  Screenshot.create(game_id: 5589,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/alqrfllnxcwtm3wcbo0o",  scr_height:414,  scr_width:552)
+  Screenshot.create(game_id: 5589,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/dswpehpiccmhig8bprrk",  scr_height:414,  scr_width:552)
+  Screenshot.create(game_id: 5589,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/s1fuvgtqqv4bpdhypbj2",  scr_height:414,  scr_width:552)
+  Screenshot.create(game_id: 5589,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/f4bmumta6ipbtoufq7u9",  scr_height:228,  scr_width:406)
+  Screenshot.create(game_id: 5589,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/lqgfcxhgypeb0y5ngv1n",  scr_height:228,  scr_width:406)
+  Screenshot.create(game_id: 5589,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/p7r4nobeje8panbgvv9h",  scr_height:228,  scr_width:406)
+  Screenshot.create(game_id: 5589,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/sbg3awhu349r1eroydhj",  scr_height:228,  scr_width:406)
+  Screenshot.create(game_id: 5589,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/eowbvwp8ak1ijihysusq",  scr_height:228,  scr_width:406)
+  Screenshot.create(game_id: 5589,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/fxph4rh0jc3lib8ghnfb",  scr_height:768,  scr_width:1024)
+  Screenshot.create(game_id: 5589,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/a0cgmidwu7jzbnpcgd52",  scr_height:768,  scr_width:1024)
+  Screenshot.create(game_id: 5589,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/iyagntb1hygu9hbgl64e",  scr_height:620,  scr_width:833)
+
+  Screenshot.create(game_id: 6803,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/sztvvpimmpiuwwcipbuy",  scr_height:1440,  scr_width:2560)
+  Screenshot.create(game_id: 6803,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/oixdbnrksbn6rpqeketc",  scr_height:1440,  scr_width:2560)
+  Screenshot.create(game_id: 6803,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/isojfap422zvz6yjuk4i",  scr_height:1440,  scr_width:2560)
+  Screenshot.create(game_id: 6803,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/jjlzicjhntxslpommlct",  scr_height:1440,  scr_width:2560)
+  Screenshot.create(game_id: 6803,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ristfj9gr8accwuhzovr",  scr_height:1440,  scr_width:2560)
+
+  Screenshot.create(game_id: 7313,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/fkxgn7oneid9vqbyar1c",  scr_height:1050,  scr_width:1680)
+  Screenshot.create(game_id: 7313,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/j2bzhq7fb00tcontusys",  scr_height:1562,  scr_width:2544)
+  Screenshot.create(game_id: 7313,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/kj05gy0emppeuyjbsrjv",  scr_height:1562,  scr_width:2244)
+  Screenshot.create(game_id: 7313,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/vp73eww1jpcadwvfer2s",  scr_height:1562,  scr_width:2412)
+  Screenshot.create(game_id: 7313,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/fwvywtbnxbbjzzj5xjx3",  scr_height:1148,  scr_width:1920)
+
+  Screenshot.create(game_id: 7433,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/q4mz85istzr6bwqpqw9m",  scr_height:79,  scr_width:140)
+  Screenshot.create(game_id: 7433,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/r8lluafuohvruy07cgqp",  scr_height:524,  scr_width:930)
+  Screenshot.create(game_id: 7433,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/h6j9wkgyclxtonkzwthr",  scr_height:524,  scr_width:930)
+  Screenshot.create(game_id: 7433,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/k5sxwtfyfpoeybpdvj7v",  scr_height:524,  scr_width:930)
+
+  Screenshot.create(game_id: 7534,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ktjchwukpdtmgpwlesbj",  scr_height:480,  scr_width:640)
+  Screenshot.create(game_id: 7534,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/bfu12jml85dsamhlad9s",  scr_height:480,  scr_width:640)
+  Screenshot.create(game_id: 7534,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/kdfqrmw8hgwir0lf7pj4",  scr_height:480,  scr_width:640)
+  Screenshot.create(game_id: 7534,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/nktfqedbi6qyj2szkzif",  scr_height:480,  scr_width:640)
+  Screenshot.create(game_id: 7534,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/stf11inpzt1vlhek858j",  scr_height:480,  scr_width:640)
+
+  Screenshot.create(game_id: 7574,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/cryg96vy9kzfgckzh0i1",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 7574,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/oy514htrijlbi8qlt7he",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 7574,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/hhi2hy9d6jmssxmh19ya",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 7574,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/f31laeafebpf9qkltsx1",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 7574,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/nrtyeq8dfduiymrqpimm",  scr_height:1080,  scr_width:1920)
+
+  Screenshot.create(game_id: 11071,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/bx8wsihydgm8ztd8h3gd",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 11071,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/sfvw3zz5vynk3bizitsm",  scr_height:798,  scr_width:1920)
+  Screenshot.create(game_id: 11071,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/gnottm0fs24e1pvympp2",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 11071,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ykdm47fcqfq4rubpmfgp",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 11071,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/cjqdeklk4wirw0mstkbl",  scr_height:478,  scr_width:850)
+
+  Screenshot.create(game_id: 11133,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/nwrsu8awczsx38hmnqx7",  scr_height:2160,  scr_width:3840)
+  Screenshot.create(game_id: 11133,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/wlefrkqqtxge3lo81cis",  scr_height:2160,  scr_width:3840)
+  Screenshot.create(game_id: 11133,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/dqyd3lhqnklcepe8dxw5",  scr_height:2160,  scr_width:3840)
+  Screenshot.create(game_id: 11133,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/acdyxftnekdkxob4leek",  scr_height:2160,  scr_width:3840)
+  Screenshot.create(game_id: 11133,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/vdugyv42fp2jkh1w4lnz",  scr_height:2160,  scr_width:3840)
+
+  Screenshot.create(game_id: 11186,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/astw5gcga2g53bppgoin",  scr_height:266,  scr_width:472)
+  Screenshot.create(game_id: 11186,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/yvetimucce2onvkfqkzr",  scr_height:1400,  scr_width:2560)
+  Screenshot.create(game_id: 11186,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/qzwmmwsv2dlgsojbeaud",  scr_height:1400,  scr_width:2486)
+  Screenshot.create(game_id: 11186,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/beaxxtxy7d3zc7oowvdb",  scr_height:1399,  scr_width:2487)
+  Screenshot.create(game_id: 11186,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/gpcoovqw1tfqzynptnvw",  scr_height:977,  scr_width:1736)
+
+  Screenshot.create(game_id: 11198,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/qehejfbfvynrmjvnmxua",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 11198,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/obxqkxqtfhpvgd4wkb24",  scr_height:880,  scr_width:1650)
+  Screenshot.create(game_id: 11198,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/zrosrzhc8qxivegbqyl6",  scr_height:880,  scr_width:1650)
+  Screenshot.create(game_id: 11198,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/k8pr0aobdo3mquapdirk",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 11198,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/k1hcu9flbu0tvheine15",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 11198,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/czksik7zl3tzb72jafhw",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 11198,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/kky41w6g87pnw8omnoff",  scr_height:844,  scr_width:1500)
+  Screenshot.create(game_id: 11198,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ygepetru87ka9nzqowr6",  scr_height:450,  scr_width:800)
+  Screenshot.create(game_id: 11198,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/w23nbjchdt6ulfxws9nt",  scr_height:450,  scr_width:800)
+  Screenshot.create(game_id: 11198,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/zbk8r9mm9bb56duk5tjp",  scr_height:450,  scr_width:800)
+  Screenshot.create(game_id: 11198,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ipnuinh71ny8bcblibgq",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 11198,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/x2ebxdsn5kfjcnjbo7q2",  scr_height:720,  scr_width:1280)
+
+  Screenshot.create(game_id: 11544,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/bl5wghaei66cmhcdwpd7",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 11544,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/oxfua2ju3qpopvwi9f8y",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 11544,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/yjzlzdrlogvlys1dvqea",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 11544,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/bamuu4yt9tt2akscgjax",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 11544,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ph0vffyhrxraumwifkz4",  scr_height:1080,  scr_width:1920)
+
+  Screenshot.create(game_id: 15707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ewfqybgaq9eiuoquuhm5",  scr_height:768,  scr_width:576)
+  Screenshot.create(game_id: 15707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/tdkhwpfm2y8acjeogpn2",  scr_height:768,  scr_width:576)
+  Screenshot.create(game_id: 15707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/dnk9897bzvctarylvms7",  scr_height:768,  scr_width:576)
+  Screenshot.create(game_id: 15707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ry3iydxntzgnep3ncpef",  scr_height:696,  scr_width:392)
+  Screenshot.create(game_id: 15707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/weu1lcbqlqthnvxddixy",  scr_height:696,  scr_width:392)
+  Screenshot.create(game_id: 15707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/uppslflibn6xwnmgszzn",  scr_height:696,  scr_width:392)
+  Screenshot.create(game_id: 15707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/klici2gefganvfuwv3zr",  scr_height:696,  scr_width:392)
+  Screenshot.create(game_id: 15707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/hw4we8toudgzpwb4kxpv",  scr_height:696,  scr_width:392)
+  Screenshot.create(game_id: 15707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/aai1ddnn0crwqi2gtre5",  scr_height:2732,  scr_width:2048)
+  Screenshot.create(game_id: 15707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ma88f5v7aa7urpit97j0",  scr_height:2732,  scr_width:2048)
+  Screenshot.create(game_id: 15707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/dgneioqragioe08ptrkl",  scr_height:2732,  scr_width:2048)
+  Screenshot.create(game_id: 15707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/rtadtrlrtiwelxou2kfm",  scr_height:2732,  scr_width:2048)
+
+  Screenshot.create(game_id: 16707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/vuphzb07fitqavq3r6qo",  scr_height:900,  scr_width:1600)
+  Screenshot.create(game_id: 16707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ddtdwi7rbseq676y3a9t",  scr_height:900,  scr_width:1600)
+  Screenshot.create(game_id: 16707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/niwifzgfaawvgygehikr",  scr_height:900,  scr_width:1600)
+  Screenshot.create(game_id: 16707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/qqglhn0hohjcrqtkvdrv",  scr_height:900,  scr_width:1600)
+  Screenshot.create(game_id: 16707,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/swmdxnipjv4nxmdezme1",  scr_height:900,  scr_width:1600)
+
+  Screenshot.create(game_id: 16741,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/d1x0kkarc8nhzmbkf3x5",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 16741,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/t8g2p95jyzaxhn1p6sig",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 16741,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/qvmekfiutkowfm72nguq",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 16741,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/grwkymuiqce30ltgxdix",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 16741,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ltad81rmksxvjuifhu8f",  scr_height:1080,  scr_width:1920)
+
+  Screenshot.create(game_id: 18138,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/n90ggkgacoffskj9dylo",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 18138,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/oqjopxieyhp6oicighfg",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 18138,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/c3rukwwtcp8iw5ojhfdp",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 18138,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/sggg6jalcl6exe3ny6hc",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 18138,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/u1xywwdixrnhqmuee3ko",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 18138,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/utlfqjlymk0kbfm3ki40",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 18138,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/zdzzzpxpgf04ham29gl8",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 18138,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/fnvwttywr11nykzehqcb",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 18138,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/rvgrk2iwocycdwmp3nom",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 18138,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/di4kzmiab4wenvgdaeks",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 18138,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/bmaccsiclxep2pqbjaaw",  scr_height:450,  scr_width:800)
+  Screenshot.create(game_id: 18138,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/wdkylad7rxejh0oxm50a",  scr_height:720,  scr_width:1280)
+
+  Screenshot.create(game_id: 18166,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/svkptphmep8mljzpla0u",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 18166,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/sf7cbsqlprjyg5ga39bv",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 18166,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/pdppkiv0wogvdwbqoua8",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 18166,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/cw10atrzpqyysggjr9yo",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 18166,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/mswu2j7l80c9esb8pyyf",  scr_height:1080,  scr_width:1920)
+
+  Screenshot.create(game_id: 18320,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ez6qfdwknjwshjkf5cvo",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 18320,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/fsgtjoqvpwpcb7kbdayb",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 18320,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/jm9kereghangms42rrp3",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 18320,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/qtw7wt4lzftyuadu7h8j",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 18320,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/njrtwbrbluzscozfzsac",  scr_height:1080,  scr_width:1920)
+
+  Screenshot.create(game_id: 19459,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/w09ezru3plfqfqjjlyty",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 19459,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ssas7cieqe0tqrktbeot",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 19459,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/aygoloudn3agp1wrwwjn",  scr_height:1152,  scr_width:2048)
+  Screenshot.create(game_id: 19459,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/cbqhggo1zf7gwhpavz6x",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 19459,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/pkrdkr94byeclewgfesd",  scr_height:2160,  scr_width:3840)
+
+  Screenshot.create(game_id: 27081,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/li43va0vnqjbsyaqjkhc",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 27081,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/gethxkgfqeadq8z4kkdq",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 27081,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/nzmqdpnkdjgqhgjzoutu",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 27081,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/nwpi8g3dbxazjftents8",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 27081,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/hlcbjh2m7pw1buxukyui",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 27081,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/dludiatdm9lpkeguoprm",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 27081,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/cbt9ooc8irnm4jx49nfg",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 27081,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/wceortcxft58cwvobtik",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 27081,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/xfaevz5ale6po2ke5xsz",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 27081,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/znfeta90wlw14djxckpx",  scr_height:576,  scr_width:1024)
+  Screenshot.create(game_id: 27081,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ql70yg9xfolcvfebxbuu",  scr_height:576,  scr_width:1024)
+  Screenshot.create(game_id: 27081,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/sgs8wklzvnfzdvkmzmr8",  scr_height:576,  scr_width:1024)
+
+  Screenshot.create(game_id: 28540,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/oh9o0c3d5eo7qnwkm9q2",  scr_height:2160,  scr_width:3840)
+  Screenshot.create(game_id: 28540,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/p5fjuotpkdecuturqw1c",  scr_height:2160,  scr_width:3840)
+  Screenshot.create(game_id: 28540,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/wq0tjsduutk6jeaqakrh",  scr_height:2160,  scr_width:3840)
+  Screenshot.create(game_id: 28540,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/dxbpxe7xewmvkz8dnrgp",  scr_height:2160,  scr_width:3840)
+  Screenshot.create(game_id: 28540,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/efqqm3t15ey0jlkv0xqv",  scr_height:2160,  scr_width:3840)
+  Screenshot.create(game_id: 28540,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/wzltqoi9xgmmgimnxsrq",  scr_height:2160,  scr_width:3840)
+  Screenshot.create(game_id: 28540,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/nfwxynqhormtovylykxr",  scr_height:2160,  scr_width:3840)
+  Screenshot.create(game_id: 28540,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/gxadfrdicxjlraalvltb",  scr_height:2160,  scr_width:3840)
+  Screenshot.create(game_id: 28540,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/uaxy3tjubonooualy5x8",  scr_height:2160,  scr_width:3840)
+  Screenshot.create(game_id: 28540,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/l1nbqll4r42lqrz1wesv",  scr_height:2160,  scr_width:3840)
+  Screenshot.create(game_id: 28540,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/bdcceejc2e9vaimn0ngn",  scr_height:2160,  scr_width:3840)
+  Screenshot.create(game_id: 28540,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/giqtb8y4awm9ibt942cn",  scr_height:1080,  scr_width:1920)
+
+  Screenshot.create(game_id: 36794,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/g4ffn4zqpdnivgzvu40g",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 36794,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/vygio3cdztxovzun1u6b",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 36794,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/q79npqrhlaqx7xtjjtaj",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 36794,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/yasmekijzhcgkxgdxewq",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 36794,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/rm9s4x4c5ghr5fizd9nl",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 36794,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ms4ovinzgasjmo7k8em2",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 36794,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/fmkrnt0re4bt8j45cg5p",  scr_height:720,  scr_width:1280)
+  Screenshot.create(game_id: 36794,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/r4qabngptgdrhovtzob2",  scr_height:327,  scr_width:578)
+  Screenshot.create(game_id: 36794,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/bj3chvcyt12uecu70nkm",  scr_height:327,  scr_width:578)
+  Screenshot.create(game_id: 36794,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/zaqwjsxzkxjyhdy6jruu",  scr_height:327,  scr_width:578)
+  Screenshot.create(game_id: 36794,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/hbihvua683f84nzfarps",  scr_height:327,  scr_width:578)
+  Screenshot.create(game_id: 36794,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ow4nwli4c72psfopjqiz",  scr_height:327,  scr_width:578)
+
+  Screenshot.create(game_id: 36872,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/jcdx7r2sfgwpqijapgdc",  scr_height:416,  scr_width:740)
+  Screenshot.create(game_id: 36872,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/vnirnto9iar2ravvcfe2",  scr_height:416,  scr_width:740)
+  Screenshot.create(game_id: 36872,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/t3uzuvqpxpopf3ehp7cg",  scr_height:416,  scr_width:740)
+  Screenshot.create(game_id: 36872,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/suuhg1eshuww7rwqoztj",  scr_height:416,  scr_width:740)
+  Screenshot.create(game_id: 36872,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/n7pnupiqcpep3toxen3r",  scr_height:416,  scr_width:740)
+
+  Screenshot.create(game_id: 36911,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/twxiugwlw4ienkwd4tkx",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 36911,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/pfg836d4jrkbdxjakdyh",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 36911,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/fwspovkrzh2wmynysc8f",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 36911,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/lb4rbneoidprk3nih1ik",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 36911,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ifjqb57ogathsp9jdoqs",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 36911,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/ouszuft78bmy4ajnsmai",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 36911,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/vl7bdqzq2uhuhhivg9ob",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 36911,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/bck3mlmmk5ocfcozpxjb",  scr_height:1080,  scr_width:1920)
+  Screenshot.create(game_id: 36911,  scr_url:"//images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/serpe4nefmeivhnmfb1h",  scr_height:1080,  scr_width:1920)
+  
+end
+
+
 def seedGames
 
   @nameSeed = "Games"
@@ -731,12 +1011,13 @@ end
 
 # Seeding with functions
 
-seedSponsorsAndAds
-seedLocations
-seedPegi
-seedGenres
-seedPlatforms
-seedGames
+# seedSponsorsAndAds
+# seedLocations
+# seedPegi
+# seedGenres
+# seedPlatforms
+# seedGames
+seedScreenshots
 #seedPlayerProfilesAndPlayerGameProfiles
 #seedMailBoxes
 #seedPlayerFriends
