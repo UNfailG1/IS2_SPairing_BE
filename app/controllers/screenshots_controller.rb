@@ -3,9 +3,10 @@ class ScreenshotsController < ApplicationController
 
   # GET /screenshots
   def index
-    @screenshots = Screenshot.all
+    @screenshots = Screenshot.getByGameId(params[:game_id])
+      .paginate(page: params['page'], per_page: 15)
 
-    render json: @screenshots
+    render json: @screenshots, each_serializer: ScreenshotSerializer
   end
 
   # GET /screenshots/1
@@ -18,7 +19,7 @@ class ScreenshotsController < ApplicationController
     @screenshot = Screenshot.new(screenshot_params)
 
     if @screenshot.save
-      render json: @screenshot, status: :created, location: @screenshot
+      render json: @screenshot, status: :created
     else
       render json: @screenshot.errors, status: :unprocessable_entity
     end

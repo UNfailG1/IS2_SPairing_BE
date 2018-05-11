@@ -17,4 +17,8 @@
 
 class Screenshot < ApplicationRecord
   belongs_to :game
+
+  def self.getByGameId(gameId)
+    self.where(game_id: gameId)
+  end
 end

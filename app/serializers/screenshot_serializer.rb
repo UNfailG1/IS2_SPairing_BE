@@ -17,5 +17,4 @@
 
 class ScreenshotSerializer < ActiveModel::Serializer
   attributes :id, :scr_url, :scr_height, :scr_width
-  has_one :game
 end
