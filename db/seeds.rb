@@ -133,7 +133,6 @@ def seedPlayerProfilesAndPlayerGameProfiles
   count = 0;
   start_date = Date.new(2017, 01, 01)
   end_date = Date.new(2018, 4, 30)
-  puts ((count/485.0)*100).to_i.to_s + '%'
   while start_date <= end_date
     Faker::Number.between(0, 1).times do
       real_name = Faker::Name.name
@@ -146,24 +145,31 @@ def seedPlayerProfilesAndPlayerGameProfiles
     end
     start_date = start_date + 1.days
     count = count + 1
-    puts ((count/(485.0*2))*100).to_i.to_s + '%'
   end
 
   games = Game.all
   for i in 1..PlayerProfile.all.count do
     reputation = Faker::Number.between(1, 5)
     player_nickname = Faker::Internet.user_name
-    p_game_rate = Faker::Number.between(1, 5)
+    p_game_rate = Faker::Number.between(1, 100)
     player = i
     pp_times = Faker::Number.between(0, 1)
     pp_times.times do
       game = games[Faker::Number.between(1, 37)]
-      PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game_id: game)
+      PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game: game)
       game.update_attribute(:gam_user_counter, game.gam_user_counter + 1)
     end
-    puts ((PlayerProfile.all.count + i)/(PlayerProfile.all.count*2.0)*100).to_i.to_s + '%'
   end
-
+  games.each{ |game|
+    if(game.player_game_profiles.count == 0)
+      return
+    end
+    actual_gam_rate_players = 0
+    game.player_game_profiles.each{ |player_game_profile|
+      actual_gam_rate_players += player_game_profile.pgp_rate
+    }
+    game.update_attribute(:gam_rate_players, actual_gam_rate_players/game.player_game_profiles.count)
+  }
   trackerTime
 end
 
@@ -739,7 +745,7 @@ seedPegi
 seedGenres
 seedPlatforms
 seedGames
-#seedPlayerProfilesAndPlayerGameProfiles
+seedPlayerProfilesAndPlayerGameProfiles
 #seedMailBoxes
 #seedPlayerFriends
 #seedPlayerBlokedList
