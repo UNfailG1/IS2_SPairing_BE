@@ -121,4 +121,9 @@ class Game < ApplicationRecord
 
   end
 
+  #Gives the spairing_rate for the game
+  def spairing_rate
+    ((gam_rate_igdb + gam_user_counter*gam_rate_players)/(gam_user_counter + 1.0)).to_f
+  end
+
 end
