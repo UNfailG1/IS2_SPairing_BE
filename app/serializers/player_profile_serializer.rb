@@ -21,15 +21,9 @@
 
 class PlayerProfileSerializer < ActiveModel::Serializer
   attributes :id, :pp_username, :email, :pp_spairing_elo, :pp_avatar
-
   belongs_to :location
-
-  has_many :player_game_profiles
   has_many :games
-  has_many :comments
-  has_many :mailboxes
-  has_many :senders
+  has_many :player_game_profiles
   has_many :friends
   has_many :blocked_players
-
 end

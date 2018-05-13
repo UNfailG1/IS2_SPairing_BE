@@ -210,10 +210,27 @@ class PlayerProfile < ApplicationRecord
     answer
   end
 
-  def self.getSimilarProfiles(location, pgps)
+  def self.getSimilarProfiles(location, tags, pgps, username)
 
-    #Filter location
-    playersByLocation = self.where(location_id: location)
+    # Get de profiles by username
+    players = self.getByUsernameLike(username)
+
+    # Filter location
+    if location != nil
+      players = players.where(location_id: location)
+    end
+
+    # games = pgps.pluck(:game_id)
+
+    list = []
+    pgps.each { |pgp| list << "game_id = #{pgp}" }
+    players = players.joins(:player_game_profiles)
+    .where(list.join(' OR '))
+    .group(:player_profile_id)
+    .select('count(player_profiles.id) as common_games, player_profiles.id, player_profiles.pp_avatar, player_profiles.pp_username')
+    .order('count(player_profiles.id) DESC')
+
+    players
   end
 
 end

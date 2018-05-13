@@ -81,9 +81,12 @@ class PlayerProfilesController < ApplicationController
   end
 
   def usernamesLike
-    profiles = PlayerProfile.getByUsernameLike(params[:username])
-      .paginate(page: params['page'], per_page: 5)
-    render json: profiles, status: :ok, each_serializer: PlayerProfileOnlySerializer
+    # profiles = PlayerProfile.getByUsernameLike(params[:username])
+    #   .paginate(page: params['page'], per_page: 5)
+    # render json: profiles, status: :ok, each_serializer: PlayerProfileOnlySerializer
+
+    profiles = PlayerProfile.getSimilarProfiles(nil, nil, [2920, 7433, 7574, 11071, 11198] ,params[:username])
+    render json: profiles, status: :ok, each_serializer: nil
   end
 
   private

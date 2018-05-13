@@ -135,7 +135,6 @@ def seedTags
 
 end
 
-
 def seedPlayerProfilesAndPlayerGameProfiles
 
   @nameSeed = "Player profiles and Player game profiles"
@@ -143,7 +142,7 @@ def seedPlayerProfilesAndPlayerGameProfiles
   trackerTime
 
   count = 0;
-  start_date = Date.new(2017, 01, 01)
+  start_date = Date.new(2018, 4, 1)
   end_date = Date.new(2018, 4, 30)
   puts ((count/485.0)*100).to_i.to_s + '%'
   while start_date <= end_date
@@ -166,24 +165,28 @@ def seedPlayerProfilesAndPlayerGameProfiles
     player_nickname = Faker::Internet.user_name
     p_game_rate = Faker::Number.between(1, 5)
     pp_times = Faker::Number.between(1, 5)
-    games = []
+    gameIds = []
+    games = Game.all
 
     pp_times.times do
-
-      game = Faker::Number.between(1, 37)
-
-      while games.include?(game) do
-        game = Faker::Number.between(1, 37)
+      gameId = Faker::Number.between(1, 37)
+      while gameIds.include?(gameId) do
+        gameId = Faker::Number.between(1, 37)
       end
+      gameIds.push(gameId)
+      game = games[gameId]
 
-      pgp = PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game_id: game)
+      pgp = PlayerGameProfile.create(
+        pgp_reputation: reputation,
+        pgp_nickname: player_nickname, pgp_rate: p_game_rate,
+        player_profile_id: i, game_id: game.id
+      )
+
       game.update_attribute(:gam_user_counter, game.gam_user_counter + 1)
 
       for j in 0..3 do
         pgp.tags.push(Tag.find(Faker::Number.between(1, 15)))
       end
-
-      games.push(game)
 
     end
     puts ((PlayerProfile.all.count + i)/(PlayerProfile.all.count*2.0)*100).to_i.to_s + '%'
