@@ -210,20 +210,45 @@ class PlayerProfile < ApplicationRecord
     answer
   end
 
-  def self.getSimilarProfiles(location, tags, pgps, username)
+  def self.getSimilarProfiles(profile)
 
     # Get de profiles by username
-    players = self.getByUsernameLike(username)
+    players = self.all
+
+    # Filter location
+    if location != nil
+      players = players.where(location_id: profile.location_id)
+    end
+
+    if profile.player_game_profiles.length > 0
+      games = profile.player_game_profiles.pluck(:game_id)
+
+      list = []
+      games.each { |game| list << "game_id = #{game}" }
+      players = players.joins(:player_game_profiles)
+      .where(list.join(' OR '))
+      .group(:player_profile_id)
+      .select('count(player_profiles.id) as common_games, player_profiles.id, player_profiles.pp_avatar, player_profiles.pp_username')
+      .order('count(player_profiles.id) DESC')
+    end
+
+    players
+  end
+  
+  def self.getSimilarProfiles(location, tags)
+
+    # Get de profiles by username
+    players = self.all
 
     # Filter location
     if location != nil
       players = players.where(location_id: location)
     end
 
-    # games = pgps.pluck(:game_id)
+    games = pgps.pluck(:game_id)
 
     list = []
-    pgps.each { |pgp| list << "game_id = #{pgp}" }
+    games.each { |game| list << "game_id = #{game}" }
     players = players.joins(:player_game_profiles)
     .where(list.join(' OR '))
     .group(:player_profile_id)
