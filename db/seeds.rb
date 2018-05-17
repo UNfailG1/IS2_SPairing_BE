@@ -126,13 +126,15 @@ end
 
 def seedTags
   @nameSeed = "Tag"
-  @added    = "Aca va algo"
+  #@added    = "Aca va algo" #xddddd
+  @added    = "25 tags"
   trackerTime
 
   for i in 0..15 do
     Tag.create(tag_name: Faker::Hipster.word)
   end
 
+  trackerTime
 end
 
 def seedPlayerProfilesAndPlayerGameProfiles
@@ -144,7 +146,6 @@ def seedPlayerProfilesAndPlayerGameProfiles
   count = 0;
   start_date = Date.new(2018, 4, 1)
   end_date = Date.new(2018, 4, 30)
-  puts ((count/485.0)*100).to_i.to_s + '%'
   while start_date <= end_date
     Faker::Number.between(0, 1).times do
       real_name = Faker::Name.name
@@ -152,12 +153,12 @@ def seedPlayerProfilesAndPlayerGameProfiles
       password = Faker::Internet.password(8, 20)
       email = Faker::Internet.free_email(real_name)
       location = Faker::Number.between(1, 15)
-      PlayerProfile.create(pp_username: username, password_confirmation: password, password: password, location_id: location,
+      player = PlayerProfile.create(pp_username: username, password_confirmation: password, password: password, location_id: location,
         email: email, pp_spairing_elo: Faker::Number.between(0, 5), pp_avatar: 'user.svg', created_at: start_date)
+      #player.pp_avatar.setFile(Faker::Avatar.image(username, "200x200"))
     end
     start_date = start_date + 1.days
     count = count + 1
-    puts ((count/(485.0*2))*100).to_i.to_s + '%'
   end
 
   for i in 1..PlayerProfile.all.count do
