@@ -196,7 +196,20 @@ class PlayerProfile < ApplicationRecord
     order(pp_spairing_elo: :desc).limit(10)
   end
 
-  #Recordar poner private aqu'i
+  #Get the SPaiting recomendation for a player
+  def getRecomendation()
+    list = []
+    PlayerProfile.all.each{ |actual_player|
+      list << [actual_player, getSpairingMatchRateStaticalWeigh(actual_player)]
+    }
+    list.sort_by{ |key|
+      -1*key[1]
+    }
+
+    list[0..9]
+  end
+
+  private
 
   #Get statistic users registered on a intervale of time, per unit of time
   #Param start_date is a date that represents the first date to begin the querie
@@ -211,27 +224,25 @@ class PlayerProfile < ApplicationRecord
     answer
   end
 
-  def self.getSimilarProfiles(profile)
+  def self.getSimilarProfiles(location, tags, pgps, username)
 
     # Get de profiles by username
-    players = self.all
+    players = self.getByUsernameLike(username)
 
     # Filter location
     if location != nil
-      players = players.where(location_id: profile.location_id)
+      players = players.where(location_id: location)
     end
 
-    if profile.player_game_profiles.length > 0
-      games = profile.player_game_profiles.pluck(:game_id)
+    # games = pgps.pluck(:game_id)
 
-      list = []
-      games.each { |game| list << "game_id = #{game}" }
-      players = players.joins(:player_game_profiles)
-      .where(list.join(' OR '))
-      .group(:player_profile_id)
-      .select('count(player_profiles.id) as common_games, player_profiles.id, player_profiles.pp_avatar, player_profiles.pp_username')
-      .order('count(player_profiles.id) DESC')
-    end
+    list = []
+    pgps.each { |pgp| list << "game_id = #{pgp}" }
+    players = players.joins(:player_game_profiles)
+    .where(list.join(' OR '))
+    .group(:player_profile_id)
+    .select('count(player_profiles.id) as common_games, player_profiles.id, player_profiles.pp_avatar, player_profiles.pp_username')
+    .order('count(player_profiles.id) DESC')
 
     players
   end
