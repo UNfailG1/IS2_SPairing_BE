@@ -41,6 +41,8 @@ class PlayerProfile < ApplicationRecord
                           join_table: 'blocked_players',
                           association_foreign_key: 'blocked_player_profile_id'
 
+  has_many :rates
+
   has_many :mailboxes, dependent: :nullify, foreign_key: 'receiver_id'
   has_many :senders, through: :mailboxes
 
@@ -209,5 +211,5 @@ class PlayerProfile < ApplicationRecord
     end
     answer
   end
-  
+
 end

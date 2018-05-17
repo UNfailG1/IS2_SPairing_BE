@@ -133,7 +133,6 @@ def seedPlayerProfilesAndPlayerGameProfiles
   count = 0;
   start_date = Date.new(2017, 01, 01)
   end_date = Date.new(2018, 4, 30)
-  puts ((count/485.0)*100).to_i.to_s + '%'
   while start_date <= end_date
     Faker::Number.between(0, 1).times do
       real_name = Faker::Name.name
@@ -145,8 +144,6 @@ def seedPlayerProfilesAndPlayerGameProfiles
         email: email, pp_spairing_elo: Faker::Number.between(0, 5), pp_avatar: 'user.svg', created_at: start_date)
     end
     start_date = start_date + 1.days
-    count = count + 1
-    puts ((count/(485.0*2))*100).to_i.to_s + '%'
   end
 
   games = Game.all
@@ -158,13 +155,27 @@ def seedPlayerProfilesAndPlayerGameProfiles
     pp_times = Faker::Number.between(0, 1)
     pp_times.times do
       game = games[Faker::Number.between(1, 37)]
-      PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game_id: game)
+      PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game: game)
       game.update_attribute(:gam_user_counter, game.gam_user_counter + 1)
     end
-    puts ((PlayerProfile.all.count + i)/(PlayerProfile.all.count*2.0)*100).to_i.to_s + '%'
   end
 
   trackerTime
+end
+
+def seedRates
+    @nameSeed = "Rates"
+    @added    = "one rate per player profile"
+    trackerTime
+
+    PlayerProfile.all.each{ |player|
+        times = Faker::Number.between(0, 1)
+        times.times do
+            Rate.create(player_game_profile: PlayerGameProfile.random, player_profile: player, rate_rate: Faker::Number.between(1, 5))
+        end
+    }
+
+    trackerTime
 end
 
 def seedMailBoxes
@@ -737,7 +748,8 @@ seedPegi
 seedGenres
 seedPlatforms
 seedGames
-#seedPlayerProfilesAndPlayerGameProfiles
+seedPlayerProfilesAndPlayerGameProfiles
+seedRates
 #seedMailBoxes
 #seedPlayerFriends
 #seedPlayerBlokedList
