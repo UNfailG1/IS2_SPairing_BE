@@ -59,75 +59,83 @@ class PlayerProfilesController < ApplicationController
     @player_profile.destroy
   end
 
-  def friend_status
-    sender = current_player_profile
-    receiver = PlayerProfile.find(params[:receiver_id])
+  def relation_status
+    current = current_player_profile
+    player = PlayerProfile.find(params[:player_id])
 
     toRender = {
-      sender_friends: sender.friends.pluck(:id),
-      receiver_friends: receiver.friends.pluck(:id)
+      current: {
+        c_friends: current.friends.pluck(:id),
+        c_locks: current.blocked_players.pluck(:id)
+      },
+      player: {
+        p_friends: player.friends.pluck(:id),
+        p_locks: player.blocked_players.pluck(:id)
+      }
     }
 
     render json: toRender, status: :ok, serializer: nil
   end
 
   def friend_request
-    sender = current_player_profile
-    receiver = PlayerProfile.find(params[:receiver_id])
-    if !sender.friends.include? receiver
-      sender.friends.push(receiver)
+    current = current_player_profile
+    player = PlayerProfile.find(params[:player_id])
+    if !current.friends.include? player
+      current.friends.push(player)
       # Falta enviar la notificacion en la pagina
-      if receiver.friends.include? sender
-        PlayerProfileMailer.request_accepted_email(sender, receiver).deliver_later
+      if player.friends.include? current
+        PlayerProfileMailer.request_accepted_email(current, player).deliver_later
       else
-        PlayerProfileMailer.request_sended_email(sender, receiver).deliver_later
+        PlayerProfileMailer.request_sended_email(current, player).deliver_later
       end
     end
+
     toRender = {
-      sender_friends: sender.friends.pluck(:id),
-      receiver_friends: receiver.friends.pluck(:id)
+      current_friends: current.friends.pluck(:id),
+      player_friends: player.friends.pluck(:id),
     }
 
     render json: toRender, status: :ok, serializer: nil
   end
 
   def remove_friend
-    sender = current_player_profile
-    receiver = PlayerProfile.find(params[:receiver_id])
-    if sender.friends.include? receiver
-      sender.friends.delete(receiver)
+    current = current_player_profile
+    player = PlayerProfile.find(params[:player_id])
+    if current.friends.include? player
+      current.friends.delete(player)
     end
-    if receiver.friends.include? sender
-      receiver.friends.delete(sender)
+    if player.friends.include? current
+      player.friends.delete(current)
     end
 
     toRender = {
-      sender_friends: sender.friends.pluck(:id),
-      receiver_friends: receiver.friends.pluck(:id)
+      current_friends: current.friends.pluck(:id),
+      player_friends: player.friends.pluck(:id),
     }
 
     render json: toRender, status: :ok, serializer: nil
   end
 
   def block_player
-    blocker = current_player_profile
-    blocked = PlayerProfile.find(params[:blocked_player_id])
+    current = current_player_profile
+    player = PlayerProfile.find(params[:player_id])
 
-    if !blocker.blocked_players.include?
-      blocker.blocked_players.push(blocked)
+    if !current.blocked_players.include? player
+      current.blocked_players.push(player)
     end
 
-    render json: blocker, status: :ok, serializer: PlayerProfileSerializer
-
-  end
-
-  def block_status
-    player = PlayerProfile.find(params[:player_id])
-    blocked = {
-      player_blocked_players: player.blocked_players.pluck(:id)
+    toRender = {
+      current: {
+        c_friends: current.friends.pluck(:id),
+        c_locks: current.blocked_players.pluck(:id)
+      },
+      player: {
+        p_friends: player.friends.pluck(:id),
+        p_locks: player.blocked_players.pluck(:id)
+      }
     }
-    render json: blocked, status: :ok, serializer: nil
 
+    render json: toRender, status: :ok, serializer: nil
   end
 
   def usernames_like
