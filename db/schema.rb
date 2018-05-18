@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180511221133) do
+ActiveRecord::Schema.define(version: 20180517131536) do
 
   create_table "ads", force: :cascade do |t|
     t.text "ad_description"
@@ -144,12 +144,30 @@ ActiveRecord::Schema.define(version: 20180511221133) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rates", force: :cascade do |t|
+    t.float "rate_rate"
+    t.integer "player_game_profile_id"
+    t.integer "player_profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reports", force: :cascade do |t|
     t.string "report_type"
     t.string "filename"
     t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "screenshots", force: :cascade do |t|
+    t.string "scr_url"
+    t.integer "scr_height"
+    t.integer "scr_width"
+    t.integer "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_screenshots_on_game_id"
   end
 
   create_table "sponsors", force: :cascade do |t|

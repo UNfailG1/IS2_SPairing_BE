@@ -120,6 +120,14 @@ class PlayerProfilesController < ApplicationController
     current = current_player_profile
     player = PlayerProfile.find(params[:player_id])
 
+    if !current.friends.include? player
+      current.friends.delete(player)
+    end
+
+    if !player.friends.include? current
+      player.friends.delete(current)
+    end
+
     if !current.blocked_players.include? player
       current.blocked_players.push(player)
     end

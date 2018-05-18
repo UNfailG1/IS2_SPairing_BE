@@ -33,9 +33,6 @@ Rails.application.routes.draw do
   get "/usernames_like" => "player_profiles#usernames_like"
   get "/games_like" => "games#games_like"
   get "/suggested_profiles" => "player_profiles#suggested_profiles"
-  get "/friend_status/:receiver_id" => "player_profiles#friend_status"
-  get "/block_player/:blocked_player_id" => "player_profiles#block_player"
-  get "/blocked_status/:player_id" => "player_profiles#block_status"
   get "/block_player/:player_id" => "player_profiles#block_player"
   get "/relation_status/:player_id" => "player_profiles#relation_status"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
