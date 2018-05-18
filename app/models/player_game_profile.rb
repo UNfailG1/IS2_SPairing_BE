@@ -21,6 +21,7 @@ class PlayerGameProfile < ApplicationRecord
   belongs_to :game
   belongs_to :player_profile
   has_many :rates
+  has_and_belongs_to_many :tags, join_table: 'tag_players'
 
   validates :pgp_reputation, presence: true
   validates :pgp_nickname, presence: true
@@ -31,6 +32,10 @@ class PlayerGameProfile < ApplicationRecord
   #param nickname may be a string
   def self.getByNickname(nickname)
     PlayerGameProfile.where(pgp_nickname: nickname)
+  end
+
+  def self.getByPlayerId(id)
+    PlayerGameProfile.where(player_profile_id: id)
   end
 
   #Search for Player Game Profiles by his/her nickname equal to
@@ -79,29 +84,29 @@ class PlayerGameProfile < ApplicationRecord
   #Search for PlayerGameProfiles by his/her rate below
   #rate param
   #param rate may be a float
-  def self.getByReputationBelow(rate)
-    PlayerGameProfile.where("pgp_reputation < ?", rate)
+  def self.getByRateBelow(rate)
+    PlayerGameProfile.where("pgp_rate < ?", rate)
   end
 
   #Search for PlayerGameProfiles by his/her rate above
   #rate param
   #param rate may be a float
-  def self.getByReputationAbove(rate)
-    PlayerGameProfile.where("pgp_reputation > ?", rate)
+  def self.getByRateAbove(rate)
+    PlayerGameProfile.where("pgp_rate > ?", rate)
   end
 
   #Search for PlayerGameProfiles by his/her rate equal
   #rate param
   #param rate may be a float
-  def self.getByReputationEqual(rate)
-    PlayerGameProfile.where("pgp_reputation = ?", rate)
+  def self.getByRateEqual(rate)
+    PlayerGameProfile.where("pgp_rate = ?", rate)
   end
 
   #Search for PlayerGameProfiles by his/her rate between
   #rate_low param and rate_upp param
   #param rate_low may be a float
   #param rate_upp may be a float
-  def self.getByReputationEqual(rate_low, rate_upp)
+  def self.getByRateEqual(rate_low, rate_upp)
     PlayerGameProfile.where("pgp_rate BETWEEN ? AND ?", rate_low, rate_upp)
   end
 
@@ -111,4 +116,5 @@ class PlayerGameProfile < ApplicationRecord
   def self.getPlayerGameProfileByPlayerProfileIdAndGameId(player_id, game_id)
       PlayerGameProfile.where("game_id = ? AND player_profile_id = ?", game_id, player_id)[0]
   end
+
 end

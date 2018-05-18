@@ -19,6 +19,7 @@
 #
 
 require 'carrierwave/orm/activerecord'
+require 'rmagick'
 
 class PlayerProfile < ApplicationRecord
 
@@ -197,6 +198,19 @@ class PlayerProfile < ApplicationRecord
     order(pp_spairing_elo: :desc).limit(10)
   end
 
+  #Get the SPaiting recomendation for a player
+  def getRecomendation()
+    list = []
+    PlayerProfile.all.each{ |actual_player|
+      list << [actual_player, getSpairingMatchRateStaticalWeigh(actual_player)]
+    }
+    list.sort_by{ |key|
+      -1*key[1]
+    }
+
+    list[0..9]
+  end
+
   private
 
   #Get statistic users registered on a intervale of time, per unit of time
@@ -211,5 +225,132 @@ class PlayerProfile < ApplicationRecord
     end
     answer
   end
+
+  def self.getSimilarProfiles(profile)
+
+    # Get de profiles by username
+    players = self.all
+
+    # Filter location
+    if profile.location != nil
+      players = players.where(location_id: profile.location.id)
+    end
+
+    if profile.player_game_profiles.length > 0
+      games = profile.player_game_profiles.pluck(:game_id)
+
+      list = []
+      games.each { |game| list << "game_id = #{game}" }
+      players = players.joins(:player_game_profiles)
+      .where(list.join(' OR '))
+      .group(:player_profile_id)
+      .select('count(player_profiles.id) as common_games, player_profiles.id, player_profiles.pp_avatar, player_profiles.pp_username')
+      .order('count(player_profiles.id) DESC')
+    end
+    players
+  end
+
+    def getSpairingMatchRateStaticalWeigh(player)
+      weighFunctions = [10, 10, 10, 100]
+      getSpairingMatchRate(player, weighFunctions)
+    end
+
+    def getSpairingMatchRate(player, weighFunctions)
+      weightedSPMatch = 0
+      weightedSPMatch += weighFunctions[0]*getSpairingGameAffinity(player)
+      weightedSPMatch += weighFunctions[1]*getSpairingAvatarColorAffinity(player)
+      weightedSPMatch += weighFunctions[2]*getSpairingWordCommentAffinity(player)
+      weightedSPMatch += weighFunctions[3]*getSpairingTagAffinity(player)
+
+      weightedSPMatch / weighFunctions.sum
+    end
+
+    def getSpairingGameAffinity(player)
+      count = 0
+      setGame = Set.new
+      player_game_profiles.each { |pgp| setGame << pgp.game_id }
+      games_count = setGame.count
+      player.player_game_profiles.each { |pgp|
+        if setGame.include?(pgp.game_id) then
+          count = count + 1
+        else
+          games_count = games_count + 1
+        end
+      }
+      return Math.sqrt(Math.sqrt(Math.sqrt((count + 0.0)/games_count)))
+    end
+
+    def getSpairingAvatarColorAffinity(player)
+      if pp_avatar.file == nil or player.pp_avatar.file == nil
+        return 0.5
+      end
+      img1 = Magick::Image.read(pp_avatar.file.file)[0]
+      img2 = Magick::Image.read(player.pp_avatar.file.file)[0]
+
+      total = 0
+      avg1   = { :r => 0.0, :g => 0.0, :b => 0.0 }
+      img1.quantize.color_histogram.each { |c, n|
+          avg1[:r] += n * c.red
+          avg1[:g] += n * c.green
+          avg1[:b] += n * c.blue
+          total   += n
+      }
+      [:r, :g, :b].each { |comp| avg1[comp] /= total }
+      [:r, :g, :b].each { |comp| avg1[comp] = (avg1[comp] / Magick::QuantumRange * 255).to_i }
+
+      avg2   = { :r => 0.0, :g => 0.0, :b => 0.0 }
+      img2.quantize.color_histogram.each { |c, n|
+          avg2[:r] += n * c.red
+          avg2[:g] += n * c.green
+          avg2[:b] += n * c.blue
+          total   += n
+      }
+      [:r, :g, :b].each { |comp| avg2[comp] /= total }
+      [:r, :g, :b].each { |comp| avg2[comp] = (avg2[comp] / Magick::QuantumRange * 255).to_i }
+
+      1 - (((avg1[:r] - avg2[:r])/256.0).abs + ((avg1[:g] - avg2[:g])/256.0).abs + ((avg1[:b] - avg2[:b])/256.0).abs)/3.0
+    end
+
+    def getSpairingWordCommentAffinity(player)
+      words = Set.new
+      comments.each{ |comment|
+        comment.com_comment.split(' ').each{ |word|
+          words << word
+        }
+      }
+      words_count = words.count
+      affinity = 0
+      player.comments.each{ |comment|
+        comment.com_comment.split(' ').each{ |word|
+          if words.include?(word) then
+            affinity = affinity + 1
+          else
+            words_count = words_count + 1
+          end
+        }
+      }
+      Math.sqrt(Math.sqrt(Math.sqrt((affinity + 0.0)/words_count)))
+    end
+
+    def getSpairingTagAffinity(player)
+      tag_set = Set.new
+      player_game_profiles.each{ |pgp|
+        pgp.tags.each{ |tag|
+          tag_set << tag.id
+        }
+      }
+      tag_count = tag_set.count
+      affinity = 0
+      player.player_game_profiles.each{ |pgp|
+        pgp.tags.each{ |tag|
+          if (tag_set).include?tag.id then
+            affinity = affinity + 1
+          else
+            tag_count = tag_count + 1
+          end
+        }
+      }
+      Math.sqrt((affinity + 0.0)/tag_count)
+    end
 
 end

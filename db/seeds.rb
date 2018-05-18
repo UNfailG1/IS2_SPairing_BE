@@ -124,6 +124,19 @@ def seedLocations
 
 end
 
+def seedTags
+  @nameSeed = "Tag"
+  #@added    = "Aca va algo" #xddddd
+  @added    = "25 tags"
+  trackerTime
+
+  for i in 0..15 do
+    Tag.create(tag_name: Faker::Hipster.word)
+  end
+
+  trackerTime
+end
+
 def seedPlayerProfilesAndPlayerGameProfiles
 
   @nameSeed = "Player profiles and Player game profiles"
@@ -131,7 +144,7 @@ def seedPlayerProfilesAndPlayerGameProfiles
   trackerTime
 
   count = 0;
-  start_date = Date.new(2017, 01, 01)
+  start_date = Date.new(2018, 4, 1)
   end_date = Date.new(2018, 4, 30)
   while start_date <= end_date
     Faker::Number.between(0, 1).times do
@@ -140,23 +153,40 @@ def seedPlayerProfilesAndPlayerGameProfiles
       password = Faker::Internet.password(8, 20)
       email = Faker::Internet.free_email(real_name)
       location = Faker::Number.between(1, 15)
-      PlayerProfile.create(pp_username: username, password_confirmation: password, password: password, location_id: location,
+      player = PlayerProfile.create(pp_username: username, password_confirmation: password, password: password, location_id: location,
         email: email, pp_spairing_elo: Faker::Number.between(0, 5), pp_avatar: 'user.svg', created_at: start_date)
+      #player.pp_avatar.setFile(Faker::Avatar.image(username, "200x200"))
     end
     start_date = start_date + 1.days
   end
 
-  games = Game.all
   for i in 1..PlayerProfile.all.count do
     reputation = Faker::Number.between(1, 5)
     player_nickname = Faker::Internet.user_name
     p_game_rate = Faker::Number.between(1, 100)
     player = i
     pp_times = Faker::Number.between(0, 1)
+    gameIds = []
+    games = Game.all
     pp_times.times do
-      game = games[Faker::Number.between(1, 37)]
-      PlayerGameProfile.create(pgp_reputation: reputation, pgp_nickname: player_nickname, pgp_rate: p_game_rate, player_profile_id: player, game: game)
+      gameId = Faker::Number.between(1, 37)
+      while gameIds.include?(gameId) do
+        gameId = Faker::Number.between(1, 37)
+      end
+      gameIds.push(gameId)
+      game = games[gameId]
+
+      pgp = PlayerGameProfile.create(
+        pgp_reputation: reputation,
+        pgp_nickname: player_nickname, pgp_rate: p_game_rate,
+        player_profile_id: i, game_id: game.id
+      )
       game.update_attribute(:gam_user_counter, game.gam_user_counter + 1)
+
+      for j in 0..3 do
+        pgp.tags.push(Tag.find(Faker::Number.between(1, 15)))
+      end
+
     end
   end
   games.each{ |game|
@@ -759,10 +789,10 @@ seedPegi
 seedGenres
 seedPlatforms
 seedGames
+seedTags
 seedPlayerProfilesAndPlayerGameProfiles
-seedRates
-#seedMailBoxes
-#seedPlayerFriends
-#seedPlayerBlokedList
-#seedSubForum
+seedMailBoxes
+seedPlayerFriends
+seedPlayerBlokedList
+seedSubForum
 # rawSeed

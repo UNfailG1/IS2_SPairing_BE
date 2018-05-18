@@ -5,7 +5,8 @@ class PlayerGameProfilesController < ApplicationController
 
   # GET /player_game_profiles
   def index
-    @player_game_profiles = PlayerGameProfile.paginate(page: params['page'], per_page: 15)
+    @player_game_profiles = PlayerGameProfile.getByPlayerId(params[:player_profile_id])
+      .paginate(page: params['page'], per_page: 15)
 
     render json: @player_game_profiles, each_serializer: PlayerGameProfileSerializer
   end
