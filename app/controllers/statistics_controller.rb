@@ -3,12 +3,13 @@ class StatisticsController < ApplicationController
     @querie =
       { usage:
         {
-          thr_most_commented:     'Returns the most commented threads of a game, sub forum or for every comments',
-          gam_most_played:        'Returns the most popular games',
-          users_register_record:  'Returns the count of players registered on a intervale of time',
-          mails_sent_record:      'Returns the count of mails sent on a intervale of time',
-          genre_most_wanted:      'Returns the most wanted genres',
-          best_players:           'Returns the best players on the platform'
+          thr_most_commented:       'Returns the most commented threads of a game, sub forum or for every comments',
+          gam_most_played:          'Returns the most popular games',
+          users_register_record:    'Returns the count of players registered on a intervale of time',
+          mails_sent_record:        'Returns the count of mails sent on a intervale of time',
+          genre_most_wanted:        'Returns the most wanted genres',
+          best_players:             'Returns the best players on the platform',
+          gam_most_commented_week:  'Returns the most popular games at the week'
         } }
     render json: @querie, status: 422
   end
@@ -28,12 +29,19 @@ class StatisticsController < ApplicationController
       genre_most_wanted
     when 'best_players'
       best_players
+    when 'gam_most_played_week'
+      gam_most_played_week
     else
       index
     end
   end
 
   private
+
+  def gam_most_played_week()
+    @querie = Game.getMostCommentedLastWeek
+    render json: @querie
+  end
 
   def thr_most_commented(sub_forum, game)
     @querie = []

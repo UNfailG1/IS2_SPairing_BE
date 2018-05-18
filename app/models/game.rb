@@ -24,6 +24,7 @@ class Game < ApplicationRecord
   has_many :sub_forums, dependent: :destroy
   has_many :player_game_profiles, dependent: :destroy
   has_many :player_profiles, through: :player_game_profiles
+  has_many :comments, through: :sub_forums
 
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :platforms
@@ -93,6 +94,21 @@ class Game < ApplicationRecord
   #Get most played games
   def self.getMostPlayed
     self.order(gam_user_counter: :desc).limit(10)
+  end
+
+  #Get most commented games of the last week
+  def self.getMostCommentedLastWeek()
+    getMostCommentedBetween(Date.today.end_of_day + 1.day, Date.today - 1.week)
+  end
+
+  #Get most commented games on a intervale of time
+  def self.getMostCommentedBetween(start_date, end_date)
+    gamus = []
+    all.each{ |gamu|
+      gamus << [gamu, gamu.comments.where(:created_at => end_date..start_date).count]
+    }
+    gamus.sort {|a,b| a[1] <=> b[1]}
+    gamus
   end
 
   #Seed record of the game
