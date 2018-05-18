@@ -20,6 +20,7 @@
 class PlayerGameProfile < ApplicationRecord
   belongs_to :game
   belongs_to :player_profile
+  has_many :rates
 
   validates :pgp_reputation, presence: true
   validates :pgp_nickname, presence: true

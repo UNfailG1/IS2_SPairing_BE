@@ -144,7 +144,6 @@ def seedPlayerProfilesAndPlayerGameProfiles
         email: email, pp_spairing_elo: Faker::Number.between(0, 5), pp_avatar: 'user.svg', created_at: start_date)
     end
     start_date = start_date + 1.days
-    count = count + 1
   end
 
   games = Game.all
@@ -171,6 +170,21 @@ def seedPlayerProfilesAndPlayerGameProfiles
     game.update_attribute(:gam_rate_players, actual_gam_rate_players/game.player_game_profiles.count)
   }
   trackerTime
+end
+
+def seedRates
+    @nameSeed = "Rates"
+    @added    = "one rate per player profile"
+    trackerTime
+
+    PlayerProfile.all.each{ |player|
+        times = Faker::Number.between(0, 1)
+        times.times do
+            Rate.create(player_game_profile: PlayerGameProfile.random, player_profile: player, rate_rate: Faker::Number.between(1, 5))
+        end
+    }
+
+    trackerTime
 end
 
 def seedMailBoxes
@@ -746,6 +760,7 @@ seedGenres
 seedPlatforms
 seedGames
 seedPlayerProfilesAndPlayerGameProfiles
+seedRates
 #seedMailBoxes
 #seedPlayerFriends
 #seedPlayerBlokedList
