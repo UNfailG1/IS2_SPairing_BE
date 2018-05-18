@@ -29,4 +29,5 @@ class GameSerializer < ActiveModel::Serializer
   has_many :player_profiles
   has_many :genres
   has_many :platforms
+  has_many :screenshots
 end

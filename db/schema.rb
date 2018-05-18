@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180517131536) do
+ActiveRecord::Schema.define(version: 20180511221133) do
 
   create_table "ads", force: :cascade do |t|
     t.text "ad_description"
@@ -140,14 +140,6 @@ ActiveRecord::Schema.define(version: 20180517131536) do
     t.integer "sender_id"
     t.integer "receiver_id"
     t.text "pr_reasons"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "rates", force: :cascade do |t|
-    t.float "rate_rate"
-    t.integer "player_game_profile_id"
-    t.integer "player_profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

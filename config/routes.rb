@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :player_reports
   post "player_profile_token" => "player_profile_token#create"
   post "google_authentication" => "social_auth#google_authentication"
 
@@ -9,11 +8,12 @@ Rails.application.routes.draw do
   end
 
   resources :games do
-   resources :sub_forums, only: [:index, :create] do
-     resources :thread_forums, only: [:index, :create] do
-       resources :comments, only: [:index, :create]
-     end
-   end
+    resources :screenshots, shallow: true
+    resources :sub_forums, only: [:index, :create] do
+      resources :thread_forums, only: [:index, :create] do
+        resources :comments, only: [:index, :create]
+      end
+    end
   end
 
   resources :sub_forums, :thread_forums, :comments, only: [:show, :update, :destroy]
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   end
 
   resources :genres, :locations, :pegis, :platforms, :mailboxes, :reports,
-            :statistics, :player_games, :rates, :tags
+            :statistics, :player_games, :rates, :tags, :player_reports
 
   get "/friend_request/:receiver_id" => "player_profiles#friend_request"
   get "/remove_friend/:receiver_id" => "player_profiles#remove_friend"
