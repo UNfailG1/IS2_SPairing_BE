@@ -50,6 +50,6 @@ class ThreadForumsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def thread_forum_params
-      params.fetch(:thread_forum, {})
+      params[:thread_forum].permit(:thr_name, :sub_forum_id, :thr_comments, :thr_views)
     end
 end
