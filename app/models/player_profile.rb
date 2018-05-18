@@ -19,7 +19,7 @@
 #
 
 require 'carrierwave/orm/activerecord'
-require 'rmagick'
+# require 'rmagick'
 
 class PlayerProfile < ApplicationRecord
 
@@ -278,36 +278,36 @@ class PlayerProfile < ApplicationRecord
       return Math.sqrt(Math.sqrt(Math.sqrt((count + 0.0)/games_count)))
     end
 
-    def getSpairingAvatarColorAffinity(player)
-      if pp_avatar.file == nil or player.pp_avatar.file == nil
-        return 0.5
-      end
-      img1 = Magick::Image.read(pp_avatar.file.file)[0]
-      img2 = Magick::Image.read(player.pp_avatar.file.file)[0]
-
-      total = 0
-      avg1   = { :r => 0.0, :g => 0.0, :b => 0.0 }
-      img1.quantize.color_histogram.each { |c, n|
-          avg1[:r] += n * c.red
-          avg1[:g] += n * c.green
-          avg1[:b] += n * c.blue
-          total   += n
-      }
-      [:r, :g, :b].each { |comp| avg1[comp] /= total }
-      [:r, :g, :b].each { |comp| avg1[comp] = (avg1[comp] / Magick::QuantumRange * 255).to_i }
-
-      avg2   = { :r => 0.0, :g => 0.0, :b => 0.0 }
-      img2.quantize.color_histogram.each { |c, n|
-          avg2[:r] += n * c.red
-          avg2[:g] += n * c.green
-          avg2[:b] += n * c.blue
-          total   += n
-      }
-      [:r, :g, :b].each { |comp| avg2[comp] /= total }
-      [:r, :g, :b].each { |comp| avg2[comp] = (avg2[comp] / Magick::QuantumRange * 255).to_i }
-
-      1 - (((avg1[:r] - avg2[:r])/256.0).abs + ((avg1[:g] - avg2[:g])/256.0).abs + ((avg1[:b] - avg2[:b])/256.0).abs)/3.0
-    end
+    # def getSpairingAvatarColorAffinity(player)
+    #   if pp_avatar.file == nil or player.pp_avatar.file == nil
+    #     return 0.5
+    #   end
+    #   img1 = Magick::Image.read(pp_avatar.file.file)[0]
+    #   img2 = Magick::Image.read(player.pp_avatar.file.file)[0]
+    #
+    #   total = 0
+    #   avg1   = { :r => 0.0, :g => 0.0, :b => 0.0 }
+    #   img1.quantize.color_histogram.each { |c, n|
+    #       avg1[:r] += n * c.red
+    #       avg1[:g] += n * c.green
+    #       avg1[:b] += n * c.blue
+    #       total   += n
+    #   }
+    #   [:r, :g, :b].each { |comp| avg1[comp] /= total }
+    #   [:r, :g, :b].each { |comp| avg1[comp] = (avg1[comp] / Magick::QuantumRange * 255).to_i }
+    #
+    #   avg2   = { :r => 0.0, :g => 0.0, :b => 0.0 }
+    #   img2.quantize.color_histogram.each { |c, n|
+    #       avg2[:r] += n * c.red
+    #       avg2[:g] += n * c.green
+    #       avg2[:b] += n * c.blue
+    #       total   += n
+    #   }
+    #   [:r, :g, :b].each { |comp| avg2[comp] /= total }
+    #   [:r, :g, :b].each { |comp| avg2[comp] = (avg2[comp] / Magick::QuantumRange * 255).to_i }
+    #
+    #   1 - (((avg1[:r] - avg2[:r])/256.0).abs + ((avg1[:g] - avg2[:g])/256.0).abs + ((avg1[:b] - avg2[:b])/256.0).abs)/3.0
+    # end
 
     def getSpairingWordCommentAffinity(player)
       words = Set.new
