@@ -14,7 +14,7 @@ class GameGetter
     game = Game.create(id: rawGame["id"], gam_name: rawGame["name"],
       gam_description: rawGame["summary"], pegi_id: rawGame["pegi"]["rating"],
       gam_link: rawGame["website"], gam_image: rawGame["cover"]["url"],
-        gam_views: 0)
+        gam_views: 0, gam_rate_igdb: rawGame["rating"], gam_rate_players: 0)
 
     platforms.each{ |platform|
       puts platform
@@ -74,6 +74,10 @@ class GameGetter
     if rawGame["cover"] == nil                                          #Setting no cover
       rawGame["cover"] = {}
       rawGame["cover"]["url"] = "//images.igdb.com/igdb/image/upload/t_cover_big/nocover_qhhlj6.jpg"
+    end
+
+    if rawGame["rating"] == nil
+      rawGame["rating"] = -1
     end
     #Returns rawGame
     rawGame

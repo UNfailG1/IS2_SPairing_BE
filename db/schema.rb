@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20180512191242) do
     t.string "gam_image"
     t.integer "gam_user_counter"
     t.integer "gam_views"
+    t.decimal "gam_rate_igdb"
+    t.decimal "gam_rate_players"
     t.integer "pegi_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

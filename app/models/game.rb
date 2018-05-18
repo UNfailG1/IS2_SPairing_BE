@@ -9,6 +9,8 @@
 #  gam_image        :string
 #  gam_user_counter :integer
 #  gam_views        :integer
+#  gam_rate_igdb    :decimal(, )
+#  gam_rate_players :decimal(, )
 #  pegi_id          :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
@@ -34,6 +36,8 @@ class Game < ApplicationRecord
   validates :pegi_id, presence: true
   validates :gam_views, presence: true
   validates :gam_image, presence: true
+  validates :gam_rate_igdb, presence: true
+  validates :gam_rate_players, presence: true
 
   #Search for games with a Pegi age below age param
   #param age may be an integer
@@ -115,6 +119,11 @@ class Game < ApplicationRecord
     platforms.each{ |platform| platform.seedRecord }
     genres.each{ |genre| genre.seedRecord}
 
+  end
+
+  #Gives the spairing_rate for the game
+  def spairing_rate
+    ((gam_rate_igdb + gam_user_counter*gam_rate_players)/(gam_user_counter + 1.0)).to_f
   end
 
 end

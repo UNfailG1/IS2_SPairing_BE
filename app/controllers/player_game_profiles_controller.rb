@@ -21,6 +21,7 @@ class PlayerGameProfilesController < ApplicationController
 
     if @player_game_profile.save
       render json: @player_game_profile, status: :created, location: @player_game_profile
+      UpdateGameRateJob.perform_later(@player_game_profile.)
     else
       render json: @player_game_profile.errors, status: :unprocessable_entity
     end
