@@ -25,7 +25,6 @@ class PlayerGameProfile < ApplicationRecord
 
   validates :pgp_reputation, presence: true
   validates :pgp_nickname, presence: true
-  validates :pgp_rate, presence: true
 
   #Search for Player Game Profiles by their nickname equal to
   #nickname param
