@@ -45,6 +45,11 @@ class PlayerGameProfilesController < ApplicationController
     @player_game_profile.destroy
   end
 
+  def pairing
+    search = PlayerGameProfile.pairing(params[:game_id], current_player_profile, params[:options])
+    render json: search, status: :ok, each_serializer: nil
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_player_game_profile
