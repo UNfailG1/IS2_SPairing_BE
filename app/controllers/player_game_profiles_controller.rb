@@ -18,11 +18,14 @@ class PlayerGameProfilesController < ApplicationController
 
   # POST /player_game_profiles
   def create
-    @player_game_profile = PlayerGameProfile.new(player_game_profile_params)
+    @player_game_profile = PlayerGameProfile.new(
+      player_game_profile_params.merge({
+        player_profile_id: params[:player_profile_id]
+      }))
 
     if @player_game_profile.save
+      UpdateGameRateJob.perform_later(@player_game_profile)
       render json: @player_game_profile, status: :created, location: @player_game_profile
-      UpdateGameRateJob.perform_later(@player_game_profile.)
     else
       render json: @player_game_profile.errors, status: :unprocessable_entity
     end
@@ -50,6 +53,6 @@ class PlayerGameProfilesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def player_game_profile_params
-      params.fetch(:player_game_profile, {})
+      params.require(:player_game_profile).permit(:game_id, :pgp_nickname, :pgp_reputation)
     end
 end
