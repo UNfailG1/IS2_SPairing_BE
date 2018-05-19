@@ -24,11 +24,11 @@ class Mailbox < ApplicationRecord
   #returned mails of the first found
   #param name may be a string
   def self.getInbox(id)
-    self.where(receiver_id: id)
+    self.where(receiver_id: id).order('created_at DESC')
   end
 
   def self.getSent(id)
-    self.where(sender_id: id)
+    self.where(sender_id: id).order('created_at DESC')
   end
 
   #Get count of mails sent on a given day

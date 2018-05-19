@@ -48,7 +48,7 @@ class PlayerProfilesController < ApplicationController
     end
     if @pp_up.save
       PlayerProfileMailer.update_profile(@pp_up).deliver_later
-      render json: @pp_up, status: :ok, serializer: PlayerProfileOnlySerializer
+      render json: @pp_up, status: :ok, serializer: PlayerProfileSerializer
     else
       render json: @pp_up.errors, status: :unprocessable_entity
     end
@@ -149,7 +149,7 @@ class PlayerProfilesController < ApplicationController
   def usernames_like
     profiles = PlayerProfile.getByUsernameLike(params[:username])
       .paginate(page: params['page'], per_page: 5)
-    render json: profiles, status: :ok, each_serializer: PlayerProfileOnlySerializer
+    render json: profiles, status: :ok, each_serializer: PlayerProfileSimpleSerializer
   end
 
   def suggested_profiles

@@ -31,7 +31,7 @@ class ThreadForum < ApplicationRecord
   end
 
   def self.getBySubForumId(subForumId)
-    self.where(sub_forum_id: subForumId)
+    self.where(sub_forum_id: subForumId).order('created_at DESC')
   end
 
   def self.getCommentByTerm(words)

@@ -31,7 +31,7 @@ class Comment < ApplicationRecord
 
   # get comments from a ThreadForum.
   def self.getByThreadId(threadId)
-    self.where(thread_forum_id: threadId)
+    self.where(thread_forum_id: threadId).order('created_at DESC')
   end
 
   def self.getCommentByTerm(words)
@@ -40,9 +40,9 @@ class Comment < ApplicationRecord
     whereStatment = list.join(' OR ')
     self.where(whereStatment)
   end
-  
+
   def self.getCommentByDay(day,thread_forum_id)
     where(:created_at => day.beginning_of_day..day.end_of_day, :thread_forum_id => thread_forum_id)
   end
-  
+
 end

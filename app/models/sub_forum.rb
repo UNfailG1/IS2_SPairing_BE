@@ -39,7 +39,7 @@ class SubForum < ApplicationRecord
   #Search for SubForums with a id equals to gameId param
   #param name may be a integer
   def self.getByGameId(gameId)
-    SubForum.where(game_id: gameId)
+    SubForum.where(game_id: gameId).order('created_at DESC')
   end
 
   #Search for a SubForum with a name equals to name param
