@@ -146,6 +146,17 @@ class PlayerProfilesController < ApplicationController
     render json: toRender, status: :ok, serializer: nil
   end
 
+  def unblock_player
+    current = current_player_profile
+    player = PlayerProfile.find(params[:player_id])
+
+    if current.blocked_players.include? player
+      current.blocked_players.delete(player)
+    end
+
+    render json: player, status: :ok, serializer: PlayerProfileSimpleSerializer
+  end
+
   def usernames_like
     profiles = PlayerProfile.getByUsernameLike(params[:username])
       .paginate(page: params['page'], per_page: 5)
