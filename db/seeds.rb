@@ -1019,7 +1019,7 @@ def seedSubForum
       seedThreadForum(sf)
     end
     counter = counter + 1
-    puts ((counter/total)*100).to_s + "%"
+    puts ((counter/total)*100).to_i.to_s + "%"
   }
 
   @added = @added + @comments.to_s + "comments"
