@@ -34,6 +34,7 @@ class PlayerGameProfilesController < ApplicationController
   # PATCH/PUT /player_game_profiles/1
   def update
     if @player_game_profile.update(player_game_profile_params)
+      UpdateGameRateJob.perform_later(@player_game_profile)
       render json: @player_game_profile
     else
       render json: @player_game_profile.errors, status: :unprocessable_entity

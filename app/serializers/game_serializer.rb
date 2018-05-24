@@ -21,7 +21,7 @@
 #
 
 class GameSerializer < ActiveModel::Serializer
-  attributes :id, :gam_name, :gam_description, :gam_link, :gam_image, :gam_user_counter, :gam_views, :gam_rate_igdb, :gam_rate_players
+  attributes :id, :gam_name, :gam_description, :gam_link, :gam_image, :gam_user_counter, :gam_views, :spairing_rate
 
   belongs_to :pegi
   has_many :sub_forums
@@ -30,4 +30,5 @@ class GameSerializer < ActiveModel::Serializer
   has_many :genres
   has_many :platforms
   has_many :screenshots
+
 end
