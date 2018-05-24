@@ -1,7 +1,7 @@
 class PlayerProfilesController < ApplicationController
 
   # before_action :authenticate_player_profile
-  before_action :set_player_profile, only: [:show, :update, :destroy]
+  before_action :set_player_profile, only: [:show, :destroy]
 
   # GET /player_profiles
   def index
@@ -30,22 +30,29 @@ class PlayerProfilesController < ApplicationController
 
   # PATCH/PUT /player_profiles/1
   def update
+    puts " Holi? #{params[:location_id]}"
     @pp_up = PlayerProfile.find(params[:id])
     if params.has_key?(:pp_username)
       @pp_up.pp_username = params[:pp_username]
     end
+    
     if params.has_key?(:password)
       @pp_up.password = params[:password]
     end
+    
     if params.has_key?(:email)
       @pp_up.email = params[:email]
     end
+    
     if params.has_key?(:pp_spairing_elo)
       @pp_up.pp_spairing_elo = params[:pp_spairing_elo]
     end
+    
     if params.has_key?(:location_id)
-      @pp_up.location_id = params[:location_id]
+      id = params[:location_id]
+      @pp_up.location_id = (id != 0) ? id : nil 
     end
+    
     if @pp_up.save
       PlayerProfileMailer.update_profile(@pp_up).deliver_later
       render json: @pp_up, status: :ok, serializer: PlayerProfileSerializer
@@ -176,6 +183,6 @@ class PlayerProfilesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def player_profile_params
-      params.require(:player_profile).permit(:pp_username, :email, :password, :password_confirmation)
+      params.require(:player_profile).permit(:pp_username, :email, :password, :password_confirmation, :location_id)
   end
 end

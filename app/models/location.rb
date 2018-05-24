@@ -20,7 +20,7 @@ class Location < ApplicationRecord
   #Queries
 
   def self.getByNameLike(name)
-    self.where(loc_name: name)
+    self.where('loc_name LIKE ?', '%' + name + '%')
   end
 
   #Search for a locations near to lat and long params, in a radious
