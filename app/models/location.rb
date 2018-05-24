@@ -19,6 +19,10 @@ class Location < ApplicationRecord
 
   #Queries
 
+  def self.getByNameLike(name)
+    self.where(loc_name: name)
+  end
+
   #Search for a locations near to lat and long params, in a radious
   #of more or less, rad kilometers
   #params lat, long and rad may be floats
