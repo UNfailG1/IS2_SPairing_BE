@@ -20,6 +20,7 @@ class GamesController < ApplicationController
       @game = Game.find(params[:id])
     else
       @game = GameGetter.createGame(params[:id])
+      GenerateBasicSubForumsJob.perform_later(@game)
     end
     render json: @game, serializer: GameSerializer
     @game.update_attribute(:gam_views, @game.gam_views + 1)
@@ -31,6 +32,7 @@ class GamesController < ApplicationController
 
     if @game.save
       render json: @game, status: :created, location: @game
+      GenerateBasicSubForumsJob.perform_later(@game)
     else
       render json: @game.errors, status: :unprocessable_entity
     end
