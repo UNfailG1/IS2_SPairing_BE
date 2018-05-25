@@ -16,6 +16,8 @@ class GameGetter
       gam_link: rawGame["website"], gam_image: rawGame["cover"]["url"],
         gam_views: 0, gam_rate_igdb: rawGame["rating"], gam_rate_players: 0)
 
+    screenshots = rawGame["screenshots"]
+
     platforms.each{ |platform|
       puts platform
       if !Platform.exists?(platform)
@@ -30,6 +32,11 @@ class GameGetter
       end
       game.genres << Genre.find(genre)
     }
+
+    screenshots.each{ |screenshot|
+      Screenshot.create(scr_url: screenshot["url"], scr_height: screenshot["height"], scr_width: screenshot["width"], game_id: game.id)
+    }
+
     game
   end
 
@@ -79,6 +86,11 @@ class GameGetter
     if rawGame["rating"] == nil
       rawGame["rating"] = -1
     end
+
+    if rawGame["screenshots"] == nil
+      rawGame["screenshots"] = {}
+    end
+
     #Returns rawGame
     rawGame
   end
