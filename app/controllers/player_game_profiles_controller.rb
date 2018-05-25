@@ -34,6 +34,8 @@ class PlayerGameProfilesController < ApplicationController
   # PATCH/PUT /player_game_profiles/1
   def update
     if @player_game_profile.update(player_game_profile_params)
+      game = Game.find(@player_game_profile.game_id)
+      UpdateGameRateJob.perform_later(game)
       render json: @player_game_profile
     else
       render json: @player_game_profile.errors, status: :unprocessable_entity
@@ -58,6 +60,6 @@ class PlayerGameProfilesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def player_game_profile_params
-      params.require(:player_game_profile).permit(:game_id, :pgp_nickname, :pgp_reputation)
+      params.require(:player_game_profile).permit(:game_id, :pgp_nickname, :pgp_reputation, :pgp_rate)
     end
 end
