@@ -4,7 +4,9 @@ class LocationsController < ApplicationController
 
   # GET /locations
   def index
-    @locations = Location.paginate(page: params['page'], per_page: 15)
+
+    @locations = Location.getByNameLike(params[:loc_name]).
+      paginate(page: 1, per_page: 5)
 
     render json: @locations, each_serializer: LocationSerializer
   end

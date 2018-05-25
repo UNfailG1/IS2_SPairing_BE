@@ -20,4 +20,5 @@
 class PlayerGameProfileSerializer < ActiveModel::Serializer
   attributes :id, :pgp_reputation, :pgp_nickname, :pgp_rate
   belongs_to :game
+  has_many :tags
 end
