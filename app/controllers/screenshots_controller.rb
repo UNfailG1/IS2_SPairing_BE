@@ -1,4 +1,6 @@
 class ScreenshotsController < ApplicationController
+
+  before_action :authenticate_player_profile
   before_action :set_screenshot, only: [:show, :update, :destroy]
 
   # GET /screenshots

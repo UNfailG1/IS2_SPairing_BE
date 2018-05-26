@@ -1,4 +1,6 @@
 class ReportsController < ApplicationController
+
+  before_action :authenticate_player_profile
   before_action :set_report, only: [:show, :update, :destroy]
 
   # GET /reports

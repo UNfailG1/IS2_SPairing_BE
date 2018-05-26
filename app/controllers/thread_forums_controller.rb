@@ -1,6 +1,6 @@
 class ThreadForumsController < ApplicationController
 
-  # before_action :authenticate_player_profile
+  before_action :authenticate_player_profile
   before_action :set_thread_forum, only: [:show, :update, :destroy]
 
   # GET /thread_forums

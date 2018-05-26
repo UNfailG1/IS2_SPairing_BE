@@ -1,4 +1,6 @@
 class RatesController < ApplicationController
+
+  before_action :authenticate_player_profile
   before_action :set_rate, only: [:show, :update, :destroy]
 
   # GET /rates

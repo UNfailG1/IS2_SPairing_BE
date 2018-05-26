@@ -1,6 +1,6 @@
 class PlayerProfilesController < ApplicationController
 
-  # before_action :authenticate_player_profile
+  before_action :authenticate_player_profile, except: :create
   before_action :set_player_profile, only: [:show, :destroy]
 
   # GET /player_profiles
@@ -35,24 +35,24 @@ class PlayerProfilesController < ApplicationController
     if params.has_key?(:pp_username)
       @pp_up.pp_username = params[:pp_username]
     end
-    
+
     if params.has_key?(:password)
       @pp_up.password = params[:password]
     end
-    
+
     if params.has_key?(:email)
       @pp_up.email = params[:email]
     end
-    
+
     if params.has_key?(:pp_spairing_elo)
       @pp_up.pp_spairing_elo = params[:pp_spairing_elo]
     end
-    
+
     if params.has_key?(:location_id)
       id = params[:location_id]
-      @pp_up.location_id = (id != 0) ? id : nil 
+      @pp_up.location_id = (id != 0) ? id : nil
     end
-    
+
     if @pp_up.save
       PlayerProfileMailer.update_profile(@pp_up).deliver_later
       render json: @pp_up, status: :ok, serializer: PlayerProfileSerializer

@@ -1,6 +1,5 @@
 class AdsImageController < ApplicationController
 
-
   # POST /ads_image/1
   def update
     @ad_up = Ad.find(params[:id])

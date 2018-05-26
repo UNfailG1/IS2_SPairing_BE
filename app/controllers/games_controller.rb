@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
 
-  # before_action :authenticate_player_profile
+  before_action :authenticate_player_profile
   before_action :set_game, only: [:update, :destroy]
   #before_action :set_game, only: %i[show update destroy]
 

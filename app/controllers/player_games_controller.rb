@@ -1,4 +1,5 @@
 class PlayerGamesController < ApplicationController
+
   before_action :authenticate_player_profile
   before_action :set_player_game, only: %i[show update destroy]
 

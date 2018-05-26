@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get '/validate_session' => 'validate_session#validate'
   post "player_profile_token" => "player_profile_token#create"
   post "google_authentication" => "social_auth#google_authentication"
 
