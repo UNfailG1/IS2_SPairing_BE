@@ -52,6 +52,11 @@ class PlayerGameProfilesController < ApplicationController
     render json: search, status: :ok, each_serializer: nil
   end
 
+  def game_best_players
+    player_game_profiles = PlayerGameProfile.getBestPlayers(params[:game_id]).paginate(page: params['page'], per_page: 15)
+    render json: player_game_profiles, status: :ok, each_serializer: PlayerGameProfileSerializer
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_player_game_profile

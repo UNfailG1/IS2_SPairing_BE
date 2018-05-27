@@ -142,4 +142,8 @@ class PlayerGameProfile < ApplicationRecord
       PlayerGameProfile.where("game_id = ? AND player_profile_id = ?", game_id, player_id)[0]
   end
 
+  def self.getBestPlayers(gameId)
+    Game.find(gameId).player_game_profiles.order(pgp_reputation: :desc)
+  end
+
 end
