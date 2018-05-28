@@ -171,7 +171,7 @@ class PlayerProfilesController < ApplicationController
   end
 
   def suggested_profiles
-    profiles = PlayerProfile.getSimilarProfiles(current_player_profile)
+    profiles = PlayerProfile.getSimilarProfiles(current_player_profile).paginate(page: params['page'], per_page: 5)
     render json: profiles, status: :ok, each_serializer: nil
   end
 

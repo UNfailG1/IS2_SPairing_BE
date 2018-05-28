@@ -60,7 +60,7 @@ class StatisticsController < ApplicationController
   end
 
   def gam_most_played
-    @querie = Game.getMostPlayed
+    @querie = Game.getMostPlayed.paginate(page: params['page'], per_page: 5)
     render json: @querie, each_serializer: GameSimpleSerializer
   end
 
