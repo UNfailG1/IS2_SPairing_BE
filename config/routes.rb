@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   get "/block_player/:player_id" => "player_profiles#block_player"
   get "/unblock_player/:player_id" => "player_profiles#unblock_player"
   get "/relation_status/:player_id" => "player_profiles#relation_status"
-  get "/pairing" => "player_game_profiles#pairing"
+  get "/pairing/:game_id" => "player_game_profiles#pairing"
   get "/game_best_players/:game_id" => "player_game_profiles#game_best_players"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -6,7 +6,7 @@ class PlayerGameProfilesController < ApplicationController
   # GET /player_game_profiles
   def index
     @player_game_profiles = PlayerGameProfile.getByPlayerId(params[:player_profile_id])
-      .paginate(page: params['page'], per_page: 15)
+      # .paginate(page: params['page'], per_page: 15)
 
     render json: @player_game_profiles, each_serializer: PlayerGameProfileSerializer
   end
@@ -48,8 +48,12 @@ class PlayerGameProfilesController < ApplicationController
   end
 
   def pairing
-    search = PlayerGameProfile.pairing(params[:game_id], current_player_profile, params[:options])
-    render json: search, status: :ok, each_serializer: nil
+    options = {
+      location: params[:location],
+      tags: params[:tags]
+    }
+    search = PlayerGameProfile.pairing(params[:game_id], current_player_profile, options)
+    render json: search, status: :ok, each_serializer: PlayerGameProfileSerializer
   end
 
   def game_best_players
