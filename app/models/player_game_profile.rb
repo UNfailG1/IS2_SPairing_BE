@@ -38,29 +38,28 @@ class PlayerGameProfile < ApplicationRecord
   end
 
   def self.pairing(game_id, current_player, options)
-
-    current_pgp = self.where(player_profile_id: current_player.id)[0]
+    current_pgp = self.where('player_profile_id = ? AND game_id = ?', current_player.id, game_id.to_i)[0]
     pgps = self.where('game_id = ? AND player_profile_id != ?', game_id, current_player.id)
       .joins(:player_profile)
 
     # Filter location
-    if options[:location]
+    if options[:location] == "true"
+      #
       pgps = pgps.where('player_profiles.location_id = ?', current_player.location_id)
     end
 
-    if current_pgp.tag_ids.length > 0
-      list = []
-      current_pgp.tag_ids.each { |tagId| list << "tag_id = #{tagId}" }
-      pgps = pgps.joins("INNER JOIN tag_players ON player_game_profile_id = player_game_profiles.id")
-        .where(list.join(' OR '))
-        .group(:player_game_profile_id)
-        .select('count(tag_id) as common_tags, player_profile_id, pgp_nickname,
-          pp_username, pp_avatar, pgp_reputation')
-        .order('common_tags DESC')
-    else
-      pgps = pgps.select('player_profile_id, pgp_nickname, pp_username, pp_avatar, pgp_reputation')
+    if options[:tags] == "true"
+      if current_pgp.tag_ids.length > 0
+        list = []
+        current_pgp.tag_ids.each { |tagId| list << "tag_id = #{tagId}" }
+        pgps = pgps.joins("INNER JOIN tag_players ON player_game_profile_id = player_game_profiles.id")
+          .where(list.join(' OR '))
+          .group(:player_game_profile_id)
+          .select('count(tag_id) as common_tags, *')
+          .order('common_tags DESC')
+      end
     end
-    pgps
+    pgps = pgps.select('player_profile_id, *')
   end
 
   #Search for Player Game Profiles by his/her nickname equal to
