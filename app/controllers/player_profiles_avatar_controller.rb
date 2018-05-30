@@ -1,6 +1,6 @@
 class PlayerProfilesAvatarController < ApplicationController
 
-  before_action :authenticate_player_profile
+  # before_action :authenticate_player_profile
   # POST /player_profile_avatar/1
   def update
     @pp_up = PlayerProfile.find(params[:id])
